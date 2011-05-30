@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		49626B7913942A7E0093534C /* ApptentiveConnect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* ApptentiveConnect.framework */; };
 		49626B7E13942A9A0093534C /* ATSampleTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 49626B7D13942A9A0093534C /* ATSampleTest.m */; };
-		49626BBF13942B770093534C /* ATConnect.h in Headers */ = {isa = PBXBuildFile; fileRef = 49626BBD13942B770093534C /* ATConnect.h */; };
-		49626BC013942B770093534C /* ATConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 49626BBE13942B770093534C /* ATConnect.m */; };
 		49626C36139437070093534C /* ATAPIRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 49626C2B139437070093534C /* ATAPIRequest.h */; };
 		49626C37139437070093534C /* ATAPIRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 49626C2C139437070093534C /* ATAPIRequest.m */; };
 		49626C38139437070093534C /* ATConnectionChannel.h in Headers */ = {isa = PBXBuildFile; fileRef = 49626C2D139437070093534C /* ATConnectionChannel.h */; };
@@ -22,6 +20,29 @@
 		49626C3E139437070093534C /* ATURLConnection_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 49626C33139437070093534C /* ATURLConnection_Private.h */; };
 		49626C3F139437070093534C /* ATWebClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 49626C34139437070093534C /* ATWebClient.h */; };
 		49626C40139437070093534C /* ATWebClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 49626C35139437070093534C /* ATWebClient.m */; };
+		49626C46139437580093534C /* NSData+ATBase64.h in Headers */ = {isa = PBXBuildFile; fileRef = 49626C44139437580093534C /* NSData+ATBase64.h */; };
+		49626C47139437580093534C /* NSData+ATBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 49626C45139437580093534C /* NSData+ATBase64.m */; };
+		49626C58139437690093534C /* ATUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 49626C56139437690093534C /* ATUtilities.h */; };
+		49626C59139437690093534C /* ATUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 49626C57139437690093534C /* ATUtilities.m */; };
+		49626C67139437DD0093534C /* ATConnect.h in Headers */ = {isa = PBXBuildFile; fileRef = 49626C65139437DD0093534C /* ATConnect.h */; };
+		49626C68139437DD0093534C /* ATConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 49626C66139437DD0093534C /* ATConnect.m */; };
+		49626C7A139439050093534C /* ATBackend.h in Headers */ = {isa = PBXBuildFile; fileRef = 49626C72139439050093534C /* ATBackend.h */; };
+		49626C7B139439050093534C /* ATBackend.m in Sources */ = {isa = PBXBuildFile; fileRef = 49626C73139439050093534C /* ATBackend.m */; };
+		49626C7C139439050093534C /* ATContactStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 49626C74139439050093534C /* ATContactStorage.h */; };
+		49626C7D139439050093534C /* ATContactStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 49626C75139439050093534C /* ATContactStorage.m */; };
+		49626C7E139439050093534C /* ATContactUpdater.h in Headers */ = {isa = PBXBuildFile; fileRef = 49626C76139439050093534C /* ATContactUpdater.h */; };
+		49626C7F139439050093534C /* ATContactUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = 49626C77139439050093534C /* ATContactUpdater.m */; };
+		49626C80139439050093534C /* ATFeedback.h in Headers */ = {isa = PBXBuildFile; fileRef = 49626C78139439050093534C /* ATFeedback.h */; };
+		49626C81139439050093534C /* ATFeedback.m in Sources */ = {isa = PBXBuildFile; fileRef = 49626C79139439050093534C /* ATFeedback.m */; };
+		49626C9113943C310093534C /* ATReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 49626C8F13943C310093534C /* ATReachability.h */; };
+		49626C9213943C310093534C /* ATReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 49626C9013943C310093534C /* ATReachability.m */; };
+		49626C9613943C520093534C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49626C9513943C520093534C /* SystemConfiguration.framework */; };
+		49626D19139444C20093534C /* ATFeedbackTask.h in Headers */ = {isa = PBXBuildFile; fileRef = 49626D13139444C20093534C /* ATFeedbackTask.h */; };
+		49626D1A139444C20093534C /* ATFeedbackTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 49626D14139444C20093534C /* ATFeedbackTask.m */; };
+		49626D1B139444C20093534C /* ATTask.h in Headers */ = {isa = PBXBuildFile; fileRef = 49626D15139444C20093534C /* ATTask.h */; };
+		49626D1C139444C20093534C /* ATTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 49626D16139444C20093534C /* ATTask.m */; };
+		49626D1D139444C20093534C /* ATTaskQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 49626D17139444C20093534C /* ATTaskQueue.h */; };
+		49626D1E139444C20093534C /* ATTaskQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 49626D18139444C20093534C /* ATTaskQueue.m */; };
 		8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
 		8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
@@ -46,8 +67,6 @@
 		49626B6E13942A2B0093534C /* ApptentiveUnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ApptentiveUnitTests-Info.plist"; path = "tests/ApptentiveUnitTests-Info.plist"; sourceTree = "<group>"; };
 		49626B7C13942A9A0093534C /* ATSampleTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATSampleTest.h; path = tests/ATSampleTest.h; sourceTree = "<group>"; };
 		49626B7D13942A9A0093534C /* ATSampleTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATSampleTest.m; path = tests/ATSampleTest.m; sourceTree = "<group>"; };
-		49626BBD13942B770093534C /* ATConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATConnect.h; path = source/ATConnect.h; sourceTree = "<group>"; };
-		49626BBE13942B770093534C /* ATConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATConnect.m; path = source/ATConnect.m; sourceTree = "<group>"; };
 		49626C2B139437070093534C /* ATAPIRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATAPIRequest.h; sourceTree = "<group>"; };
 		49626C2C139437070093534C /* ATAPIRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATAPIRequest.m; sourceTree = "<group>"; };
 		49626C2D139437070093534C /* ATConnectionChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATConnectionChannel.h; sourceTree = "<group>"; };
@@ -59,6 +78,29 @@
 		49626C33139437070093534C /* ATURLConnection_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATURLConnection_Private.h; sourceTree = "<group>"; };
 		49626C34139437070093534C /* ATWebClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATWebClient.h; sourceTree = "<group>"; };
 		49626C35139437070093534C /* ATWebClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATWebClient.m; sourceTree = "<group>"; };
+		49626C44139437580093534C /* NSData+ATBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ATBase64.h"; sourceTree = "<group>"; };
+		49626C45139437580093534C /* NSData+ATBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+ATBase64.m"; sourceTree = "<group>"; };
+		49626C56139437690093534C /* ATUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATUtilities.h; sourceTree = "<group>"; };
+		49626C57139437690093534C /* ATUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATUtilities.m; sourceTree = "<group>"; };
+		49626C65139437DD0093534C /* ATConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATConnect.h; path = "../apptentive-ios/ApptentiveConnect/source/ATConnect.h"; sourceTree = SOURCE_ROOT; };
+		49626C66139437DD0093534C /* ATConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATConnect.m; path = "../apptentive-ios/ApptentiveConnect/source/ATConnect.m"; sourceTree = SOURCE_ROOT; };
+		49626C72139439050093534C /* ATBackend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATBackend.h; sourceTree = "<group>"; };
+		49626C73139439050093534C /* ATBackend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATBackend.m; sourceTree = "<group>"; };
+		49626C74139439050093534C /* ATContactStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATContactStorage.h; sourceTree = "<group>"; };
+		49626C75139439050093534C /* ATContactStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATContactStorage.m; sourceTree = "<group>"; };
+		49626C76139439050093534C /* ATContactUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATContactUpdater.h; sourceTree = "<group>"; };
+		49626C77139439050093534C /* ATContactUpdater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATContactUpdater.m; sourceTree = "<group>"; };
+		49626C78139439050093534C /* ATFeedback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATFeedback.h; sourceTree = "<group>"; };
+		49626C79139439050093534C /* ATFeedback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATFeedback.m; sourceTree = "<group>"; };
+		49626C8F13943C310093534C /* ATReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATReachability.h; sourceTree = "<group>"; };
+		49626C9013943C310093534C /* ATReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATReachability.m; sourceTree = "<group>"; };
+		49626C9513943C520093534C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		49626D13139444C20093534C /* ATFeedbackTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATFeedbackTask.h; sourceTree = "<group>"; };
+		49626D14139444C20093534C /* ATFeedbackTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATFeedbackTask.m; sourceTree = "<group>"; };
+		49626D15139444C20093534C /* ATTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATTask.h; sourceTree = "<group>"; };
+		49626D16139444C20093534C /* ATTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATTask.m; sourceTree = "<group>"; };
+		49626D17139444C20093534C /* ATTaskQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATTaskQueue.h; sourceTree = "<group>"; };
+		49626D18139444C20093534C /* ATTaskQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATTaskQueue.m; sourceTree = "<group>"; };
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = resources/Info.plist; sourceTree = "<group>"; };
 		8DC2EF5B0486A6940098B216 /* ApptentiveConnect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ApptentiveConnect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2F7E79907B2D74100F64583 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
@@ -78,6 +120,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */,
+				49626C9613943C520093534C /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */,
+				49626C9513943C520093534C /* SystemConfiguration.framework */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
@@ -137,8 +181,6 @@
 			isa = PBXGroup;
 			children = (
 				32DBCF5E0370ADEE00C91783 /* ApptentiveConnect_Prefix.pch */,
-				49626BBD13942B770093534C /* ATConnect.h */,
-				49626BBE13942B770093534C /* ATConnect.m */,
 			);
 			name = source;
 			sourceTree = "<group>";
@@ -173,6 +215,7 @@
 		49626BF6139436600093534C /* apptentive-ios */ = {
 			isa = PBXGroup;
 			children = (
+				49626C43139437580093534C /* ext */,
 				49626BFB1394367B0093534C /* source */,
 			);
 			name = "apptentive-ios";
@@ -181,6 +224,12 @@
 		49626BFB1394367B0093534C /* source */ = {
 			isa = PBXGroup;
 			children = (
+				49626C65139437DD0093534C /* ATConnect.h */,
+				49626C66139437DD0093534C /* ATConnect.m */,
+				49626C55139437690093534C /* Misc */,
+				49626C71139439050093534C /* Persistence */,
+				49626C8E13943C310093534C /* Reachability */,
+				49626D12139444C20093534C /* Tasks */,
 				49626C2A139437070093534C /* URL Loading */,
 			);
 			name = source;
@@ -205,6 +254,66 @@
 			path = "../apptentive-ios/ApptentiveConnect/source/URL Loading";
 			sourceTree = SOURCE_ROOT;
 		};
+		49626C43139437580093534C /* ext */ = {
+			isa = PBXGroup;
+			children = (
+				49626C44139437580093534C /* NSData+ATBase64.h */,
+				49626C45139437580093534C /* NSData+ATBase64.m */,
+			);
+			name = ext;
+			path = "../apptentive-ios/ApptentiveConnect/ext";
+			sourceTree = SOURCE_ROOT;
+		};
+		49626C55139437690093534C /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				49626C56139437690093534C /* ATUtilities.h */,
+				49626C57139437690093534C /* ATUtilities.m */,
+			);
+			name = Misc;
+			path = "../apptentive-ios/ApptentiveConnect/source/Misc";
+			sourceTree = SOURCE_ROOT;
+		};
+		49626C71139439050093534C /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				49626C72139439050093534C /* ATBackend.h */,
+				49626C73139439050093534C /* ATBackend.m */,
+				49626C74139439050093534C /* ATContactStorage.h */,
+				49626C75139439050093534C /* ATContactStorage.m */,
+				49626C76139439050093534C /* ATContactUpdater.h */,
+				49626C77139439050093534C /* ATContactUpdater.m */,
+				49626C78139439050093534C /* ATFeedback.h */,
+				49626C79139439050093534C /* ATFeedback.m */,
+			);
+			name = Persistence;
+			path = "../apptentive-ios/ApptentiveConnect/source/Persistence";
+			sourceTree = SOURCE_ROOT;
+		};
+		49626C8E13943C310093534C /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				49626C8F13943C310093534C /* ATReachability.h */,
+				49626C9013943C310093534C /* ATReachability.m */,
+			);
+			name = Reachability;
+			path = "../apptentive-ios/ApptentiveConnect/source/Reachability";
+			sourceTree = SOURCE_ROOT;
+		};
+		49626D12139444C20093534C /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				49626D13139444C20093534C /* ATFeedbackTask.h */,
+				49626D14139444C20093534C /* ATFeedbackTask.m */,
+				49626D15139444C20093534C /* ATTask.h */,
+				49626D16139444C20093534C /* ATTask.m */,
+				49626D17139444C20093534C /* ATTaskQueue.h */,
+				49626D18139444C20093534C /* ATTaskQueue.m */,
+			);
+			name = Tasks;
+			path = "../apptentive-ios/ApptentiveConnect/source/Tasks";
+			sourceTree = SOURCE_ROOT;
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -212,13 +321,23 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49626BBF13942B770093534C /* ATConnect.h in Headers */,
 				49626C36139437070093534C /* ATAPIRequest.h in Headers */,
 				49626C38139437070093534C /* ATConnectionChannel.h in Headers */,
 				49626C3A139437070093534C /* ATConnectionManager.h in Headers */,
 				49626C3C139437070093534C /* ATURLConnection.h in Headers */,
 				49626C3E139437070093534C /* ATURLConnection_Private.h in Headers */,
 				49626C3F139437070093534C /* ATWebClient.h in Headers */,
+				49626C46139437580093534C /* NSData+ATBase64.h in Headers */,
+				49626C58139437690093534C /* ATUtilities.h in Headers */,
+				49626C67139437DD0093534C /* ATConnect.h in Headers */,
+				49626C7A139439050093534C /* ATBackend.h in Headers */,
+				49626C7C139439050093534C /* ATContactStorage.h in Headers */,
+				49626C7E139439050093534C /* ATContactUpdater.h in Headers */,
+				49626C80139439050093534C /* ATFeedback.h in Headers */,
+				49626C9113943C310093534C /* ATReachability.h in Headers */,
+				49626D19139444C20093534C /* ATFeedbackTask.h in Headers */,
+				49626D1B139444C20093534C /* ATTask.h in Headers */,
+				49626D1D139444C20093534C /* ATTaskQueue.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,12 +458,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49626BC013942B770093534C /* ATConnect.m in Sources */,
 				49626C37139437070093534C /* ATAPIRequest.m in Sources */,
 				49626C39139437070093534C /* ATConnectionChannel.m in Sources */,
 				49626C3B139437070093534C /* ATConnectionManager.m in Sources */,
 				49626C3D139437070093534C /* ATURLConnection.m in Sources */,
 				49626C40139437070093534C /* ATWebClient.m in Sources */,
+				49626C47139437580093534C /* NSData+ATBase64.m in Sources */,
+				49626C59139437690093534C /* ATUtilities.m in Sources */,
+				49626C68139437DD0093534C /* ATConnect.m in Sources */,
+				49626C7B139439050093534C /* ATBackend.m in Sources */,
+				49626C7D139439050093534C /* ATContactStorage.m in Sources */,
+				49626C7F139439050093534C /* ATContactUpdater.m in Sources */,
+				49626C81139439050093534C /* ATFeedback.m in Sources */,
+				49626C9213943C310093534C /* ATReachability.m in Sources */,
+				49626D1A139444C20093534C /* ATFeedbackTask.m in Sources */,
+				49626D1C139444C20093534C /* ATTask.m in Sources */,
+				49626D1E139444C20093534C /* ATTaskQueue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
