@@ -11,6 +11,17 @@
 		49626B7E13942A9A0093534C /* ATSampleTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 49626B7D13942A9A0093534C /* ATSampleTest.m */; };
 		49626BBF13942B770093534C /* ATConnect.h in Headers */ = {isa = PBXBuildFile; fileRef = 49626BBD13942B770093534C /* ATConnect.h */; };
 		49626BC013942B770093534C /* ATConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 49626BBE13942B770093534C /* ATConnect.m */; };
+		49626C36139437070093534C /* ATAPIRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 49626C2B139437070093534C /* ATAPIRequest.h */; };
+		49626C37139437070093534C /* ATAPIRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 49626C2C139437070093534C /* ATAPIRequest.m */; };
+		49626C38139437070093534C /* ATConnectionChannel.h in Headers */ = {isa = PBXBuildFile; fileRef = 49626C2D139437070093534C /* ATConnectionChannel.h */; };
+		49626C39139437070093534C /* ATConnectionChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 49626C2E139437070093534C /* ATConnectionChannel.m */; };
+		49626C3A139437070093534C /* ATConnectionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 49626C2F139437070093534C /* ATConnectionManager.h */; };
+		49626C3B139437070093534C /* ATConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 49626C30139437070093534C /* ATConnectionManager.m */; };
+		49626C3C139437070093534C /* ATURLConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 49626C31139437070093534C /* ATURLConnection.h */; };
+		49626C3D139437070093534C /* ATURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 49626C32139437070093534C /* ATURLConnection.m */; };
+		49626C3E139437070093534C /* ATURLConnection_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 49626C33139437070093534C /* ATURLConnection_Private.h */; };
+		49626C3F139437070093534C /* ATWebClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 49626C34139437070093534C /* ATWebClient.h */; };
+		49626C40139437070093534C /* ATWebClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 49626C35139437070093534C /* ATWebClient.m */; };
 		8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
 		8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
@@ -20,7 +31,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 8DC2EF4F0486A6940098B216 /* ApptentiveConnect */;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
 			remoteInfo = ApptentiveConnect;
 		};
 /* End PBXContainerItemProxy section */
@@ -37,6 +48,17 @@
 		49626B7D13942A9A0093534C /* ATSampleTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATSampleTest.m; path = tests/ATSampleTest.m; sourceTree = "<group>"; };
 		49626BBD13942B770093534C /* ATConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATConnect.h; path = source/ATConnect.h; sourceTree = "<group>"; };
 		49626BBE13942B770093534C /* ATConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATConnect.m; path = source/ATConnect.m; sourceTree = "<group>"; };
+		49626C2B139437070093534C /* ATAPIRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATAPIRequest.h; sourceTree = "<group>"; };
+		49626C2C139437070093534C /* ATAPIRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATAPIRequest.m; sourceTree = "<group>"; };
+		49626C2D139437070093534C /* ATConnectionChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATConnectionChannel.h; sourceTree = "<group>"; };
+		49626C2E139437070093534C /* ATConnectionChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATConnectionChannel.m; sourceTree = "<group>"; };
+		49626C2F139437070093534C /* ATConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATConnectionManager.h; sourceTree = "<group>"; };
+		49626C30139437070093534C /* ATConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATConnectionManager.m; sourceTree = "<group>"; };
+		49626C31139437070093534C /* ATURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATURLConnection.h; sourceTree = "<group>"; };
+		49626C32139437070093534C /* ATURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATURLConnection.m; sourceTree = "<group>"; };
+		49626C33139437070093534C /* ATURLConnection_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATURLConnection_Private.h; sourceTree = "<group>"; };
+		49626C34139437070093534C /* ATWebClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATWebClient.h; sourceTree = "<group>"; };
+		49626C35139437070093534C /* ATWebClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATWebClient.m; sourceTree = "<group>"; };
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = resources/Info.plist; sourceTree = "<group>"; };
 		8DC2EF5B0486A6940098B216 /* ApptentiveConnect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ApptentiveConnect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2F7E79907B2D74100F64583 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
@@ -74,6 +96,7 @@
 		0867D691FE84028FC02AAC07 /* ApptentiveConnect */ = {
 			isa = PBXGroup;
 			children = (
+				49626BF5139436580093534C /* ext */,
 				49626B7313942A4D0093534C /* source */,
 				49626B7413942A560093534C /* resources */,
 				49626B7613942A630093534C /* tests */,
@@ -139,6 +162,49 @@
 			name = tests;
 			sourceTree = "<group>";
 		};
+		49626BF5139436580093534C /* ext */ = {
+			isa = PBXGroup;
+			children = (
+				49626BF6139436600093534C /* apptentive-ios */,
+			);
+			name = ext;
+			sourceTree = "<group>";
+		};
+		49626BF6139436600093534C /* apptentive-ios */ = {
+			isa = PBXGroup;
+			children = (
+				49626BFB1394367B0093534C /* source */,
+			);
+			name = "apptentive-ios";
+			sourceTree = "<group>";
+		};
+		49626BFB1394367B0093534C /* source */ = {
+			isa = PBXGroup;
+			children = (
+				49626C2A139437070093534C /* URL Loading */,
+			);
+			name = source;
+			sourceTree = "<group>";
+		};
+		49626C2A139437070093534C /* URL Loading */ = {
+			isa = PBXGroup;
+			children = (
+				49626C2B139437070093534C /* ATAPIRequest.h */,
+				49626C2C139437070093534C /* ATAPIRequest.m */,
+				49626C2D139437070093534C /* ATConnectionChannel.h */,
+				49626C2E139437070093534C /* ATConnectionChannel.m */,
+				49626C2F139437070093534C /* ATConnectionManager.h */,
+				49626C30139437070093534C /* ATConnectionManager.m */,
+				49626C31139437070093534C /* ATURLConnection.h */,
+				49626C32139437070093534C /* ATURLConnection.m */,
+				49626C33139437070093534C /* ATURLConnection_Private.h */,
+				49626C34139437070093534C /* ATWebClient.h */,
+				49626C35139437070093534C /* ATWebClient.m */,
+			);
+			name = "URL Loading";
+			path = "../apptentive-ios/ApptentiveConnect/source/URL Loading";
+			sourceTree = SOURCE_ROOT;
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -147,6 +213,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				49626BBF13942B770093534C /* ATConnect.h in Headers */,
+				49626C36139437070093534C /* ATAPIRequest.h in Headers */,
+				49626C38139437070093534C /* ATConnectionChannel.h in Headers */,
+				49626C3A139437070093534C /* ATConnectionManager.h in Headers */,
+				49626C3C139437070093534C /* ATURLConnection.h in Headers */,
+				49626C3E139437070093534C /* ATURLConnection_Private.h in Headers */,
+				49626C3F139437070093534C /* ATWebClient.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +340,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				49626BC013942B770093534C /* ATConnect.m in Sources */,
+				49626C37139437070093534C /* ATAPIRequest.m in Sources */,
+				49626C39139437070093534C /* ATConnectionChannel.m in Sources */,
+				49626C3B139437070093534C /* ATConnectionManager.m in Sources */,
+				49626C3D139437070093534C /* ATURLConnection.m in Sources */,
+				49626C40139437070093534C /* ATWebClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
