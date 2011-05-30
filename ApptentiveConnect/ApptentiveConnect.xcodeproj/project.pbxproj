@@ -24,7 +24,7 @@
 		49626C47139437580093534C /* NSData+ATBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 49626C45139437580093534C /* NSData+ATBase64.m */; };
 		49626C58139437690093534C /* ATUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 49626C56139437690093534C /* ATUtilities.h */; };
 		49626C59139437690093534C /* ATUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 49626C57139437690093534C /* ATUtilities.m */; };
-		49626C67139437DD0093534C /* ATConnect.h in Headers */ = {isa = PBXBuildFile; fileRef = 49626C65139437DD0093534C /* ATConnect.h */; };
+		49626C67139437DD0093534C /* ATConnect.h in Headers */ = {isa = PBXBuildFile; fileRef = 49626C65139437DD0093534C /* ATConnect.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		49626C68139437DD0093534C /* ATConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 49626C66139437DD0093534C /* ATConnect.m */; };
 		49626C7A139439050093534C /* ATBackend.h in Headers */ = {isa = PBXBuildFile; fileRef = 49626C72139439050093534C /* ATBackend.h */; };
 		49626C7B139439050093534C /* ATBackend.m in Sources */ = {isa = PBXBuildFile; fileRef = 49626C73139439050093534C /* ATBackend.m */; };
