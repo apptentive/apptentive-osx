@@ -7,6 +7,7 @@
 //
 
 #import "FeedbackDemoAppDelegate.h"
+#import <ApptentiveConnect/ATConnect.h>
 
 @implementation FeedbackDemoAppDelegate
 
@@ -16,4 +17,7 @@
 	// Insert code here to initialize your application 
 }
 
+- (IBAction)showFeedbackWindow:(id)sender {
+    [[ATConnect sharedConnection] showFeedbackWindow:sender];
+}
 @end

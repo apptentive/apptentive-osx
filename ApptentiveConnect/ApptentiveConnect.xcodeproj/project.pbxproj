@@ -43,6 +43,9 @@
 		49626D1C139444C20093534C /* ATTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 49626D16139444C20093534C /* ATTask.m */; };
 		49626D1D139444C20093534C /* ATTaskQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 49626D17139444C20093534C /* ATTaskQueue.h */; };
 		49626D1E139444C20093534C /* ATTaskQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 49626D18139444C20093534C /* ATTaskQueue.m */; };
+		49626D4F1397047A0093534C /* ATFeedbackWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49626D4E1397047A0093534C /* ATFeedbackWindow.xib */; };
+		49626D53139704D00093534C /* ATFeedbackWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = 49626D51139704D00093534C /* ATFeedbackWindowController.h */; };
+		49626D54139704D00093534C /* ATFeedbackWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49626D52139704D00093534C /* ATFeedbackWindowController.m */; };
 		8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
 		8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
@@ -101,6 +104,9 @@
 		49626D16139444C20093534C /* ATTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATTask.m; sourceTree = "<group>"; };
 		49626D17139444C20093534C /* ATTaskQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATTaskQueue.h; sourceTree = "<group>"; };
 		49626D18139444C20093534C /* ATTaskQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATTaskQueue.m; sourceTree = "<group>"; };
+		49626D4E1397047A0093534C /* ATFeedbackWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ATFeedbackWindow.xib; sourceTree = "<group>"; };
+		49626D51139704D00093534C /* ATFeedbackWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATFeedbackWindowController.h; path = source/Controllers/ATFeedbackWindowController.h; sourceTree = "<group>"; };
+		49626D52139704D00093534C /* ATFeedbackWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATFeedbackWindowController.m; path = source/Controllers/ATFeedbackWindowController.m; sourceTree = "<group>"; };
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = resources/Info.plist; sourceTree = "<group>"; };
 		8DC2EF5B0486A6940098B216 /* ApptentiveConnect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ApptentiveConnect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2F7E79907B2D74100F64583 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
@@ -141,6 +147,7 @@
 			children = (
 				49626BF5139436580093534C /* ext */,
 				49626B7313942A4D0093534C /* source */,
+				49626D4B139703D40093534C /* xibs */,
 				49626B7413942A560093534C /* resources */,
 				49626B7613942A630093534C /* tests */,
 				0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */,
@@ -181,6 +188,8 @@
 			isa = PBXGroup;
 			children = (
 				32DBCF5E0370ADEE00C91783 /* ApptentiveConnect_Prefix.pch */,
+				49626D51139704D00093534C /* ATFeedbackWindowController.h */,
+				49626D52139704D00093534C /* ATFeedbackWindowController.m */,
 			);
 			name = source;
 			sourceTree = "<group>";
@@ -314,6 +323,14 @@
 			path = "../apptentive-ios/ApptentiveConnect/source/Tasks";
 			sourceTree = SOURCE_ROOT;
 		};
+		49626D4B139703D40093534C /* xibs */ = {
+			isa = PBXGroup;
+			children = (
+				49626D4E1397047A0093534C /* ATFeedbackWindow.xib */,
+			);
+			path = xibs;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -338,6 +355,7 @@
 				49626D19139444C20093534C /* ATFeedbackTask.h in Headers */,
 				49626D1B139444C20093534C /* ATTask.h in Headers */,
 				49626D1D139444C20093534C /* ATTaskQueue.h in Headers */,
+				49626D53139704D00093534C /* ATFeedbackWindowController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,6 +442,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */,
+				49626D4F1397047A0093534C /* ATFeedbackWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,6 +493,7 @@
 				49626D1A139444C20093534C /* ATFeedbackTask.m in Sources */,
 				49626D1C139444C20093534C /* ATTask.m in Sources */,
 				49626D1E139444C20093534C /* ATTaskQueue.m in Sources */,
+				49626D54139704D00093534C /* ATFeedbackWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,7 +534,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = source/ApptentiveConnect_Prefix.pch;
 				INFOPLIST_FILE = resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Library/Frameworks";
+				INSTALL_PATH = "@executable_path/../Frameworks";
 				PRODUCT_NAME = ApptentiveConnect;
 				WRAPPER_EXTENSION = framework;
 			};
@@ -532,7 +552,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = source/ApptentiveConnect_Prefix.pch;
 				INFOPLIST_FILE = resources/Info.plist;
-				INSTALL_PATH = "$(HOME)/Library/Frameworks";
+				INSTALL_PATH = "@executable_path/../Frameworks";
 				PRODUCT_NAME = ApptentiveConnect;
 				WRAPPER_EXTENSION = framework;
 			};

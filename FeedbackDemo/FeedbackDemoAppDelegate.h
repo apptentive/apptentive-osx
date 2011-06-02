@@ -13,5 +13,5 @@
 }
 
 @property (assign) IBOutlet NSWindow *window;
-
+- (IBAction)showFeedbackWindow:(id)sender;
 @end
