@@ -9,8 +9,16 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface ATFeedbackWindowController : NSWindowController {
-    
+@interface ATFeedbackWindowController : NSWindowController <NSWindowDelegate> {
+    IBOutlet NSTabView *topTabView;
+    IBOutlet NSView *sendFeedbackView;
+    IBOutlet NSView *askQuestionView;
+    IBOutlet NSProgressIndicator *progressIndicator;
+    IBOutlet NSComboBox *nameBox;
+    IBOutlet NSComboBox *emailBox;
+    IBOutlet NSComboBox *phoneNumberBox;
 }
 - (id)init;
+- (IBAction)cancelPressed:(id)sender;
+- (IBAction)sendFeedbackPressed:(id)sender;
 @end

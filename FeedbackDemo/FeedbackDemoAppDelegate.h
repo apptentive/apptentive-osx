@@ -7,11 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <ApptentiveConnect/ATConnect.h>
 
 @interface FeedbackDemoAppDelegate : NSObject <NSApplicationDelegate> {
     NSWindow *window;
 }
 
 @property (assign) IBOutlet NSWindow *window;
+@property (readonly) IBOutlet ATConnect *apptentiveConnection;
 - (IBAction)showFeedbackWindow:(id)sender;
 @end

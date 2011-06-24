@@ -20,4 +20,8 @@
 - (IBAction)showFeedbackWindow:(id)sender {
     [[ATConnect sharedConnection] showFeedbackWindow:sender];
 }
+
+- (ATConnect *)apptentiveConnection {
+    return [ATConnect sharedConnection];
+}
 @end
