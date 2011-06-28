@@ -7,18 +7,24 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "ATFeedback.h"
+#import "ATImageView.h"
 
-
-@interface ATFeedbackWindowController : NSWindowController <NSWindowDelegate> {
+@interface ATFeedbackWindowController : NSWindowController <NSWindowDelegate, NSTabViewDelegate, NSTextViewDelegate> {
     IBOutlet NSTabView *topTabView;
-    IBOutlet NSView *sendFeedbackView;
-    IBOutlet NSView *askQuestionView;
+    IBOutlet NSTextView *feedbackTextView;
+    IBOutlet NSTextView *questionTextView;
+    IBOutlet NSTextView *bugTextView;
+    IBOutlet ATImageView *screenshotView;
     IBOutlet NSProgressIndicator *progressIndicator;
     IBOutlet NSComboBox *nameBox;
     IBOutlet NSComboBox *emailBox;
     IBOutlet NSComboBox *phoneNumberBox;
 }
+@property (nonatomic, retain) ATFeedback *feedback;
 - (id)init;
+- (void)setFeedbackType:(ATFeedbackType)feedbackType;
+- (IBAction)browseForScreenshotPressed:(id)sender;
 - (IBAction)cancelPressed:(id)sender;
 - (IBAction)sendFeedbackPressed:(id)sender;
 @end
