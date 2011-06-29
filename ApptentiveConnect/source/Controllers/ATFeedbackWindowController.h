@@ -10,7 +10,7 @@
 #import "ATFeedback.h"
 #import "ATImageView.h"
 
-@interface ATFeedbackWindowController : NSWindowController <NSWindowDelegate, NSTabViewDelegate, NSTextViewDelegate> {
+@interface ATFeedbackWindowController : NSWindowController <NSWindowDelegate, NSTabViewDelegate, NSTextViewDelegate, NSComboBoxDelegate> {
     IBOutlet NSTabView *topTabView;
     IBOutlet NSTextView *feedbackTextView;
     IBOutlet NSTextView *questionTextView;
@@ -22,7 +22,7 @@
     IBOutlet NSComboBox *phoneNumberBox;
 }
 @property (nonatomic, retain) ATFeedback *feedback;
-- (id)init;
+- (id)initWithFeedback:(ATFeedback *)newFeedback;
 - (void)setFeedbackType:(ATFeedbackType)feedbackType;
 - (IBAction)browseForScreenshotPressed:(id)sender;
 - (IBAction)cancelPressed:(id)sender;

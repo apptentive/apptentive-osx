@@ -21,7 +21,15 @@
     [[ATConnect sharedConnection] showFeedbackWindow:sender];
 }
 
-- (ATConnect *)apptentiveConnection {
-    return [ATConnect sharedConnection];
+- (IBAction)showFeedbackWindowForFeedback:(id)sender {
+    [[ATConnect sharedConnection] showFeedbackWindowForFeedback:sender];
+}
+
+- (IBAction)showFeedbackWindowForQuestion:(id)sender {
+    [[ATConnect sharedConnection] showFeedbackWindowForQuestion:sender];
+}
+
+- (IBAction)showFeedbackWindowForBugReport:(id)sender {
+    [[ATConnect sharedConnection] showFeedbackWindowForBugReport:sender];
 }
 @end

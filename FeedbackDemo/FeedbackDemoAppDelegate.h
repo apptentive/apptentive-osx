@@ -14,6 +14,8 @@
 }
 
 @property (assign) IBOutlet NSWindow *window;
-@property (readonly) IBOutlet ATConnect *apptentiveConnection;
 - (IBAction)showFeedbackWindow:(id)sender;
+- (IBAction)showFeedbackWindowForFeedback:(id)sender;
+- (IBAction)showFeedbackWindowForQuestion:(id)sender;
+- (IBAction)showFeedbackWindowForBugReport:(id)sender;
 @end

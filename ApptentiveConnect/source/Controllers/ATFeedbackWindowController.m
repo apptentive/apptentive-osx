@@ -10,6 +10,7 @@
 #import "ATConnect.h"
 #import "ATContactStorage.h"
 #import "ATImageView.h"
+#import "ATConnect_FeedbackWindowPrivate.h"
 #import <AddressBook/AddressBook.h>
 
 @interface ATFeedbackWindowController (Private)
@@ -30,11 +31,11 @@
 
 @implementation ATFeedbackWindowController
 @synthesize feedback;
-- (id)init {
+- (id)initWithFeedback:(ATFeedback *)newFeedback {
     NSBundle *bundle = [ATConnect resourceBundle];
     NSString *path = [bundle pathForResource:@"ATFeedbackWindow" ofType:@"nib"];
     if ((self = [super initWithWindowNibPath:path owner:self])) {
-        self.feedback = [[ATFeedback alloc] init];
+        self.feedback = newFeedback;
     }
     return self;
 }
@@ -49,6 +50,12 @@
 - (void)windowDidLoad {
     [super windowDidLoad];
     [self setup];
+}
+
+- (void)close {
+    [self updateFeedbackWithText];
+    [super close];
+    [[ATConnect sharedConnection] feedbackWindowDidClose:self];
 }
 
 - (void)setFeedbackType:(ATFeedbackType)feedbackType {
@@ -105,7 +112,42 @@
     [self updateTextWithFeedback];
 }
 
+#pragma mark NSComboBoxDelegate
+- (void)comboBoxSelectionDidChange:(NSNotification *)notification {
+    NSComboBox *sender = (NSComboBox *)[notification object];
+    if (sender) {
+        NSString *value = (NSString *)[sender itemObjectValueAtIndex:[sender indexOfSelectedItem]];
+        if (value) {
+            NSLog(@"changing value to: %@", value);
+            if (sender == emailBox) {
+                self.feedback.email = value;
+            } else if (sender == phoneNumberBox) {
+                self.feedback.phone = value;
+            } else if (sender == nameBox) {
+                self.feedback.name = value;
+            }
+        }
+    }
+}
+
 #pragma mark NSTextViewDelegate
+- (void)controlTextDidChange:(NSNotification *)aNotification {
+    NSControl *sender = (NSControl *)[aNotification object];
+    if (sender && [sender isKindOfClass:[NSComboBox class]]) {
+        NSString *value = [sender stringValue];
+        if (value) {
+            NSLog(@"changing value to: %@", value);
+            if (sender == emailBox) {
+                self.feedback.email = value;
+            } else if (sender == phoneNumberBox) {
+                self.feedback.phone = value;
+            } else if (sender == nameBox) {
+                self.feedback.name = value;
+            }
+        }
+    }
+    NSLog(@"wtf %@", [aNotification object]);
+}
 @end
 
 
@@ -115,7 +157,11 @@
     [self.window center];
     [self.window setTitle:NSLocalizedString(@"Submit Feedback", @"Feedback window title.")];
     [self fillInContactInfo];
+    [self updateTextWithFeedback];
     [self setFeedbackType:self.feedback.type];
+    if (self.feedback.screenshot) {
+        screenshotView.image = self.feedback.screenshot;
+    }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(imageChanged:) name:ATImageViewContentsChanged object:nil];
 }
 
@@ -138,6 +184,16 @@
     }
     if (contactStorage.phone) {
         [phoneNumbers addObject:contactStorage.phone];
+    }
+    
+    if (self.feedback.name && [self.feedback.name length]) {
+        [names addObject:self.feedback.name];
+    }
+    if (self.feedback.email && [self.feedback.email length]) {
+        [emails addObject:self.feedback.email];
+    }
+    if (self.feedback.phone && [self.feedback.phone length]) {
+        [phoneNumbers addObject:self.feedback.phone];
     }
     
     ABPerson *me = [[ABAddressBook sharedAddressBook] me];
@@ -184,15 +240,27 @@
     }
     if (nameBox && [names count]) {
         [nameBox addItemsWithObjectValues:names];
-        [nameBox selectItemAtIndex:0];
+        if (self.feedback.name && [names containsObject:self.feedback.name]) {
+            [nameBox selectItemAtIndex:[names indexOfObject:self.feedback.name]];
+        } else {
+            [nameBox selectItemAtIndex:0];
+        }
     }
     if (emailBox && [emails count]) {
         [emailBox addItemsWithObjectValues:emails];
-        [emailBox selectItemAtIndex:0];
+        if (self.feedback.email && [emails containsObject:self.feedback.email]) {
+            [emailBox selectItemAtIndex:[emails indexOfObject:self.feedback.email]];
+        } else {
+            [emailBox selectItemAtIndex:0];
+        }
     }
     if (phoneNumberBox && [phoneNumbers count]) {
         [phoneNumberBox addItemsWithObjectValues:phoneNumbers];
-        [phoneNumberBox selectItemAtIndex:0];
+        if (self.feedback.phone && [phoneNumbers containsObject:self.feedback.phone]) {
+            [phoneNumberBox selectItemAtIndex:[phoneNumbers indexOfObject:self.feedback.phone]];
+        } else {
+            [phoneNumberBox selectItemAtIndex:0];
+        }
     }
 }
 
@@ -218,7 +286,8 @@
 - (void)updateTextWithFeedback {
     NSTextView *currentTextView = [self currentTextView];
     NSRange range = NSMakeRange(0, [[currentTextView textStorage] length]);
-    [[currentTextView textStorage] replaceCharactersInRange:range withString:self.feedback.text];
+    NSString *replacement = self.feedback.text ? self.feedback.text : @"";
+    [[currentTextView textStorage] replaceCharactersInRange:range withString:replacement];
 }
 
 - (void)setScreenshotToFilename:(NSString *)filename {

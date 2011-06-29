@@ -48,6 +48,8 @@
 		49626D54139704D00093534C /* ATFeedbackWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49626D52139704D00093534C /* ATFeedbackWindowController.m */; };
 		4971AFF513BA871600774B70 /* ATImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4971AFF313BA871600774B70 /* ATImageView.h */; };
 		4971AFF613BA871600774B70 /* ATImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4971AFF413BA871600774B70 /* ATImageView.m */; };
+		4971B07913BAB12F00774B70 /* ATConnect_FeedbackWindowPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4971B07713BAB12F00774B70 /* ATConnect_FeedbackWindowPrivate.h */; };
+		4971B07A13BAB12F00774B70 /* ATConnect_FeedbackWindowPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4971B07813BAB12F00774B70 /* ATConnect_FeedbackWindowPrivate.m */; };
 		4989203013B539D6007967BA /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4989202F13B539D6007967BA /* AddressBook.framework */; };
 		4989204B13B53B04007967BA /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4989202F13B539D6007967BA /* AddressBook.framework */; };
 		8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
@@ -113,6 +115,8 @@
 		49626D52139704D00093534C /* ATFeedbackWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATFeedbackWindowController.m; path = source/Controllers/ATFeedbackWindowController.m; sourceTree = "<group>"; };
 		4971AFF313BA871600774B70 /* ATImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATImageView.h; path = source/Misc/ATImageView.h; sourceTree = "<group>"; };
 		4971AFF413BA871600774B70 /* ATImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATImageView.m; path = source/Misc/ATImageView.m; sourceTree = "<group>"; };
+		4971B07713BAB12F00774B70 /* ATConnect_FeedbackWindowPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATConnect_FeedbackWindowPrivate.h; path = source/Misc/ATConnect_FeedbackWindowPrivate.h; sourceTree = "<group>"; };
+		4971B07813BAB12F00774B70 /* ATConnect_FeedbackWindowPrivate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATConnect_FeedbackWindowPrivate.m; path = source/Misc/ATConnect_FeedbackWindowPrivate.m; sourceTree = "<group>"; };
 		4989202F13B539D6007967BA /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = resources/Info.plist; sourceTree = "<group>"; };
 		8DC2EF5B0486A6940098B216 /* ApptentiveConnect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ApptentiveConnect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -202,6 +206,8 @@
 				49626D52139704D00093534C /* ATFeedbackWindowController.m */,
 				4971AFF313BA871600774B70 /* ATImageView.h */,
 				4971AFF413BA871600774B70 /* ATImageView.m */,
+				4971B07713BAB12F00774B70 /* ATConnect_FeedbackWindowPrivate.h */,
+				4971B07813BAB12F00774B70 /* ATConnect_FeedbackWindowPrivate.m */,
 			);
 			name = source;
 			sourceTree = "<group>";
@@ -369,6 +375,7 @@
 				49626D1D139444C20093534C /* ATTaskQueue.h in Headers */,
 				49626D53139704D00093534C /* ATFeedbackWindowController.h in Headers */,
 				4971AFF513BA871600774B70 /* ATImageView.h in Headers */,
+				4971B07913BAB12F00774B70 /* ATConnect_FeedbackWindowPrivate.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,6 +515,7 @@
 				49626D1E139444C20093534C /* ATTaskQueue.m in Sources */,
 				49626D54139704D00093534C /* ATFeedbackWindowController.m in Sources */,
 				4971AFF613BA871600774B70 /* ATImageView.m in Sources */,
+				4971B07A13BAB12F00774B70 /* ATConnect_FeedbackWindowPrivate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
