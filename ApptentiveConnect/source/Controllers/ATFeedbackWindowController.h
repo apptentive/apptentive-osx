@@ -9,8 +9,9 @@
 #import <Cocoa/Cocoa.h>
 #import "ATFeedback.h"
 #import "ATImageView.h"
+#import "ATAPIRequest.h"
 
-@interface ATFeedbackWindowController : NSWindowController <NSWindowDelegate, NSTabViewDelegate, NSTextViewDelegate, NSComboBoxDelegate> {
+@interface ATFeedbackWindowController : NSWindowController <NSWindowDelegate, NSTabViewDelegate, NSTextViewDelegate, NSComboBoxDelegate, ATAPIRequestDelegate> {
     IBOutlet NSTabView *topTabView;
     IBOutlet NSTextView *feedbackTextView;
     IBOutlet NSTextView *questionTextView;
@@ -20,6 +21,9 @@
     IBOutlet NSComboBox *nameBox;
     IBOutlet NSComboBox *emailBox;
     IBOutlet NSComboBox *phoneNumberBox;
+    IBOutlet NSButton *sendButton;
+@private
+    ATAPIRequest *feedbackRequest;
 }
 @property (nonatomic, retain) ATFeedback *feedback;
 - (id)initWithFeedback:(ATFeedback *)newFeedback;

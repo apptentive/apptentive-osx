@@ -77,6 +77,7 @@
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		49626DD113970DB80093534C /* ApptentiveConnect.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ApptentiveConnect.xcodeproj; path = ../ApptentiveConnect/ApptentiveConnect.xcodeproj; sourceTree = SOURCE_ROOT; };
+		4971B31513BB955100774B70 /* defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = defines.h; sourceTree = "<group>"; };
 		49891FE813B3BCA1007967BA /* ATConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATConnect.h; path = "../apptentive-ios/ApptentiveConnect/source/ATConnect.h"; sourceTree = SOURCE_ROOT; };
 		8D1107310486CEB800E47090 /* FeedbackDemo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "FeedbackDemo-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* FeedbackDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedbackDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +101,7 @@
 			children = (
 				256AC3D80F4B6AC300CF3369 /* FeedbackDemoAppDelegate.h */,
 				256AC3D90F4B6AC300CF3369 /* FeedbackDemoAppDelegate.m */,
+				4971B31513BB955100774B70 /* defines.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";

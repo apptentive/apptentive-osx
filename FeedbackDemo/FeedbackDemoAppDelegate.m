@@ -8,6 +8,7 @@
 
 #import "FeedbackDemoAppDelegate.h"
 #import <ApptentiveConnect/ATConnect.h>
+#import "defines.h"
 
 @implementation FeedbackDemoAppDelegate
 
@@ -15,6 +16,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 	// Insert code here to initialize your application 
+    [[ATConnect sharedConnection] setApiKey:kApptentiveAPIKey];
 }
 
 - (IBAction)showFeedbackWindow:(id)sender {

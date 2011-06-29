@@ -7,6 +7,7 @@
 //
 
 #import "ATFeedbackWindowController.h"
+#import "ATBackend.h"
 #import "ATConnect.h"
 #import "ATContactStorage.h"
 #import "ATImageView.h"
@@ -87,6 +88,63 @@
 }
 
 - (IBAction)sendFeedbackPressed:(id)sender {
+    @synchronized(self) {
+        if (!feedbackRequest) {
+            [progressIndicator setHidden:NO];
+            [progressIndicator startAnimation:self];
+            [progressIndicator setDoubleValue:0.01];
+            feedbackRequest = [[[ATBackend sharedBackend] requestForSendingFeedback:self.feedback] retain];
+            feedbackRequest.delegate = self;
+            [feedbackRequest start];
+            [sendButton setEnabled:NO];
+        }
+    }
+}
+
+#pragma mark ATAPIRequestDelegate
+- (void)at_APIRequestDidFinish:(ATAPIRequest *)request result:(id)result {
+    @synchronized(self) {
+        feedbackRequest.delegate = nil;
+        [feedbackRequest release];
+        feedbackRequest = nil;
+        [progressIndicator setDoubleValue:1.0];
+        [progressIndicator stopAnimation:self];
+        [progressIndicator setHidden:YES];
+        [self performSelectorOnMainThread:@selector(close) withObject:nil waitUntilDone:NO];
+    }
+}
+
+- (void)at_APIRequestDidProgress:(ATAPIRequest *)request {
+    @synchronized(self) {
+        [progressIndicator setDoubleValue:(double)[request percentageComplete]];
+    }
+}
+
+- (void)at_APIRequestDidFail:(ATAPIRequest *)request {
+    //!!
+    [sendButton setEnabled:YES];
+    [progressIndicator stopAnimation:self];
+    [progressIndicator setHidden:YES];
+    
+    NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+    [alert addButtonWithTitle:@"Try Again"];
+    [alert addButtonWithTitle:@"Cancel"];
+    [alert setMessageText:request.errorTitle];
+    [alert setInformativeText:request.errorMessage];
+    [alert setAlertStyle:NSWarningAlertStyle];
+    [alert setIcon:[NSImage imageNamed:NSImageNameCaution]];
+    [alert beginSheetModalForWindow:self.window modalDelegate:self didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:) contextInfo:nil];
+    feedbackRequest.delegate = nil;
+    [feedbackRequest release];
+    feedbackRequest = nil;
+}
+
+- (void)alertDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
+    if (returnCode == NSAlertFirstButtonReturn) {
+        [self sendFeedbackPressed:self];
+    } else if (returnCode == NSAlertSecondButtonReturn) {
+        [self close];
+    }
 }
 
 #pragma mark NSWindowDelegate
