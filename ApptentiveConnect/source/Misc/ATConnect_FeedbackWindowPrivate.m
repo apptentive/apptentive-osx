@@ -12,7 +12,7 @@
 @implementation ATConnect (FeedbackWindowPrivate)
 - (void)feedbackWindowDidClose:(id)sender {
     if (feedbackWindowController && feedbackWindowController == sender) {
-        [feedbackWindowController release];
+        [feedbackWindowController autorelease];
         feedbackWindowController = nil;
     }
 }

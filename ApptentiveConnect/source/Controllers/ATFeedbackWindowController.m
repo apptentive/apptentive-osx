@@ -11,6 +11,7 @@
 #import "ATContactStorage.h"
 #import "ATImageView.h"
 #import "ATConnect_FeedbackWindowPrivate.h"
+#import "ATUtilities.h"
 #import <AddressBook/AddressBook.h>
 
 @interface ATFeedbackWindowController (Private)
@@ -50,12 +51,6 @@
 - (void)windowDidLoad {
     [super windowDidLoad];
     [self setup];
-}
-
-- (void)close {
-    [self updateFeedbackWithText];
-    [super close];
-    [[ATConnect sharedConnection] feedbackWindowDidClose:self];
 }
 
 - (void)setFeedbackType:(ATFeedbackType)feedbackType {
@@ -118,7 +113,6 @@
     if (sender) {
         NSString *value = (NSString *)[sender itemObjectValueAtIndex:[sender indexOfSelectedItem]];
         if (value) {
-            NSLog(@"changing value to: %@", value);
             if (sender == emailBox) {
                 self.feedback.email = value;
             } else if (sender == phoneNumberBox) {
@@ -136,7 +130,6 @@
     if (sender && [sender isKindOfClass:[NSComboBox class]]) {
         NSString *value = [sender stringValue];
         if (value) {
-            NSLog(@"changing value to: %@", value);
             if (sender == emailBox) {
                 self.feedback.email = value;
             } else if (sender == phoneNumberBox) {
@@ -146,7 +139,6 @@
             }
         }
     }
-    NSLog(@"wtf %@", [aNotification object]);
 }
 @end
 
@@ -166,6 +158,8 @@
 }
 
 - (void)teardown {
+    [self updateFeedbackWithText];
+    [[ATConnect sharedConnection] feedbackWindowDidClose:self];
     self.feedback = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:ATImageViewContentsChanged object:nil];
 }
@@ -238,6 +232,11 @@
             }
         }
     }
+    [ATUtilities uniquifyArray:names];
+    [ATUtilities uniquifyArray:emails];
+    [ATUtilities uniquifyArray:phoneNumbers];
+    
+    
     if (nameBox && [names count]) {
         [nameBox addItemsWithObjectValues:names];
         if (self.feedback.name && [names containsObject:self.feedback.name]) {
