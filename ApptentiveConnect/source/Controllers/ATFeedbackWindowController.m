@@ -186,13 +186,13 @@
         [phoneNumbers addObject:contactStorage.phone];
     }
     
-    if (self.feedback.name && [self.feedback.name length]) {
+    if (self.feedback.name) {
         [names addObject:self.feedback.name];
     }
-    if (self.feedback.email && [self.feedback.email length]) {
+    if (self.feedback.email) {
         [emails addObject:self.feedback.email];
     }
-    if (self.feedback.phone && [self.feedback.phone length]) {
+    if (self.feedback.phone) {
         [phoneNumbers addObject:self.feedback.phone];
     }
     
