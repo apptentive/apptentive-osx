@@ -115,7 +115,12 @@
         [progressIndicator setDoubleValue:1.0];
         [progressIndicator stopAnimation:self];
         [progressIndicator setHidden:YES];
-        [self performSelectorOnMainThread:@selector(close) withObject:nil waitUntilDone:NO];
+        
+        NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+        [alert addButtonWithTitle:ATLocalizedString(@"Okay", @"Successful feedback button title.")];
+        [alert setMessageText:ATLocalizedString(@"Thanks! Your feedback has been sent successfully.", @"Succesful feedback message.")];
+        [alert setAlertStyle:NSInformationalAlertStyle];
+        [alert beginSheetModalForWindow:self.window modalDelegate:self didEndSelector:@selector(thanksSheetDidClose:returnCode:contextInfo:) contextInfo:nil];
     }
 }
 
@@ -150,6 +155,11 @@
     } else if (returnCode == NSAlertSecondButtonReturn) {
         [self close];
     }
+}
+
+- (void)thanksSheetDidClose:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
+    [[ATBackend sharedBackend] setCurrentFeedback:nil];
+    [self performSelectorOnMainThread:@selector(close) withObject:nil waitUntilDone:NO];
 }
 
 #pragma mark NSWindowDelegate
