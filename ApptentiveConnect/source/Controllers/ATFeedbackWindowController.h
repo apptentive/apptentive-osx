@@ -22,6 +22,7 @@
     IBOutlet NSComboBox *emailBox;
     IBOutlet NSComboBox *phoneNumberBox;
     IBOutlet NSButton *sendButton;
+    IBOutlet NSImageView *logoImageView;
 @private
     ATAPIRequest *feedbackRequest;
 }
@@ -31,4 +32,5 @@
 - (IBAction)browseForScreenshotPressed:(id)sender;
 - (IBAction)cancelPressed:(id)sender;
 - (IBAction)sendFeedbackPressed:(id)sender;
+- (IBAction)openApptentivePressed:(id)sender;
 @end

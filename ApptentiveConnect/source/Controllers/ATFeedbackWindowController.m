@@ -101,6 +101,11 @@
     }
 }
 
+
+- (IBAction)openApptentivePressed:(id)sender {
+    [[NSWorkspace sharedWorkspace] openURL:[[ATBackend sharedBackend] apptentiveHomepageURL]];
+}
+
 #pragma mark ATAPIRequestDelegate
 - (void)at_APIRequestDidFinish:(ATAPIRequest *)request result:(id)result {
     @synchronized(self) {
@@ -213,6 +218,9 @@
         screenshotView.image = self.feedback.screenshot;
     }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(imageChanged:) name:ATImageViewContentsChanged object:nil];
+    [logoImageView setImage:[ATBackend imageNamed:@"at_logo_info"]];
+    [logoImageView setTarget:self];
+    [logoImageView setAction:@selector(openApptentivePressed:)];
 }
 
 - (void)teardown {
