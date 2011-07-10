@@ -18,4 +18,5 @@
 - (IBAction)showFeedbackWindowForFeedback:(id)sender;
 - (IBAction)showFeedbackWindowForQuestion:(id)sender;
 - (IBAction)showFeedbackWindowForBugReport:(id)sender;
+- (IBAction)showRatingFlow:(id)sender;
 @end

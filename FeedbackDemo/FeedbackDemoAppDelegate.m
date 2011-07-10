@@ -8,6 +8,7 @@
 
 #import "FeedbackDemoAppDelegate.h"
 #import <ApptentiveConnect/ATConnect.h>
+#import <ApptentiveConnect/ATAppRatingFlow.h>
 #import "defines.h"
 
 @implementation FeedbackDemoAppDelegate
@@ -17,6 +18,8 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 	// Insert code here to initialize your application 
     [[ATConnect sharedConnection] setApiKey:kApptentiveAPIKey];
+    ATAppRatingFlow *ratingFlow = [ATAppRatingFlow sharedRatingFlowWithAppID:kApptentiveAppID];
+    [ratingFlow appDidLaunch:YES];
 }
 
 - (IBAction)showFeedbackWindow:(id)sender {
@@ -33,5 +36,10 @@
 
 - (IBAction)showFeedbackWindowForBugReport:(id)sender {
     [[ATConnect sharedConnection] showFeedbackWindowForBugReport:sender];
+}
+
+- (IBAction)showRatingFlow:(id)sender {
+    ATAppRatingFlow *ratingFlow = [ATAppRatingFlow sharedRatingFlowWithAppID:kApptentiveAppID];
+    [ratingFlow showEnjoymentDialog:sender];
 }
 @end
