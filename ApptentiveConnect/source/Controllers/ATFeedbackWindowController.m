@@ -76,9 +76,9 @@
     [openPanel setAllowsMultipleSelection:NO];
     [openPanel setAllowedFileTypes:[NSArray arrayWithObjects:@"jpg", @"jpeg", @"png", @"gif", @"bmp", nil]];
     if ([openPanel runModal] == NSOKButton) {
-        NSArray *files = [openPanel filenames];
-        for (NSString *file in files) {
-            [self setScreenshotToFilename:file];
+		NSArray *URLs = [openPanel URLs];
+        for (NSURL *URL in URLs) {
+            [self setScreenshotToFilename:[URL path]];
         }
     }
 }

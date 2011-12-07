@@ -57,6 +57,9 @@
 		4972847813CA625D002AD591 /* ATAppRatingFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4972847613CA625D002AD591 /* ATAppRatingFlow.m */; };
 		4989203013B539D6007967BA /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4989202F13B539D6007967BA /* AddressBook.framework */; };
 		4989204B13B53B04007967BA /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4989202F13B539D6007967BA /* AddressBook.framework */; };
+		49F93DE31490171E000B953A /* JSONKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 49F93DE11490171E000B953A /* JSONKit.h */; };
+		49F93DE41490171E000B953A /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F93DE21490171E000B953A /* JSONKit.m */; };
+		49F93DE51490171E000B953A /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F93DE21490171E000B953A /* JSONKit.m */; };
 		8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
 		8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
@@ -128,6 +131,8 @@
 		4972847513CA625D002AD591 /* ATAppRatingFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATAppRatingFlow.h; sourceTree = "<group>"; };
 		4972847613CA625D002AD591 /* ATAppRatingFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATAppRatingFlow.m; sourceTree = "<group>"; };
 		4989202F13B539D6007967BA /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		49F93DE11490171E000B953A /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = JSONKit/JSONKit.h; sourceTree = "<group>"; };
+		49F93DE21490171E000B953A /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = JSONKit/JSONKit.m; sourceTree = "<group>"; };
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = resources/Info.plist; sourceTree = "<group>"; };
 		8DC2EF5B0486A6940098B216 /* ApptentiveConnect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ApptentiveConnect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2F7E79907B2D74100F64583 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
@@ -300,6 +305,8 @@
 			children = (
 				49626C44139437580093534C /* NSData+ATBase64.h */,
 				49626C45139437580093534C /* NSData+ATBase64.m */,
+				49F93DE11490171E000B953A /* JSONKit.h */,
+				49F93DE21490171E000B953A /* JSONKit.m */,
 			);
 			name = ext;
 			path = "../apptentive-ios/ApptentiveConnect/ext";
@@ -402,6 +409,7 @@
 				4971B07913BAB12F00774B70 /* ATConnect_FeedbackWindowPrivate.h in Headers */,
 				4971B4CB13BFBEFF00774B70 /* ATImageButton.h in Headers */,
 				4972847713CA625D002AD591 /* ATAppRatingFlow.h in Headers */,
+				49F93DE31490171E000B953A /* JSONKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,6 +526,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49626B7E13942A9A0093534C /* ATSampleTest.m in Sources */,
+				49F93DE51490171E000B953A /* JSONKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -546,6 +555,7 @@
 				4971B07A13BAB12F00774B70 /* ATConnect_FeedbackWindowPrivate.m in Sources */,
 				4971B4CC13BFBEFF00774B70 /* ATImageButton.m in Sources */,
 				4972847813CA625D002AD591 /* ATAppRatingFlow.m in Sources */,
+				49F93DE41490171E000B953A /* JSONKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
