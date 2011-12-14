@@ -7,5 +7,5 @@
  *
  */
 
-#define kApptentiveAPIKey @"2FVrlVp2vBLtrNvPvycP"
-#define kApptentiveAppID @"ExampleAppID"
+#define kApptentiveAPIKey @"<your API key>"
+#define kApptentiveAppID @"<your App Store ID>"
