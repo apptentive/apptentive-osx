@@ -8,8 +8,6 @@ service.
 Quickstart
 ==========
 
-There are no external dependencies for this SDK.
-
 Sample Application
 ------------------
 The sample application FeedbackDemo demonstrates how to integrate the SDK
