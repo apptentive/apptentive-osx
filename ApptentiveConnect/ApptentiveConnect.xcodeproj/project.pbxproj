@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49598DBC15C62F1B00DF4ABD /* ATAppConfigurationUpdateTask.h in Headers */ = {isa = PBXBuildFile; fileRef = 49598DBA15C62F1B00DF4ABD /* ATAppConfigurationUpdateTask.h */; };
+		49598DBD15C62F1B00DF4ABD /* ATAppConfigurationUpdateTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 49598DBB15C62F1B00DF4ABD /* ATAppConfigurationUpdateTask.m */; };
+		49598DBE15C62F1B00DF4ABD /* ATAppConfigurationUpdateTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 49598DBB15C62F1B00DF4ABD /* ATAppConfigurationUpdateTask.m */; };
 		49626B7913942A7E0093534C /* ApptentiveConnect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* ApptentiveConnect.framework */; };
 		49626B7E13942A9A0093534C /* ATSampleTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 49626B7D13942A9A0093534C /* ATSampleTest.m */; };
 		49626C36139437070093534C /* ATAPIRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 49626C2B139437070093534C /* ATAPIRequest.h */; };
@@ -109,6 +112,8 @@
 		089C1667FE841158C02AAC07 /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = InfoPlist.strings; path = resources/English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		32DBCF5E0370ADEE00C91783 /* ApptentiveConnect_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApptentiveConnect_Prefix.pch; path = source/ApptentiveConnect_Prefix.pch; sourceTree = "<group>"; };
+		49598DBA15C62F1B00DF4ABD /* ATAppConfigurationUpdateTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATAppConfigurationUpdateTask.h; sourceTree = "<group>"; };
+		49598DBB15C62F1B00DF4ABD /* ATAppConfigurationUpdateTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATAppConfigurationUpdateTask.m; sourceTree = "<group>"; };
 		49626B6D13942A2B0093534C /* ApptentiveUnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ApptentiveUnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		49626B6E13942A2B0093534C /* ApptentiveUnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ApptentiveUnitTests-Info.plist"; path = "tests/ApptentiveUnitTests-Info.plist"; sourceTree = "<group>"; };
 		49626B7C13942A9A0093534C /* ATSampleTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATSampleTest.h; path = tests/ATSampleTest.h; sourceTree = "<group>"; };
@@ -403,6 +408,8 @@
 		49626D12139444C20093534C /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
+				49598DBA15C62F1B00DF4ABD /* ATAppConfigurationUpdateTask.h */,
+				49598DBB15C62F1B00DF4ABD /* ATAppConfigurationUpdateTask.m */,
 				4982FE9A157C0C6700A1ED63 /* ATRecordTask.h */,
 				4982FE9B157C0C6700A1ED63 /* ATRecordTask.m */,
 				49626D13139444C20093534C /* ATFeedbackTask.h */,
@@ -504,6 +511,7 @@
 				4982FE94157C0C4D00A1ED63 /* ATWebClient_Private.h in Headers */,
 				4982FE97157C0C5A00A1ED63 /* ATRecord.h in Headers */,
 				4982FE9C157C0C6700A1ED63 /* ATRecordTask.h in Headers */,
+				49598DBC15C62F1B00DF4ABD /* ATAppConfigurationUpdateTask.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -631,6 +639,7 @@
 				4982FE92157C0C3D00A1ED63 /* ATAppRatingMetrics.m in Sources */,
 				4982FE99157C0C5A00A1ED63 /* ATRecord.m in Sources */,
 				4982FE9E157C0C6700A1ED63 /* ATRecordTask.m in Sources */,
+				49598DBE15C62F1B00DF4ABD /* ATAppConfigurationUpdateTask.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -669,6 +678,7 @@
 				4982FE91157C0C3D00A1ED63 /* ATAppRatingMetrics.m in Sources */,
 				4982FE98157C0C5A00A1ED63 /* ATRecord.m in Sources */,
 				4982FE9D157C0C6700A1ED63 /* ATRecordTask.m in Sources */,
+				49598DBD15C62F1B00DF4ABD /* ATAppConfigurationUpdateTask.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
