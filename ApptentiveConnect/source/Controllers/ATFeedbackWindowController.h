@@ -7,15 +7,14 @@
 //
 
 #import <Cocoa/Cocoa.h>
+
 #import "ATFeedback.h"
 #import "ATImageView.h"
 #import "ATAPIRequest.h"
+#import "ATPlaceholderTextView.h"
 
-@interface ATFeedbackWindowController : NSWindowController <NSWindowDelegate, NSTabViewDelegate, NSTextViewDelegate, NSComboBoxDelegate, ATAPIRequestDelegate> {
-    IBOutlet NSTabView *topTabView;
-    IBOutlet NSTextView *feedbackTextView;
-    IBOutlet NSTextView *questionTextView;
-    IBOutlet NSTextView *bugTextView;
+@interface ATFeedbackWindowController : NSWindowController <NSWindowDelegate, NSTextViewDelegate, NSComboBoxDelegate, ATAPIRequestDelegate> {
+    IBOutlet ATPlaceholderTextView *feedbackTextView;
     IBOutlet ATImageView *screenshotView;
     IBOutlet NSProgressIndicator *progressIndicator;
     IBOutlet NSComboBox *nameBox;
@@ -25,10 +24,10 @@
     IBOutlet NSImageView *logoImageView;
 @private
     ATAPIRequest *feedbackRequest;
+	ATFeedback *feedback;
 }
 @property (nonatomic, retain) ATFeedback *feedback;
 - (id)initWithFeedback:(ATFeedback *)newFeedback;
-- (void)setFeedbackType:(ATFeedbackType)feedbackType;
 - (IBAction)browseForScreenshotPressed:(id)sender;
 - (IBAction)cancelPressed:(id)sender;
 - (IBAction)sendFeedbackPressed:(id)sender;

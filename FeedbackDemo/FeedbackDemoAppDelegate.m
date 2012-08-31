@@ -14,10 +14,12 @@
 @implementation FeedbackDemoAppDelegate
 
 @synthesize window;
+@synthesize versionTextField;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 	// Insert code here to initialize your application 
     [[ATConnect sharedConnection] setApiKey:kApptentiveAPIKey];
+	self.versionTextField.stringValue = [NSString stringWithFormat:@"ApptentiveConnect v%@", kATConnectVersionString];
     ATAppRatingFlow *ratingFlow = [ATAppRatingFlow sharedRatingFlowWithAppID:kApptentiveAppID];
     [ratingFlow appDidLaunch:YES];
 }
@@ -27,15 +29,7 @@
 }
 
 - (IBAction)showFeedbackWindowForFeedback:(id)sender {
-    [[ATConnect sharedConnection] showFeedbackWindowForFeedback:sender];
-}
-
-- (IBAction)showFeedbackWindowForQuestion:(id)sender {
-    [[ATConnect sharedConnection] showFeedbackWindowForQuestion:sender];
-}
-
-- (IBAction)showFeedbackWindowForBugReport:(id)sender {
-    [[ATConnect sharedConnection] showFeedbackWindowForBugReport:sender];
+    [[ATConnect sharedConnection] showFeedbackWindow:self];
 }
 
 - (IBAction)showRatingFlow:(id)sender {

@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		491CA39015F019E20003BC38 /* PJSONKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 491CA38E15F019E20003BC38 /* PJSONKit.h */; };
+		491CA39115F019E20003BC38 /* PJSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 491CA38F15F019E20003BC38 /* PJSONKit.m */; };
+		491CA39215F019E20003BC38 /* PJSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 491CA38F15F019E20003BC38 /* PJSONKit.m */; };
+		491CA3B515F029630003BC38 /* ATPlaceholderTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 491CA3B315F029630003BC38 /* ATPlaceholderTextView.h */; };
+		491CA3B615F029630003BC38 /* ATPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 491CA3B415F029630003BC38 /* ATPlaceholderTextView.m */; };
+		491CA3B715F029630003BC38 /* ATPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 491CA3B415F029630003BC38 /* ATPlaceholderTextView.m */; };
+		491CA3BB15F0663C0003BC38 /* at_logo_info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 491CA3BA15F0663C0003BC38 /* at_logo_info@2x.png */; };
 		49598DBC15C62F1B00DF4ABD /* ATAppConfigurationUpdateTask.h in Headers */ = {isa = PBXBuildFile; fileRef = 49598DBA15C62F1B00DF4ABD /* ATAppConfigurationUpdateTask.h */; };
 		49598DBD15C62F1B00DF4ABD /* ATAppConfigurationUpdateTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 49598DBB15C62F1B00DF4ABD /* ATAppConfigurationUpdateTask.m */; };
 		49598DBE15C62F1B00DF4ABD /* ATAppConfigurationUpdateTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 49598DBB15C62F1B00DF4ABD /* ATAppConfigurationUpdateTask.m */; };
@@ -89,9 +96,6 @@
 		4982FE9E157C0C6700A1ED63 /* ATRecordTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 4982FE9B157C0C6700A1ED63 /* ATRecordTask.m */; };
 		4989203013B539D6007967BA /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4989202F13B539D6007967BA /* AddressBook.framework */; };
 		4989204B13B53B04007967BA /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4989202F13B539D6007967BA /* AddressBook.framework */; };
-		49F93DE31490171E000B953A /* JSONKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 49F93DE11490171E000B953A /* JSONKit.h */; };
-		49F93DE41490171E000B953A /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F93DE21490171E000B953A /* JSONKit.m */; };
-		49F93DE51490171E000B953A /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F93DE21490171E000B953A /* JSONKit.m */; };
 		8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
 		8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
@@ -112,6 +116,11 @@
 		089C1667FE841158C02AAC07 /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = InfoPlist.strings; path = resources/English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		32DBCF5E0370ADEE00C91783 /* ApptentiveConnect_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApptentiveConnect_Prefix.pch; path = source/ApptentiveConnect_Prefix.pch; sourceTree = "<group>"; };
+		491CA38E15F019E20003BC38 /* PJSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PJSONKit.h; path = PrefixedJSONKit/PJSONKit.h; sourceTree = "<group>"; };
+		491CA38F15F019E20003BC38 /* PJSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PJSONKit.m; path = PrefixedJSONKit/PJSONKit.m; sourceTree = "<group>"; };
+		491CA3B315F029630003BC38 /* ATPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATPlaceholderTextView.h; path = source/Misc/ATPlaceholderTextView.h; sourceTree = "<group>"; };
+		491CA3B415F029630003BC38 /* ATPlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATPlaceholderTextView.m; path = source/Misc/ATPlaceholderTextView.m; sourceTree = "<group>"; };
+		491CA3BA15F0663C0003BC38 /* at_logo_info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "at_logo_info@2x.png"; path = "../apptentive-ios/ApptentiveConnect/art/generated/at_logo_info@2x.png"; sourceTree = "<group>"; };
 		49598DBA15C62F1B00DF4ABD /* ATAppConfigurationUpdateTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATAppConfigurationUpdateTask.h; sourceTree = "<group>"; };
 		49598DBB15C62F1B00DF4ABD /* ATAppConfigurationUpdateTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATAppConfigurationUpdateTask.m; sourceTree = "<group>"; };
 		49626B6D13942A2B0093534C /* ApptentiveUnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ApptentiveUnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -184,8 +193,6 @@
 		4982FE9A157C0C6700A1ED63 /* ATRecordTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATRecordTask.h; sourceTree = "<group>"; };
 		4982FE9B157C0C6700A1ED63 /* ATRecordTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATRecordTask.m; sourceTree = "<group>"; };
 		4989202F13B539D6007967BA /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
-		49F93DE11490171E000B953A /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = JSONKit/JSONKit.h; sourceTree = "<group>"; };
-		49F93DE21490171E000B953A /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = JSONKit/JSONKit.m; sourceTree = "<group>"; };
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = resources/Info.plist; sourceTree = "<group>"; };
 		8DC2EF5B0486A6940098B216 /* ApptentiveConnect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ApptentiveConnect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2F7E79907B2D74100F64583 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
@@ -278,6 +285,8 @@
 				4971B07813BAB12F00774B70 /* ATConnect_FeedbackWindowPrivate.m */,
 				4971B4C913BFBEFF00774B70 /* ATImageButton.h */,
 				4971B4CA13BFBEFF00774B70 /* ATImageButton.m */,
+				491CA3B315F029630003BC38 /* ATPlaceholderTextView.h */,
+				491CA3B415F029630003BC38 /* ATPlaceholderTextView.m */,
 			);
 			name = source;
 			sourceTree = "<group>";
@@ -286,6 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				4971B47313BFBB7C00774B70 /* at_logo_info.png */,
+				491CA3BA15F0663C0003BC38 /* at_logo_info@2x.png */,
 				8DC2EF5A0486A6940098B216 /* Info.plist */,
 				089C1666FE841158C02AAC07 /* InfoPlist.strings */,
 			);
@@ -360,8 +370,8 @@
 			children = (
 				49626C44139437580093534C /* NSData+ATBase64.h */,
 				49626C45139437580093534C /* NSData+ATBase64.m */,
-				49F93DE11490171E000B953A /* JSONKit.h */,
-				49F93DE21490171E000B953A /* JSONKit.m */,
+				491CA38E15F019E20003BC38 /* PJSONKit.h */,
+				491CA38F15F019E20003BC38 /* PJSONKit.m */,
 			);
 			name = ext;
 			path = "../apptentive-ios/ApptentiveConnect/ext";
@@ -499,7 +509,6 @@
 				4971B07913BAB12F00774B70 /* ATConnect_FeedbackWindowPrivate.h in Headers */,
 				4971B4CB13BFBEFF00774B70 /* ATImageButton.h in Headers */,
 				4972847713CA625D002AD591 /* ATAppRatingFlow.h in Headers */,
-				49F93DE31490171E000B953A /* JSONKit.h in Headers */,
 				4982FE74157C0BEF00A1ED63 /* ApptentiveMetrics.h in Headers */,
 				4982FE77157C0BEF00A1ED63 /* ATFeedbackMetrics.h in Headers */,
 				4982FE7A157C0BEF00A1ED63 /* ATMetric.h in Headers */,
@@ -512,6 +521,8 @@
 				4982FE97157C0C5A00A1ED63 /* ATRecord.h in Headers */,
 				4982FE9C157C0C6700A1ED63 /* ATRecordTask.h in Headers */,
 				49598DBC15C62F1B00DF4ABD /* ATAppConfigurationUpdateTask.h in Headers */,
+				491CA39015F019E20003BC38 /* PJSONKit.h in Headers */,
+				491CA3B515F029630003BC38 /* ATPlaceholderTextView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -601,6 +612,7 @@
 				8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */,
 				49626D4F1397047A0093534C /* ATFeedbackWindow.xib in Resources */,
 				4971B47413BFBB7C00774B70 /* at_logo_info.png in Resources */,
+				491CA3BB15F0663C0003BC38 /* at_logo_info@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -628,7 +640,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				49626B7E13942A9A0093534C /* ATSampleTest.m in Sources */,
-				49F93DE51490171E000B953A /* JSONKit.m in Sources */,
 				4982FE76157C0BEF00A1ED63 /* ApptentiveMetrics.m in Sources */,
 				4982FE79157C0BEF00A1ED63 /* ATFeedbackMetrics.m in Sources */,
 				4982FE7C157C0BEF00A1ED63 /* ATMetric.m in Sources */,
@@ -640,6 +651,8 @@
 				4982FE99157C0C5A00A1ED63 /* ATRecord.m in Sources */,
 				4982FE9E157C0C6700A1ED63 /* ATRecordTask.m in Sources */,
 				49598DBE15C62F1B00DF4ABD /* ATAppConfigurationUpdateTask.m in Sources */,
+				491CA39215F019E20003BC38 /* PJSONKit.m in Sources */,
+				491CA3B715F029630003BC38 /* ATPlaceholderTextView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -667,7 +680,6 @@
 				4971B07A13BAB12F00774B70 /* ATConnect_FeedbackWindowPrivate.m in Sources */,
 				4971B4CC13BFBEFF00774B70 /* ATImageButton.m in Sources */,
 				4972847813CA625D002AD591 /* ATAppRatingFlow.m in Sources */,
-				49F93DE41490171E000B953A /* JSONKit.m in Sources */,
 				4982FE75157C0BEF00A1ED63 /* ApptentiveMetrics.m in Sources */,
 				4982FE78157C0BEF00A1ED63 /* ATFeedbackMetrics.m in Sources */,
 				4982FE7B157C0BEF00A1ED63 /* ATMetric.m in Sources */,
@@ -679,6 +691,8 @@
 				4982FE98157C0C5A00A1ED63 /* ATRecord.m in Sources */,
 				4982FE9D157C0C6700A1ED63 /* ATRecordTask.m in Sources */,
 				49598DBD15C62F1B00DF4ABD /* ATAppConfigurationUpdateTask.m in Sources */,
+				491CA39115F019E20003BC38 /* PJSONKit.m in Sources */,
+				491CA3B615F029630003BC38 /* ATPlaceholderTextView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -717,6 +731,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = source/ApptentiveConnect_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "JSONKIT_PREFIX=AT";
 				INFOPLIST_FILE = resources/Info.plist;
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				PRODUCT_NAME = ApptentiveConnect;
@@ -735,6 +750,7 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = source/ApptentiveConnect_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "JSONKIT_PREFIX=AT";
 				INFOPLIST_FILE = resources/Info.plist;
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				PRODUCT_NAME = ApptentiveConnect;
@@ -750,6 +766,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
@@ -762,6 +779,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				SDKROOT = macosx;
 			};
 			name = Release;

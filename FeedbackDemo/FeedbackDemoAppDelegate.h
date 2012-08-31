@@ -11,12 +11,12 @@
 
 @interface FeedbackDemoAppDelegate : NSObject <NSApplicationDelegate> {
     NSWindow *window;
+	NSTextField *versionTextField;
 }
 
 @property (assign) IBOutlet NSWindow *window;
+@property (assign) IBOutlet NSTextField *versionTextField;
+
 - (IBAction)showFeedbackWindow:(id)sender;
-- (IBAction)showFeedbackWindowForFeedback:(id)sender;
-- (IBAction)showFeedbackWindowForQuestion:(id)sender;
-- (IBAction)showFeedbackWindowForBugReport:(id)sender;
 - (IBAction)showRatingFlow:(id)sender;
 @end

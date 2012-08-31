@@ -25,17 +25,15 @@ following frameworks:
 * QuartzCore
 * SystemConfiguration
 
-Library Conflicts
------------------
-`ApptentiveConnect` includes the `JSONKit` JSON parser. If you're already
-using `JSONKit` in your project, you may need to modify your project to use
-the copy in `ApptentiveConnect`.
-
 Project Settings for Xcode 4
 ----------------------------
 
 Check out the `apptentive-osx` project from GitHub. You'll either want to put it in a
 sub-folder of your project or, if you use `git`, add it as a [git submodule](http://help.github.com/submodules/).
+
+In your target's `Build Settings` section, add the following to your Other Linker Flags settings:
+
+`-ObjC -all_load`
 
 Then, open your project in Xcode and drag the `ApptentiveConnect.xcodeproj` project file 
 to your project:

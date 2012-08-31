@@ -44,8 +44,6 @@
 }
 
 - (void)dealloc {
-	//!!
-	NSLog(@"window dealloc'd properly");
 	[self teardown];
 	[super dealloc];
 }
@@ -53,20 +51,6 @@
 - (void)windowDidLoad {
 	[super windowDidLoad];
 	[self setup];
-}
-
-- (void)setFeedbackType:(ATFeedbackType)feedbackType {
-	self.feedback.type = feedbackType;
-	if (feedbackType == ATFeedbackTypeFeedback) {
-		[topTabView selectTabViewItemWithIdentifier:@"feedback"];
-	} else if (feedbackType == ATFeedbackTypeQuestion) {
-		[topTabView selectTabViewItemWithIdentifier:@"question"];
-	} else if (feedbackType == ATFeedbackTypeBug) {
-		[topTabView selectTabViewItemWithIdentifier:@"bug"];
-	} else {
-		// Default to feedback, for now.
-		[topTabView selectTabViewItemWithIdentifier:@"feedback"];
-	}
 }
 
 #pragma mark Actions
@@ -91,6 +75,7 @@
 - (IBAction)sendFeedbackPressed:(id)sender {
 	@synchronized(self) {
 		if (!feedbackRequest) {
+			[self updateFeedbackWithText];
 			[progressIndicator setHidden:NO];
 			[progressIndicator startAnimation:self];
 			[progressIndicator setDoubleValue:0.01];
@@ -139,8 +124,8 @@
 	[progressIndicator setHidden:YES];
 	
 	NSAlert *alert = [[[NSAlert alloc] init] autorelease];
-	[alert addButtonWithTitle:@"Try Again"];
-	[alert addButtonWithTitle:@"Cancel"];
+	[alert addButtonWithTitle:NSLocalizedString(@"Try Again", @"Button title for failed request retry.")];
+	[alert addButtonWithTitle:NSLocalizedString(@"Cancel", @"Cancel")];
 	[alert setMessageText:request.errorTitle];
 	[alert setInformativeText:request.errorMessage];
 	[alert setAlertStyle:NSWarningAlertStyle];
@@ -167,19 +152,6 @@
 #pragma mark NSWindowDelegate
 - (void)windowWillClose:(NSNotification *)notification {
 	[self teardown];
-}
-
-#pragma mark NSTabViewDelegate
-- (void)tabView:(NSTabView *)tabView didSelectTabViewItem:(NSTabViewItem *)tabViewItem {
-	[self updateFeedbackWithText];
-	if ([[tabViewItem identifier] isEqualToString:@"question"]) {
-		self.feedback.type = ATFeedbackTypeQuestion;
-	} else if ([[tabViewItem identifier] isEqualToString:@"bug"]) {
-		self.feedback.type = ATFeedbackTypeBug;
-	} else {
-		self.feedback.type = ATFeedbackTypeFeedback;
-	}
-	[self updateTextWithFeedback];
 }
 
 #pragma mark NSComboBoxDelegate
@@ -225,9 +197,15 @@
 	[self.window setTitle:NSLocalizedString(@"Submit Feedback", @"Feedback window title.")];
 	[self fillInContactInfo];
 	[self updateTextWithFeedback];
-	[self setFeedbackType:self.feedback.type];
 	if (self.feedback.screenshot) {
 		screenshotView.image = self.feedback.screenshot;
+	}
+	
+	[feedbackTextView setTextContainerInset:NSMakeSize(4, 4)];
+	
+	NSString *placeholder = [[ATConnect sharedConnection] customPlaceholderText];
+	if (placeholder) {
+		feedbackTextView.placeholder = placeholder;
 	}
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(imageChanged:) name:ATImageViewContentsChanged object:nil];
 	[logoImageView setImage:[ATBackend imageNamed:@"at_logo_info"]];
@@ -342,16 +320,7 @@
 }
 
 - (NSTextView *)currentTextView {
-	NSTextView *result = nil;
-	if (self.feedback.type == ATFeedbackTypeFeedback) {
-		result = feedbackTextView;
-	} else if (self.feedback.type == ATFeedbackTypeQuestion) {
-		result = questionTextView;
-	} else if (self.feedback.type == ATFeedbackTypeBug) {
-		result = bugTextView;
-	} else {
-		result = feedbackTextView;
-	}
+	NSTextView *result = feedbackTextView;
 	return result;
 }
 
