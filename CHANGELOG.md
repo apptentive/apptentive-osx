@@ -1,3 +1,9 @@
+2012-09-19 wooster v0.4.7
+-------------------------
+Changes:
+
+* Fix for ratings dialog not showing up due to reachability failing.
+
 2012-08-29 wooster v0.4.6
 -------------------------
 Changes:
