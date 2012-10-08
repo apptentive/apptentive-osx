@@ -1,3 +1,8 @@
+2012-10-08 wooster v0.4.8
+-------------------------
+
+Fixing APPTENTIVE-571, in which custom app data wasn't being sent with feedback.
+
 2012-09-19 wooster v0.4.7
 -------------------------
 The big change here is a switch to git subtrees from a submodule for the copy of apptentive-ios in the project. This makes checking out the project and getting started much easier.
