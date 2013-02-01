@@ -38,20 +38,20 @@ In your target's `Build Settings` section, add the following to your Other Linke
 Then, open your project in Xcode and drag the `ApptentiveConnect.xcodeproj` project file 
 to your project:
 
-![Step 1](apptentive-osx/raw/master/etc/screenshots/integration_step1.png)
+![Step 1](etc/screenshots/integration_step1.png)
 
 In your apps' target settings, add `ApptentiveConnect` to the "Target Dependencies" build phase:
 
-![Step 2](apptentive-osx/raw/master/etc/screenshots/integration_step2.png)
+![Step 2](etc/screenshots/integration_step2.png)
 
 Next, add `ApptentiveConnect.framework` to the "Link Binary With Libraries" build phase:
 
-![Step 3](apptentive-osx/raw/master/etc/screenshots/integration_step3.png)
+![Step 3](etc/screenshots/integration_step3.png)
 
 Finally, drag the `ApptentiveConnect.framework` from the `ApptentiveConnect` project to the 
 "Copy Bundle Resources" build phase:
 
-![Step 4](apptentive-osx/raw/master/etc/screenshots/integration_step4.png)
+![Step 4](etc/screenshots/integration_step4.png)
 
 Using the Library
 -----------------
