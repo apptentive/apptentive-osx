@@ -197,8 +197,9 @@
 	[self.window setTitle:NSLocalizedString(@"Submit Feedback", @"Feedback window title.")];
 	[self fillInContactInfo];
 	[self updateTextWithFeedback];
-	if (self.feedback.screenshot) {
-		screenshotView.image = self.feedback.screenshot;
+	if ([self.feedback hasScreenshot]) {
+		NSImage *screenshot = [[self.feedback copyScreenshot] autorelease];
+		screenshotView.image = screenshot;
 	}
 	
 	[feedbackTextView setTextContainerInset:NSMakeSize(4, 4)];
@@ -348,7 +349,8 @@
 - (void)imageChanged:(NSNotification *)notification {
 	NSObject *obj = [notification object];
 	if (obj == screenshotView) {
-		if ([screenshotView image] != self.feedback.screenshot) {
+		NSImage *feedbackScreenshot = [[self.feedback copyScreenshot] autorelease];
+		if ([screenshotView image] != feedbackScreenshot) {
 			self.feedback.screenshot = [screenshotView image];
 		}
 	}

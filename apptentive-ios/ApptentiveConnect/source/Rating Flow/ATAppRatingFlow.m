@@ -126,11 +126,6 @@ NSString *const ATAppRatingFlowUserAgreedToRateAppNotification = @"ATAppRatingFl
 	[self logDefaults];
 #endif
 	[self userDidUseApp];
-	BOOL showedDialog = NO;
-	if (canPromptForRating) {
-		showedDialog = [self showDialogIfNecessary];
-	}
-
 #if TARGET_OS_IPHONE
 	if (!showedDialog) {
 		self.viewController = nil;
@@ -164,11 +159,6 @@ NSString *const ATAppRatingFlowUserAgreedToRateAppNotification = @"ATAppRatingFl
 	self.viewController = vc;
 #endif
 	[self userDidSignificantEvent];
-
-	BOOL showedDialog = NO;
-	if (canPromptForRating) {
-		showedDialog = [self showDialogIfNecessary];
-	}
 
 #if TARGET_OS_IPHONE
 	if (!showedDialog) {

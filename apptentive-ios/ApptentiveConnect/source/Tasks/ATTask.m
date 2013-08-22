@@ -82,7 +82,11 @@
 	[parts addObject:[NSString stringWithFormat:@"inProgress: %@", inProgress ? @"YES" : @"NO"]];
 	[parts addObject:[NSString stringWithFormat:@"finished: %@", finished ? @"YES" : @"NO"]];
 	[parts addObject:[NSString stringWithFormat:@"failed: %@", failed ? @"YES" : @"NO"]];
+#if	TARGET_OS_IPHONE
 	[parts addObject:[NSString stringWithFormat:@"failureCount: %d", failureCount]];
+#elif TARGET_OS_MAC
+	[parts addObject:[NSString stringWithFormat:@"failureCount: %ld", (unsigned long)failureCount]];
+#endif
 	[parts addObject:[NSString stringWithFormat:@"percentComplete: %f", [self percentComplete]]];
 	[parts addObject:[NSString stringWithFormat:@"taskName: %@", [self taskName]]];
 	

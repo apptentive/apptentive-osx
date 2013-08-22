@@ -191,7 +191,11 @@ static ATTaskQueue *sharedTaskQueue = nil;
 - (NSString *)queueDescription {
 	NSMutableString *result = [[NSMutableString alloc] init];
 	@synchronized(self) {
+#if		TARGET_OS_IPHONE
 		[result appendString:[NSString stringWithFormat:@"<ATTaskQueue: %d task(s) [", [tasks count]]];
+#elif	TARGET_OS_MAC
+		[result appendString:[NSString stringWithFormat:@"<ATTaskQueue: %ld task(s) [", (unsigned long)[tasks count]]];
+#endif
 		NSMutableArray *parts = [[NSMutableArray alloc] init];
 		for (ATTask *task in tasks) {
 			[parts addObject:[task taskDescription]];

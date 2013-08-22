@@ -54,6 +54,18 @@
 		49626D4F1397047A0093534C /* ATFeedbackWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49626D4E1397047A0093534C /* ATFeedbackWindow.xib */; };
 		49626D53139704D00093534C /* ATFeedbackWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = 49626D51139704D00093534C /* ATFeedbackWindowController.h */; };
 		49626D54139704D00093534C /* ATFeedbackWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49626D52139704D00093534C /* ATFeedbackWindowController.m */; };
+		4964BF2E17C5D12B000DC2E8 /* ATStaticLibraryBootstrap.h in Headers */ = {isa = PBXBuildFile; fileRef = 4964BF2C17C5D12B000DC2E8 /* ATStaticLibraryBootstrap.h */; };
+		4964BF2F17C5D12B000DC2E8 /* ATStaticLibraryBootstrap.m in Sources */ = {isa = PBXBuildFile; fileRef = 4964BF2D17C5D12B000DC2E8 /* ATStaticLibraryBootstrap.m */; };
+		4964BF3017C5D12B000DC2E8 /* ATStaticLibraryBootstrap.m in Sources */ = {isa = PBXBuildFile; fileRef = 4964BF2D17C5D12B000DC2E8 /* ATStaticLibraryBootstrap.m */; };
+		4964BF3417C5D13F000DC2E8 /* ATLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 4964BF3117C5D13E000DC2E8 /* ATLog.h */; };
+		4964BF3517C5D13F000DC2E8 /* ATLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 4964BF3217C5D13F000DC2E8 /* ATLogger.h */; };
+		4964BF3617C5D13F000DC2E8 /* ATLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 4964BF3317C5D13F000DC2E8 /* ATLogger.m */; };
+		4964BF3717C5D13F000DC2E8 /* ATLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 4964BF3317C5D13F000DC2E8 /* ATLogger.m */; };
+		4964BF3917C5D2A8000DC2E8 /* ATURLConnection_Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 4964BF3817C5D2A8000DC2E8 /* ATURLConnection_Private.m */; };
+		4964BF3A17C5D2A8000DC2E8 /* ATURLConnection_Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 4964BF3817C5D2A8000DC2E8 /* ATURLConnection_Private.m */; };
+		4964BF3D17C5D2B5000DC2E8 /* ATWebClient_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4964BF3B17C5D2B5000DC2E8 /* ATWebClient_Private.h */; };
+		4964BF3E17C5D2B5000DC2E8 /* ATWebClient_Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 4964BF3C17C5D2B5000DC2E8 /* ATWebClient_Private.m */; };
+		4964BF3F17C5D2B5000DC2E8 /* ATWebClient_Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 4964BF3C17C5D2B5000DC2E8 /* ATWebClient_Private.m */; };
 		4971AFF513BA871600774B70 /* ATImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4971AFF313BA871600774B70 /* ATImageView.h */; };
 		4971AFF613BA871600774B70 /* ATImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4971AFF413BA871600774B70 /* ATImageView.m */; };
 		4971B07913BAB12F00774B70 /* ATConnect_FeedbackWindowPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4971B07713BAB12F00774B70 /* ATConnect_FeedbackWindowPrivate.h */; };
@@ -162,6 +174,14 @@
 		49626D4E1397047A0093534C /* ATFeedbackWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ATFeedbackWindow.xib; sourceTree = "<group>"; };
 		49626D51139704D00093534C /* ATFeedbackWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATFeedbackWindowController.h; path = source/Controllers/ATFeedbackWindowController.h; sourceTree = "<group>"; };
 		49626D52139704D00093534C /* ATFeedbackWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATFeedbackWindowController.m; path = source/Controllers/ATFeedbackWindowController.m; sourceTree = "<group>"; };
+		4964BF2C17C5D12B000DC2E8 /* ATStaticLibraryBootstrap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATStaticLibraryBootstrap.h; sourceTree = "<group>"; };
+		4964BF2D17C5D12B000DC2E8 /* ATStaticLibraryBootstrap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATStaticLibraryBootstrap.m; sourceTree = "<group>"; };
+		4964BF3117C5D13E000DC2E8 /* ATLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATLog.h; sourceTree = "<group>"; };
+		4964BF3217C5D13F000DC2E8 /* ATLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATLogger.h; sourceTree = "<group>"; };
+		4964BF3317C5D13F000DC2E8 /* ATLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATLogger.m; sourceTree = "<group>"; };
+		4964BF3817C5D2A8000DC2E8 /* ATURLConnection_Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATURLConnection_Private.m; sourceTree = "<group>"; };
+		4964BF3B17C5D2B5000DC2E8 /* ATWebClient_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATWebClient_Private.h; sourceTree = "<group>"; };
+		4964BF3C17C5D2B5000DC2E8 /* ATWebClient_Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATWebClient_Private.m; sourceTree = "<group>"; };
 		4971AFF313BA871600774B70 /* ATImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATImageView.h; path = source/Misc/ATImageView.h; sourceTree = "<group>"; };
 		4971AFF413BA871600774B70 /* ATImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATImageView.m; path = source/Misc/ATImageView.m; sourceTree = "<group>"; };
 		4971B07713BAB12F00774B70 /* ATConnect_FeedbackWindowPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATConnect_FeedbackWindowPrivate.h; path = source/Misc/ATConnect_FeedbackWindowPrivate.h; sourceTree = "<group>"; };
@@ -358,8 +378,11 @@
 				49626C31139437070093534C /* ATURLConnection.h */,
 				49626C32139437070093534C /* ATURLConnection.m */,
 				49626C33139437070093534C /* ATURLConnection_Private.h */,
+				4964BF3817C5D2A8000DC2E8 /* ATURLConnection_Private.m */,
 				49626C34139437070093534C /* ATWebClient.h */,
 				49626C35139437070093534C /* ATWebClient.m */,
+				4964BF3B17C5D2B5000DC2E8 /* ATWebClient_Private.h */,
+				4964BF3C17C5D2B5000DC2E8 /* ATWebClient_Private.m */,
 			);
 			name = "URL Loading";
 			path = "../apptentive-ios/ApptentiveConnect/source/URL Loading";
@@ -380,8 +403,13 @@
 		49626C55139437690093534C /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				4964BF3117C5D13E000DC2E8 /* ATLog.h */,
+				4964BF3217C5D13F000DC2E8 /* ATLogger.h */,
+				4964BF3317C5D13F000DC2E8 /* ATLogger.m */,
 				49626C56139437690093534C /* ATUtilities.h */,
 				49626C57139437690093534C /* ATUtilities.m */,
+				4964BF2C17C5D12B000DC2E8 /* ATStaticLibraryBootstrap.h */,
+				4964BF2D17C5D12B000DC2E8 /* ATStaticLibraryBootstrap.m */,
 			);
 			name = Misc;
 			path = "../apptentive-ios/ApptentiveConnect/source/Misc";
@@ -523,6 +551,10 @@
 				49598DBC15C62F1B00DF4ABD /* ATAppConfigurationUpdateTask.h in Headers */,
 				491CA39015F019E20003BC38 /* PJSONKit.h in Headers */,
 				491CA3B515F029630003BC38 /* ATPlaceholderTextView.h in Headers */,
+				4964BF2E17C5D12B000DC2E8 /* ATStaticLibraryBootstrap.h in Headers */,
+				4964BF3417C5D13F000DC2E8 /* ATLog.h in Headers */,
+				4964BF3517C5D13F000DC2E8 /* ATLogger.h in Headers */,
+				4964BF3D17C5D2B5000DC2E8 /* ATWebClient_Private.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -653,6 +685,10 @@
 				49598DBE15C62F1B00DF4ABD /* ATAppConfigurationUpdateTask.m in Sources */,
 				491CA39215F019E20003BC38 /* PJSONKit.m in Sources */,
 				491CA3B715F029630003BC38 /* ATPlaceholderTextView.m in Sources */,
+				4964BF3017C5D12B000DC2E8 /* ATStaticLibraryBootstrap.m in Sources */,
+				4964BF3717C5D13F000DC2E8 /* ATLogger.m in Sources */,
+				4964BF3A17C5D2A8000DC2E8 /* ATURLConnection_Private.m in Sources */,
+				4964BF3F17C5D2B5000DC2E8 /* ATWebClient_Private.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -693,6 +729,10 @@
 				49598DBD15C62F1B00DF4ABD /* ATAppConfigurationUpdateTask.m in Sources */,
 				491CA39115F019E20003BC38 /* PJSONKit.m in Sources */,
 				491CA3B615F029630003BC38 /* ATPlaceholderTextView.m in Sources */,
+				4964BF2F17C5D12B000DC2E8 /* ATStaticLibraryBootstrap.m in Sources */,
+				4964BF3617C5D13F000DC2E8 /* ATLogger.m in Sources */,
+				4964BF3917C5D2A8000DC2E8 /* ATURLConnection_Private.m in Sources */,
+				4964BF3E17C5D2B5000DC2E8 /* ATWebClient_Private.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -731,7 +771,13 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = source/ApptentiveConnect_Prefix.pch;
-				GCC_PREPROCESSOR_DEFINITIONS = "JSONKIT_PREFIX=AT";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"JSONKIT_PREFIX=AT",
+					"APPTENTIVE_DEBUG=1",
+					"AT_LOGGING_LEVEL_INFO=1",
+					"AT_LOGGING_LEVEL_DEBUG=1",
+					"AT_LOGGING_LEVEL_ERROR=1",
+				);
 				INFOPLIST_FILE = resources/Info.plist;
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				PRODUCT_NAME = ApptentiveConnect;
@@ -750,7 +796,11 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = source/ApptentiveConnect_Prefix.pch;
-				GCC_PREPROCESSOR_DEFINITIONS = "JSONKIT_PREFIX=AT";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"JSONKIT_PREFIX=AT",
+					"AT_LOGGING_LEVEL_INFO=1",
+					"AT_LOGGING_LEVEL_ERROR=1",
+				);
 				INFOPLIST_FILE = resources/Info.plist;
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				PRODUCT_NAME = ApptentiveConnect;

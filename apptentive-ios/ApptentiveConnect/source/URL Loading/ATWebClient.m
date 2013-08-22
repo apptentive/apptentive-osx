@@ -326,7 +326,11 @@ NSString *const ATWebClientDefaultChannelName = @"ATWebClient";
 		
 		[multipartEncodedData appendData:[multipartHeader dataUsingEncoding:NSUTF8StringEncoding]];
 		[multipartEncodedData appendData:fileData];
+#if		TARGET_OS_IPHONE
 		[debugString appendFormat:@"<NSData of length: %d>", [fileData length]];
+#elif	TARGET_OS_MAC
+		[debugString appendFormat:@"<NSData of length: %ld>", (unsigned long)[fileData length]];
+#endif
 	}
 	NSString *finalBoundary = [NSString stringWithFormat:@"\r\n--%@--\r\n", boundary];
 	[multipartEncodedData appendData:[finalBoundary dataUsingEncoding:NSUTF8StringEncoding]];

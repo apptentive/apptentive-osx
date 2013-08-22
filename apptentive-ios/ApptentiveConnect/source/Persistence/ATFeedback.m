@@ -213,7 +213,7 @@
 #		if TARGET_OS_IPHONE
 		result = UIImagePNGRepresentation(screenshot);
 #		elif TARGET_OS_MAC
-		result = [ATUtilities pngRepresentationOfImage:self.screenshot];
+		result = [ATUtilities pngRepresentationOfImage:screenshot];
 #		endif
 	}
 	return result;
