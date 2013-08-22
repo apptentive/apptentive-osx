@@ -124,8 +124,8 @@
 	[progressIndicator setHidden:YES];
 	
 	NSAlert *alert = [[[NSAlert alloc] init] autorelease];
-	[alert addButtonWithTitle:NSLocalizedString(@"Try Again", @"Button title for failed request retry.")];
-	[alert addButtonWithTitle:NSLocalizedString(@"Cancel", @"Cancel")];
+	[alert addButtonWithTitle:ATLocalizedString(@"Try Again", @"Button title for failed request retry.")];
+	[alert addButtonWithTitle:ATLocalizedString(@"Cancel", @"Cancel")];
 	[alert setMessageText:request.errorTitle];
 	[alert setInformativeText:request.errorMessage];
 	[alert setAlertStyle:NSWarningAlertStyle];
@@ -194,7 +194,7 @@
 - (void)setup {
 	self.window.delegate = self;
 	[self.window center];
-	[self.window setTitle:NSLocalizedString(@"Submit Feedback", @"Feedback window title.")];
+	[self.window setTitle:ATLocalizedString(@"Submit Feedback", @"Feedback window title.")];
 	[self fillInContactInfo];
 	[self updateTextWithFeedback];
 	if ([self.feedback hasScreenshot]) {
@@ -212,6 +212,10 @@
 	[logoImageView setImage:[ATBackend imageNamed:@"at_logo_info"]];
 	[logoImageView setTarget:self];
 	[logoImageView setAction:@selector(openApptentivePressed:)];
+	
+	[sendButton setTitle:ATLocalizedString(@"Send Feedback", @"Feedback button title")];
+	[cancelButton setTitle:ATLocalizedString(@"Cancel", @"Cancel")];
+	
 }
 
 - (void)teardown {
