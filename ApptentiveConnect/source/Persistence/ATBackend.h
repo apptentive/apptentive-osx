@@ -30,7 +30,7 @@ NSString *const ATBackendNewAPIKeyNotification;
 	BOOL shouldStopWorking;
 	BOOL working;
 }
-@property (nonatomic, retain) NSString *apiKey;
+@property (nonatomic, copy) NSString *apiKey;
 /*! The feedback currently being worked on by the user. */
 @property (nonatomic, retain) ATFeedback *currentFeedback;
 
@@ -46,7 +46,13 @@ NSString *const ATBackendNewAPIKeyNotification;
 - (void)sendFeedback:(ATFeedback *)feedback;
 
 - (NSString *)supportDirectoryPath;
+
+/*! Path to directory for storing attachments. */
+- (NSString *)attachmentDirectoryPath;
 - (NSString *)deviceUUID;
 
 - (NSURL *)apptentiveHomepageURL;
+- (NSURL *)apptentivePrivacyPolicyURL;
+
+- (NSString *)distributionName;
 @end

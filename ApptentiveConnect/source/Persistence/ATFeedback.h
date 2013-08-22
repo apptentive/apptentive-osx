@@ -47,21 +47,27 @@ typedef enum {
 	NSImage *screenshot;
 #endif
 	ATFeedbackImageSource imageSource;
+	
+	NSString *screenshotFilename;
 }
 @property (nonatomic, assign) ATFeedbackType type;
-@property (nonatomic, retain) NSString *text;
-@property (nonatomic, retain) NSString *name;
-@property (nonatomic, retain) NSString *email;
-@property (nonatomic, retain) NSString *phone;
+@property (nonatomic, copy) NSString *text;
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *email;
+@property (nonatomic, copy) NSString *phone;
 @property (nonatomic, assign) ATFeedbackSource source;
-#if TARGET_OS_IPHONE
-@property (nonatomic, retain) UIImage *screenshot;
-#elif TARGET_OS_MAC
-@property (nonatomic, retain) NSImage *screenshot;
-#endif
 @property (nonatomic, assign) ATFeedbackImageSource imageSource;
 
-- (NSDictionary *)dictionary;
 - (NSDictionary *)apiDictionary;
 - (void)addExtraDataFromDictionary:(NSDictionary *)dictionary;
+
+#if TARGET_OS_IPHONE
+- (void)setScreenshot:(UIImage *)screenshot;
+- (UIImage *)copyScreenshot;
+#elif TARGET_OS_MAC
+- (void)setScreenshot:(NSImage *)screenshot;
+- (NSImage *)copyScreenshot;
+#endif
+- (BOOL)hasScreenshot;
+- (NSData *)dataForScreenshot;
 @end

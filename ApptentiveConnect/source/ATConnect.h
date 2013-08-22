@@ -13,10 +13,11 @@
 #import <Cocoa/Cocoa.h>
 #endif
 
-#define kATConnectVersionString @"0.4.7"
+#define kATConnectVersionString @"0.4.9"
 
 #if TARGET_OS_IPHONE
 #define kATConnectPlatformString @"iOS"
+@class ATFeedbackController;
 #elif TARGET_OS_MAC
 #define kATConnectPlatformString @"Mac OS X"
 @class ATFeedbackWindowController;
@@ -30,29 +31,32 @@ typedef enum {
 
 @interface ATConnect : NSObject {
 @private
-#if !TARGET_OS_IPHONE
+#if TARGET_OS_IPHONE
+	ATFeedbackController *feedbackController;
+#elif TARGET_OS_MAC
 	ATFeedbackWindowController *feedbackWindowController;
 #endif
 	NSMutableDictionary *additionalFeedbackData;
 	NSString *apiKey;
-	BOOL showKeyboardAccessory;
+	BOOL showTagline;
 	BOOL shouldTakeScreenshot;
 	BOOL showEmailField;
 	NSString *initialName;
 	NSString *initialEmailAddress;
 	ATFeedbackControllerType feedbackControllerType;
 	NSString *customPlaceholderText;
+	ATFeedbackController *currentFeedbackController;
 }
-@property (nonatomic, retain) NSString *apiKey;
-@property (nonatomic, assign) BOOL showKeyboardAccessory;
+@property (nonatomic, copy) NSString *apiKey;
+@property (nonatomic, assign) BOOL showTagline;
 @property (nonatomic, assign) BOOL shouldTakeScreenshot;
 @property (nonatomic, assign) BOOL showEmailField;
-@property (nonatomic, retain) NSString *initialName;
-@property (nonatomic, retain) NSString *initialEmailAddress;
+@property (nonatomic, copy) NSString *initialName;
+@property (nonatomic, copy) NSString *initialEmailAddress;
 @property (nonatomic, assign) ATFeedbackControllerType feedbackControllerType;
 /*! Set this if you want some custom text to appear as a placeholder in the
  feedback text box. */
-@property (nonatomic, retain) NSString *customPlaceholderText;
+@property (nonatomic, copy) NSString *customPlaceholderText;
 
 + (ATConnect *)sharedConnection;
 
@@ -61,6 +65,11 @@ typedef enum {
  * Presents a feedback controller in the window of the given view controller.
  */
 - (void)presentFeedbackControllerFromViewController:(UIViewController *)viewController;
+
+/*!
+ * Dismisses the feedback controller. You normally won't need to call this.
+ */
+- (void)dismissFeedbackControllerAnimated:(BOOL)animated completion:(void (^)(void))completion;
 #elif TARGET_OS_MAC
 /*!
  * Presents a feedback window.

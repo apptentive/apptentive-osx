@@ -83,6 +83,13 @@
 		493AEB4015990A4D00DFD4C7 /* ATSurveyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 493AEB2915990A4D00DFD4C7 /* ATSurveyViewController.m */; };
 		493AEB4115990A4D00DFD4C7 /* ATSurveyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 493AEB2915990A4D00DFD4C7 /* ATSurveyViewController.m */; };
 		493AEB4515990A6B00DFD4C7 /* ApptentiveSurveysTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 493AEB4415990A6B00DFD4C7 /* ApptentiveSurveysTests.m */; };
+		493F8D1B1672A551000B5151 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AAA17A1633716F00B26851 /* StoreKit.framework */; };
+		493F8D8C1672DEFD000B5151 /* ATStaticLibraryBootstrap.h in Headers */ = {isa = PBXBuildFile; fileRef = 493F8D8A1672DEFD000B5151 /* ATStaticLibraryBootstrap.h */; };
+		493F8D8D1672DEFD000B5151 /* ATStaticLibraryBootstrap.m in Sources */ = {isa = PBXBuildFile; fileRef = 493F8D8B1672DEFD000B5151 /* ATStaticLibraryBootstrap.m */; };
+		493F8D8E1672DEFD000B5151 /* ATStaticLibraryBootstrap.m in Sources */ = {isa = PBXBuildFile; fileRef = 493F8D8B1672DEFD000B5151 /* ATStaticLibraryBootstrap.m */; };
+		493F8D901672E07D000B5151 /* ATURLConnection_Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 493F8D8F1672E07D000B5151 /* ATURLConnection_Private.m */; };
+		493F8D911672E07D000B5151 /* ATURLConnection_Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 493F8D8F1672E07D000B5151 /* ATURLConnection_Private.m */; };
+		493F8D931672E15F000B5151 /* ATWebClient_Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 493F8D921672E15F000B5151 /* ATWebClient_Private.m */; };
 		4942CC9113C7AD2D009BF758 /* ATAppRatingFlow.h in Headers */ = {isa = PBXBuildFile; fileRef = 4942CC8F13C7AD2D009BF758 /* ATAppRatingFlow.h */; settings = {ATTRIBUTES = (); }; };
 		4942CC9213C7AD2D009BF758 /* ATAppRatingFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4942CC9013C7AD2D009BF758 /* ATAppRatingFlow.m */; };
 		4942CC9313C7AD2D009BF758 /* ATAppRatingFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4942CC9013C7AD2D009BF758 /* ATAppRatingFlow.m */; };
@@ -96,6 +103,8 @@
 		49509E1B1358409C00793EEC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49509A6B1356596F00793EEC /* SystemConfiguration.framework */; };
 		49509E1C135840A000793EEC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B3D96A133E6D6400B5A5CD /* UIKit.framework */; };
 		4960E154134A578F00F6311F /* generated in Resources */ = {isa = PBXBuildFile; fileRef = 4960E153134A578F00F6311F /* generated */; };
+		4967278216B9D9CB00C679B8 /* ATConnect_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4967278116B9D9CB00C679B8 /* ATConnect_Private.h */; };
+		4967278416B9FE6400C679B8 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4967278316B9FE6400C679B8 /* Info.plist */; };
 		496DC3831333D35600743F65 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 496DC3821333D35600743F65 /* Foundation.framework */; };
 		496DC38F1333D35600743F65 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 496DC3821333D35600743F65 /* Foundation.framework */; };
 		496DC3941333D35600743F65 /* libApptentiveConnect.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 496DC37F1333D35600743F65 /* libApptentiveConnect.a */; };
@@ -117,9 +126,9 @@
 		4987FAA4157AE53700AF2078 /* ATWebClient+Metrics.m in Sources */ = {isa = PBXBuildFile; fileRef = 4987FA9B157AE53700AF2078 /* ATWebClient+Metrics.m */; };
 		4987FAA7157AE59D00AF2078 /* ApptentiveMetricsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4987FAA6157AE59D00AF2078 /* ApptentiveMetricsTests.m */; };
 		498B8E3E1519691900CA9A58 /* ATRatingPredicateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 498B8E3D1519691900CA9A58 /* ATRatingPredicateTests.m */; };
-		498EFB6B15BA414A00A1043B /* ATSurveyGetSurveyTask.h in Headers */ = {isa = PBXBuildFile; fileRef = 498EFB6915BA414A00A1043B /* ATSurveyGetSurveyTask.h */; };
-		498EFB6C15BA414A00A1043B /* ATSurveyGetSurveyTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 498EFB6A15BA414A00A1043B /* ATSurveyGetSurveyTask.m */; };
-		498EFB6D15BA414A00A1043B /* ATSurveyGetSurveyTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 498EFB6A15BA414A00A1043B /* ATSurveyGetSurveyTask.m */; };
+		498EFB6B15BA414A00A1043B /* ATSurveyGetSurveysTask.h in Headers */ = {isa = PBXBuildFile; fileRef = 498EFB6915BA414A00A1043B /* ATSurveyGetSurveysTask.h */; };
+		498EFB6C15BA414A00A1043B /* ATSurveyGetSurveysTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 498EFB6A15BA414A00A1043B /* ATSurveyGetSurveysTask.m */; };
+		498EFB6D15BA414A00A1043B /* ATSurveyGetSurveysTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 498EFB6A15BA414A00A1043B /* ATSurveyGetSurveysTask.m */; };
 		498EFB7015BA48B300A1043B /* ATAppConfigurationUpdateTask.h in Headers */ = {isa = PBXBuildFile; fileRef = 498EFB6E15BA48B200A1043B /* ATAppConfigurationUpdateTask.h */; };
 		498EFB7115BA48B300A1043B /* ATAppConfigurationUpdateTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 498EFB6F15BA48B300A1043B /* ATAppConfigurationUpdateTask.m */; };
 		498EFB7215BA48B300A1043B /* ATAppConfigurationUpdateTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 498EFB6F15BA48B300A1043B /* ATAppConfigurationUpdateTask.m */; };
@@ -131,6 +140,14 @@
 		49AA1021138B44C00082887A /* ATInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AA101E138B44C00082887A /* ATInfoViewController.m */; };
 		49AA1023138B498C0082887A /* ATInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49AA1022138B498C0082887A /* ATInfoViewController.xib */; };
 		49AA1025138B49A50082887A /* ATInfoViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49AA1024138B49A50082887A /* ATInfoViewController_iPad.xib */; };
+		49AAA17B1633716F00B26851 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AAA17A1633716F00B26851 /* StoreKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		49B2F452171B8985004E5FE0 /* ATLogViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 49B2F450171B8984004E5FE0 /* ATLogViewController.h */; };
+		49B2F453171B8985004E5FE0 /* ATLogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B2F451171B8984004E5FE0 /* ATLogViewController.m */; };
+		49B2F455171B8990004E5FE0 /* ATFeedbackTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 49B2F454171B8990004E5FE0 /* ATFeedbackTypes.h */; };
+		49B2F459171B89C4004E5FE0 /* ATLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 49B2F456171B89C4004E5FE0 /* ATLog.h */; };
+		49B2F45A171B89C4004E5FE0 /* ATLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 49B2F457171B89C4004E5FE0 /* ATLogger.h */; };
+		49B2F45B171B89C4004E5FE0 /* ATLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B2F458171B89C4004E5FE0 /* ATLogger.m */; };
+		49B2F45C171B89C4004E5FE0 /* ATLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B2F458171B89C4004E5FE0 /* ATLogger.m */; };
 		49B3D96B133E6D6400B5A5CD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B3D968133E6D6400B5A5CD /* CoreGraphics.framework */; };
 		49B3D96C133E6D6400B5A5CD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B3D969133E6D6400B5A5CD /* QuartzCore.framework */; };
 		49B3D96D133E6D6400B5A5CD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B3D96A133E6D6400B5A5CD /* UIKit.framework */; };
@@ -166,6 +183,7 @@
 		49EF340F14AA7F2D00077F76 /* ATAppRatingMetrics.h in Headers */ = {isa = PBXBuildFile; fileRef = 49EF340D14AA7F2D00077F76 /* ATAppRatingMetrics.h */; };
 		49EF341014AA7F2D00077F76 /* ATAppRatingMetrics.m in Sources */ = {isa = PBXBuildFile; fileRef = 49EF340E14AA7F2D00077F76 /* ATAppRatingMetrics.m */; };
 		49EF341114AA7F2D00077F76 /* ATAppRatingMetrics.m in Sources */ = {isa = PBXBuildFile; fileRef = 49EF340E14AA7F2D00077F76 /* ATAppRatingMetrics.m */; };
+		49F3404E16BC8B1A008AA02B /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AAA17A1633716F00B26851 /* StoreKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -240,6 +258,10 @@
 		493AEB2915990A4D00DFD4C7 /* ATSurveyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATSurveyViewController.m; sourceTree = "<group>"; };
 		493AEB4315990A6B00DFD4C7 /* ApptentiveSurveysTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApptentiveSurveysTests.h; sourceTree = "<group>"; };
 		493AEB4415990A6B00DFD4C7 /* ApptentiveSurveysTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApptentiveSurveysTests.m; sourceTree = "<group>"; };
+		493F8D8A1672DEFD000B5151 /* ATStaticLibraryBootstrap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATStaticLibraryBootstrap.h; sourceTree = "<group>"; };
+		493F8D8B1672DEFD000B5151 /* ATStaticLibraryBootstrap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATStaticLibraryBootstrap.m; sourceTree = "<group>"; };
+		493F8D8F1672E07D000B5151 /* ATURLConnection_Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATURLConnection_Private.m; sourceTree = "<group>"; };
+		493F8D921672E15F000B5151 /* ATWebClient_Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATWebClient_Private.m; sourceTree = "<group>"; };
 		4942CC8F13C7AD2D009BF758 /* ATAppRatingFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATAppRatingFlow.h; sourceTree = "<group>"; };
 		4942CC9013C7AD2D009BF758 /* ATAppRatingFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATAppRatingFlow.m; sourceTree = "<group>"; };
 		49509A5F135658E200793EEC /* ATReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATReachability.h; path = Reachability/ATReachability.h; sourceTree = "<group>"; };
@@ -248,6 +270,8 @@
 		49509DF913583FB800793EEC /* ATUtilitiesTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATUtilitiesTests.h; sourceTree = "<group>"; };
 		49509DFA13583FB800793EEC /* ATUtilitiesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATUtilitiesTests.m; sourceTree = "<group>"; };
 		4960E153134A578F00F6311F /* generated */ = {isa = PBXFileReference; lastKnownFileType = folder; name = generated; path = art/generated; sourceTree = SOURCE_ROOT; };
+		4967278116B9D9CB00C679B8 /* ATConnect_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATConnect_Private.h; sourceTree = "<group>"; };
+		4967278316B9FE6400C679B8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = resources/ApptentiveResources/Info.plist; sourceTree = SOURCE_ROOT; };
 		496DC37F1333D35600743F65 /* libApptentiveConnect.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libApptentiveConnect.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		496DC3821333D35600743F65 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		496DC38C1333D35600743F65 /* ApptentiveConnectTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ApptentiveConnectTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -266,16 +290,28 @@
 		4987FAA6157AE59D00AF2078 /* ApptentiveMetricsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApptentiveMetricsTests.m; sourceTree = "<group>"; };
 		498B8E3C1519691900CA9A58 /* ATRatingPredicateTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATRatingPredicateTests.h; sourceTree = "<group>"; };
 		498B8E3D1519691900CA9A58 /* ATRatingPredicateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATRatingPredicateTests.m; sourceTree = "<group>"; };
-		498EFB6915BA414A00A1043B /* ATSurveyGetSurveyTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATSurveyGetSurveyTask.h; path = Tasks/ATSurveyGetSurveyTask.h; sourceTree = "<group>"; };
-		498EFB6A15BA414A00A1043B /* ATSurveyGetSurveyTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATSurveyGetSurveyTask.m; path = Tasks/ATSurveyGetSurveyTask.m; sourceTree = "<group>"; };
+		498EFB6915BA414A00A1043B /* ATSurveyGetSurveysTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATSurveyGetSurveysTask.h; path = Tasks/ATSurveyGetSurveysTask.h; sourceTree = "<group>"; };
+		498EFB6A15BA414A00A1043B /* ATSurveyGetSurveysTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATSurveyGetSurveysTask.m; path = Tasks/ATSurveyGetSurveysTask.m; sourceTree = "<group>"; };
 		498EFB6E15BA48B200A1043B /* ATAppConfigurationUpdateTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATAppConfigurationUpdateTask.h; sourceTree = "<group>"; };
 		498EFB6F15BA48B300A1043B /* ATAppConfigurationUpdateTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATAppConfigurationUpdateTask.m; sourceTree = "<group>"; };
+		4995EDC3175959EC00AF7268 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4995EDC417595A0500AF7268 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4995EDC517595A0E00AF7268 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4995EDC617595A1800AF7268 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4995EDC717595A2200AF7268 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		499B56C615D305880063C23C /* PJSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJSONKit.h; sourceTree = "<group>"; };
 		499B56C715D305880063C23C /* PJSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJSONKit.m; sourceTree = "<group>"; };
 		49AA101D138B44C00082887A /* ATInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATInfoViewController.h; sourceTree = "<group>"; };
 		49AA101E138B44C00082887A /* ATInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATInfoViewController.m; sourceTree = "<group>"; };
 		49AA1022138B498C0082887A /* ATInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ATInfoViewController.xib; sourceTree = "<group>"; };
 		49AA1024138B49A50082887A /* ATInfoViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ATInfoViewController_iPad.xib; sourceTree = "<group>"; };
+		49AAA17A1633716F00B26851 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		49B2F450171B8984004E5FE0 /* ATLogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATLogViewController.h; sourceTree = "<group>"; };
+		49B2F451171B8984004E5FE0 /* ATLogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATLogViewController.m; sourceTree = "<group>"; };
+		49B2F454171B8990004E5FE0 /* ATFeedbackTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATFeedbackTypes.h; sourceTree = "<group>"; };
+		49B2F456171B89C4004E5FE0 /* ATLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATLog.h; sourceTree = "<group>"; };
+		49B2F457171B89C4004E5FE0 /* ATLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATLogger.h; sourceTree = "<group>"; };
+		49B2F458171B89C4004E5FE0 /* ATLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATLogger.m; sourceTree = "<group>"; };
 		49B3D968133E6D6400B5A5CD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		49B3D969133E6D6400B5A5CD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		49B3D96A133E6D6400B5A5CD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -319,6 +355,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49AAA17B1633716F00B26851 /* StoreKit.framework in Frameworks */,
 				49B3D96F133E6DE700B5A5CD /* CoreTelephony.framework in Frameworks */,
 				49B3D96B133E6D6400B5A5CD /* CoreGraphics.framework in Frameworks */,
 				49B3D96C133E6D6400B5A5CD /* QuartzCore.framework in Frameworks */,
@@ -332,6 +369,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49F3404E16BC8B1A008AA02B /* StoreKit.framework in Frameworks */,
 				496DC38F1333D35600743F65 /* Foundation.framework in Frameworks */,
 				496DC3941333D35600743F65 /* libApptentiveConnect.a in Frameworks */,
 				49509E061358408600793EEC /* CoreGraphics.framework in Frameworks */,
@@ -339,6 +377,7 @@
 				49509E081358409800793EEC /* QuartzCore.framework in Frameworks */,
 				49509E1B1358409C00793EEC /* SystemConfiguration.framework in Frameworks */,
 				49509E1C135840A000793EEC /* UIKit.framework in Frameworks */,
+				493F8D1B1672A551000B5151 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,11 +399,13 @@
 				491748B41341177000A7D11E /* ATConnectionManager.h */,
 				491748B51341177000A7D11E /* ATConnectionManager.m */,
 				49352ADC138CA1DC000E464A /* ATURLConnection_Private.h */,
+				493F8D8F1672E07D000B5151 /* ATURLConnection_Private.m */,
 				491748B61341177000A7D11E /* ATURLConnection.h */,
 				491748B71341177000A7D11E /* ATURLConnection.m */,
 				491748B81341177000A7D11E /* ATWebClient.h */,
 				491748B91341177000A7D11E /* ATWebClient.m */,
 				49B877101464958C00594A5D /* ATWebClient_Private.h */,
+				493F8D921672E15F000B5151 /* ATWebClient_Private.m */,
 				49352AC1138C97A2000E464A /* ATAPIRequest.h */,
 				49352AC2138C97A2000E464A /* ATAPIRequest.m */,
 			);
@@ -380,6 +421,9 @@
 				49AA101E138B44C00082887A /* ATInfoViewController.m */,
 				4936AE4F1379DE3100A4B17F /* ATSimpleImageViewController.h */,
 				4936AE501379DE3100A4B17F /* ATSimpleImageViewController.m */,
+				49B2F450171B8984004E5FE0 /* ATLogViewController.h */,
+				49B2F451171B8984004E5FE0 /* ATLogViewController.m */,
+				49B2F454171B8990004E5FE0 /* ATFeedbackTypes.h */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -387,8 +431,13 @@
 		4936AE741379DEBB00A4B17F /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				49B2F456171B89C4004E5FE0 /* ATLog.h */,
+				49B2F457171B89C4004E5FE0 /* ATLogger.h */,
+				49B2F458171B89C4004E5FE0 /* ATLogger.m */,
 				4936AE751379DEBB00A4B17F /* ATUtilities.h */,
 				4936AE761379DEBB00A4B17F /* ATUtilities.m */,
+				493F8D8A1672DEFD000B5151 /* ATStaticLibraryBootstrap.h */,
+				493F8D8B1672DEFD000B5151 /* ATStaticLibraryBootstrap.m */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -487,6 +536,15 @@
 			name = Reachability;
 			sourceTree = "<group>";
 		};
+		4967278516B9FE7000C679B8 /* ApptentiveResources */ = {
+			isa = PBXGroup;
+			children = (
+				4967278316B9FE6400C679B8 /* Info.plist */,
+			);
+			name = ApptentiveResources;
+			path = xibs;
+			sourceTree = "<group>";
+		};
 		496DC3741333D35600743F65 = {
 			isa = PBXGroup;
 			children = (
@@ -494,6 +552,7 @@
 				49C00295133413BB0071F088 /* source */,
 				4960E153134A578F00F6311F /* generated */,
 				49C00290133413AA0071F088 /* xibs */,
+				4967278516B9FE7000C679B8 /* ApptentiveResources */,
 				49C002861334137E0071F088 /* tests */,
 				496DC3811333D35600743F65 /* Frameworks */,
 				496DC3801333D35600743F65 /* Products */,
@@ -514,10 +573,12 @@
 		496DC3811333D35600743F65 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				49AAA17A1633716F00B26851 /* StoreKit.framework */,
 				49B3D968133E6D6400B5A5CD /* CoreGraphics.framework */,
 				49B3D96E133E6DE700B5A5CD /* CoreTelephony.framework */,
 				496DC3821333D35600743F65 /* Foundation.framework */,
 				49B3D969133E6D6400B5A5CD /* QuartzCore.framework */,
+				49AAA17A1633716F00B26851 /* StoreKit.framework */,
 				49509A6B1356596F00793EEC /* SystemConfiguration.framework */,
 				49B3D96A133E6D6400B5A5CD /* UIKit.framework */,
 			);
@@ -552,8 +613,8 @@
 		498EFB6715BA412100A1043B /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
-				498EFB6915BA414A00A1043B /* ATSurveyGetSurveyTask.h */,
-				498EFB6A15BA414A00A1043B /* ATSurveyGetSurveyTask.m */,
+				498EFB6915BA414A00A1043B /* ATSurveyGetSurveysTask.h */,
+				498EFB6A15BA414A00A1043B /* ATSurveyGetSurveysTask.m */,
 			);
 			name = Tasks;
 			sourceTree = "<group>";
@@ -627,6 +688,7 @@
 				4987FA95157AE53500AF2078 /* ApptentiveMetrics.h */,
 				493AEB1615990A4D00DFD4C7 /* ATSurveys.h */,
 				49C00298133413BB0071F088 /* ATConnect.m */,
+				4967278116B9D9CB00C679B8 /* ATConnect_Private.h */,
 				4987FA7C157ACA8C00AF2078 /* Metrics */,
 				493AEB1515990A4D00DFD4C7 /* Surveys */,
 				4936AE681379DE6A00A4B17F /* Controllers */,
@@ -731,9 +793,15 @@
 				493AEB3915990A4D00DFD4C7 /* ATSurveysBackend.h in Headers */,
 				493AEB3C15990A4D00DFD4C7 /* ATWebClient+SurveyAdditions.h in Headers */,
 				493AEB3F15990A4D00DFD4C7 /* ATSurveyViewController.h in Headers */,
-				498EFB6B15BA414A00A1043B /* ATSurveyGetSurveyTask.h in Headers */,
+				498EFB6B15BA414A00A1043B /* ATSurveyGetSurveysTask.h in Headers */,
 				498EFB7015BA48B300A1043B /* ATAppConfigurationUpdateTask.h in Headers */,
 				499B56CA15D305880063C23C /* PJSONKit.h in Headers */,
+				4967278216B9D9CB00C679B8 /* ATConnect_Private.h in Headers */,
+				49B2F452171B8985004E5FE0 /* ATLogViewController.h in Headers */,
+				49B2F455171B8990004E5FE0 /* ATFeedbackTypes.h in Headers */,
+				49B2F459171B89C4004E5FE0 /* ATLog.h in Headers */,
+				49B2F45A171B89C4004E5FE0 /* ATLogger.h in Headers */,
+				493F8D8C1672DEFD000B5151 /* ATStaticLibraryBootstrap.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -747,7 +815,6 @@
 				496DC37B1333D35600743F65 /* Sources */,
 				496DC37C1333D35600743F65 /* Frameworks */,
 				496DC37D1333D35600743F65 /* Headers */,
-				4932C20C151AADC7000EFB80 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -802,7 +869,7 @@
 		496DC3761333D35600743F65 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0440;
+				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Apptentive, Inc.";
 			};
 			buildConfigurationList = 496DC3791333D35600743F65 /* Build configuration list for PBXProject "ApptentiveConnect" */;
@@ -814,6 +881,11 @@
 				English,
 				Spanish,
 				es,
+				de,
+				ja,
+				pt,
+				ru,
+				"zh-Hans",
 			);
 			mainGroup = 496DC3741333D35600743F65;
 			productRefGroup = 496DC3801333D35600743F65 /* Products */;
@@ -851,26 +923,13 @@
 				49352B3F138DB3AA000E464A /* ATTaskProgressCell.xib in Resources */,
 				490B816C14427A95009801E9 /* ATFeedbackController.xib in Resources */,
 				496F29E014496711005B7C01 /* ATSimpleImageViewController.xib in Resources */,
+				4967278416B9FE6400C679B8 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4932C20C151AADC7000EFB80 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Version 2.0 (updated for Xcode 4, with some fixes)\n# Changes:\n#    - Works with xcode 4, even when running xcode 3 projects (Workarounds for apple bugs)\n#    - Faster / better: only runs lipo once, instead of once per recursion\n#    - Added some debugging statemetns that can be switched on/off by changing the DEBUG_THIS_SCRIPT variable to \"true\"\n#    - Fixed some typos\n# \n# Purpose:\n#   Create a static library for iPhone from within XCode\n#   Because Apple staff DELIBERATELY broke Xcode to make this impossible from the GUI (Xcode 3.2.3 specifically states this in the Release notes!)\n#   ...no, I don't understand why they did this!\n#\n# Author: Adam Martin - http://twitter.com/redglassesapps\n# Based on: original script from Eonil (main changes: Eonil's script WILL NOT WORK in Xcode GUI - it WILL CRASH YOUR COMPUTER)\n#\n# More info: see this Stack Overflow question: http://stackoverflow.com/questions/3520977/build-fat-static-library-device-simulator-using-xcode-and-sdk-4\n\n\n#################[ Tests: helps workaround any future bugs in Xcode ]########\n#\nDEBUG_THIS_SCRIPT=\"false\"\n\nif [ $DEBUG_THIS_SCRIPT = \"true\" ]\nthen\n    echo \"########### TESTS #############\"\n    echo \"Use the following variables when debugging this script; note that they may change on recursions\"\n    echo \"BUILD_DIR = $BUILD_DIR\"\n    echo \"BUILD_ROOT = $BUILD_ROOT\"\n    echo \"CONFIGURATION_BUILD_DIR = $CONFIGURATION_BUILD_DIR\"\n    echo \"BUILT_PRODUCTS_DIR = $BUILT_PRODUCTS_DIR\"\n    echo \"CONFIGURATION_TEMP_DIR = $CONFIGURATION_TEMP_DIR\"\n    echo \"TARGET_BUILD_DIR = $TARGET_BUILD_DIR\"\nfi\n\n#####################[ part 1 ]##################\n# First, work out the BASESDK version number (NB: Apple ought to report this, but they hide it)\n#    (incidental: searching for substrings in sh is a nightmare! Sob)\n\nSDK_VERSION=$(echo ${SDK_NAME} | grep -o '.\\{3\\}$')\n\n# Next, work out if we're in SIM or DEVICE\n\nif [ ${PLATFORM_NAME} = \"iphonesimulator\" ]\nthen\n    OTHER_SDK_TO_BUILD=iphoneos${SDK_VERSION}\nelse\n    OTHER_SDK_TO_BUILD=iphonesimulator${SDK_VERSION}\nfi\n\necho \"XCode has selected SDK: ${PLATFORM_NAME} with version: ${SDK_VERSION} (although back-targetting: ${IPHONEOS_DEPLOYMENT_TARGET})\"\necho \"...therefore, OTHER_SDK_TO_BUILD = ${OTHER_SDK_TO_BUILD}\"\n#\n#####################[ end of part 1 ]##################\n\n#####################[ part 2 ]##################\n#\n# IF this is the original invocation, invoke WHATEVER other builds are required\n#\n# Xcode is already building ONE target...\n#\n# ...but this is a LIBRARY, so Apple is wrong to set it to build just one.\n# ...we need to build ALL targets\n# ...we MUST NOT re-build the target that is ALREADY being built: Xcode WILL CRASH YOUR COMPUTER if you try this (infinite recursion!)\n#\n#\n# So: build ONLY the missing platforms/configurations.\n\nif [ \"true\" == ${ALREADYINVOKED:-false} ]\nthen\n    echo \"RECURSION: I am NOT the root invocation, so I'm NOT going to recurse\"\nelse\n    # CRITICAL:\n    # Prevent infinite recursion (Xcode sucks)\n    export ALREADYINVOKED=\"true\"\n    \n    echo \"RECURSION: I am the root ... recursing all missing build targets NOW...\"\n    echo \"RECURSION: ...about to invoke: xcodebuild -configuration \\\"${CONFIGURATION}\\\" -target \\\"${TARGET_NAME}\\\" -sdk \\\"${OTHER_SDK_TO_BUILD}\\\" ${ACTION} RUN_CLANG_STATIC_ANALYZER=NO\"\n    xcodebuild -configuration \"${CONFIGURATION}\" -target \"${TARGET_NAME}\" -sdk \"${OTHER_SDK_TO_BUILD}\" ${ACTION} RUN_CLANG_STATIC_ANALYZER=NO BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\n    \n    ACTION=\"build\"\n    \n    #Merge all platform binaries as a fat binary for each configurations.\n\n    # Calculate where the (multiple) built files are coming from:\n    CURRENTCONFIG_DEVICE_DIR=${SYMROOT}/${CONFIGURATION}-iphoneos\n    CURRENTCONFIG_SIMULATOR_DIR=${SYMROOT}/${CONFIGURATION}-iphonesimulator\n    \n    echo \"Taking device build from: ${CURRENTCONFIG_DEVICE_DIR}\"\n    echo \"Taking simulator build from: ${CURRENTCONFIG_SIMULATOR_DIR}\"\n    \n    CREATING_UNIVERSAL_DIR=${SYMROOT}/${CONFIGURATION}-universal\n    echo \"...I will output a universal build to: ${CREATING_UNIVERSAL_DIR}\"\n    \n    # ... remove the products of previous runs of this script\n    #      NB: this directory is ONLY created by this script - it should be safe to delete!\n    \n    rm -rf \"${CREATING_UNIVERSAL_DIR}\"\n    mkdir \"${CREATING_UNIVERSAL_DIR}\"\n    \n    #\n    echo \"lipo: for current configuration (${CONFIGURATION}) creating output file: ${CREATING_UNIVERSAL_DIR}/${EXECUTABLE_NAME}\"\n    lipo -create -output \"${CREATING_UNIVERSAL_DIR}/${EXECUTABLE_NAME}\" \"${CURRENTCONFIG_DEVICE_DIR}/${EXECUTABLE_NAME}\" \"${CURRENTCONFIG_SIMULATOR_DIR}/${EXECUTABLE_NAME}\"\n    \n    #########\n    #\n    # Added: StackOverflow suggestion to also copy \"include\" files\n    #    (untested, but should work OK)\n    #\n    if [ -d \"${CURRENTCONFIG_DEVICE_DIR}/usr/local/include\" ]\n    then\n        mkdir -p \"${CREATING_UNIVERSAL_DIR}/include\"\n        # * needs to be outside the double quotes?\n        cp \"${CURRENTCONFIG_DEVICE_DIR}/usr/local/include/\"* \"${CREATING_UNIVERSAL_DIR}/include\"\n    fi\n    \n    # Added: Copying resources.\n    if [ -d \"${CURRENTCONFIG_DEVICE_DIR}/ApptentiveResources.bundle\" ]\n    then\n        ditto \"${CURRENTCONFIG_DEVICE_DIR}/ApptentiveResources.bundle\" \"${CREATING_UNIVERSAL_DIR}/ApptentiveResources.bundle\"\n    fi\n\n    mkdir -p \"${CREATING_UNIVERSAL_DIR}/include\"\n    ditto \"${PROJECT_DIR}/source/ATConnect.h\" \"${CREATING_UNIVERSAL_DIR}/include/ATConnect.h\"\n    ditto \"${PROJECT_DIR}/source/Rating Flow/ATAppRatingFlow.h\" \"${CREATING_UNIVERSAL_DIR}/include/ATAppRatingFlow.h\"\n    ditto \"${PROJECT_DIR}/source/Surveys/ATSurveys.h\" \"${CREATING_UNIVERSAL_DIR}/include/ATSurveys.h\"\n    if [ -e \"${PROJECT_DIR}/../LICENSE.txt\" ]\n    then\n        ditto \"${PROJECT_DIR}/../LICENSE.txt\" \"${CREATING_UNIVERSAL_DIR}/LICENSE.txt\"\n    fi\n    if [ -e \"${PROJECT_DIR}/../README.md\" ]\n    then\n        ditto \"${PROJECT_DIR}/../README.md\" \"${CREATING_UNIVERSAL_DIR}/README.md\"\n    fi\n    if [ -e \"${PROJECT_DIR}/../CHANGELOG.md\" ]\n    then\n        ditto \"${PROJECT_DIR}/../CHANGELOG.md\" \"${CREATING_UNIVERSAL_DIR}/CHANGELOG.md\"\n    fi\nfi";
-			showEnvVarsInLog = 0;
-		};
 		496DC38A1333D35600743F65 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -896,7 +955,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"Configuration is: ${CONFIGURATION}\"\nif [ \"${CONFIGURATION}\" = 'Release' ]; then\n    echo \"b\"\n    if [ -e \"${PROJECT_DIR}/resources/localization/English.lproj/Localizable.strings\" ]; then\n        echo \"c\"\n        rm \"${PROJECT_DIR}/resources/localization/English.lproj/Localizable.strings\"\n    fi\n    echo \"WTF\"\n    genstrings -s ATLocalizedString -o \"${PROJECT_DIR}/resources/localization/English.lproj\" \"${PROJECT_DIR}/source/\"*.m \"${PROJECT_DIR}/source/\"*/*.m\nfi\n";
+			shellScript = "echo \"Configuration is: ${CONFIGURATION}\"\nif [ \"${CONFIGURATION}\" = 'Release' ]; then\n    echo \"b\"\n    if [ -e \"${PROJECT_DIR}/resources/localization/English.lproj/Localizable.strings\" ]; then\n        echo \"c\"\n        rm \"${PROJECT_DIR}/resources/localization/English.lproj/Localizable.strings\"\n    fi\n    find \"${PROJECT_DIR}/source/\" -name *.m -print0 | xargs -0 genstrings -s ATLocalizedString -o \"${PROJECT_DIR}/resources/localization/English.lproj\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -948,9 +1007,14 @@
 				493AEB3A15990A4D00DFD4C7 /* ATSurveysBackend.m in Sources */,
 				493AEB3D15990A4D00DFD4C7 /* ATWebClient+SurveyAdditions.m in Sources */,
 				493AEB4015990A4D00DFD4C7 /* ATSurveyViewController.m in Sources */,
-				498EFB6C15BA414A00A1043B /* ATSurveyGetSurveyTask.m in Sources */,
+				498EFB6C15BA414A00A1043B /* ATSurveyGetSurveysTask.m in Sources */,
 				498EFB7115BA48B300A1043B /* ATAppConfigurationUpdateTask.m in Sources */,
 				499B56CB15D305880063C23C /* PJSONKit.m in Sources */,
+				493F8D8D1672DEFD000B5151 /* ATStaticLibraryBootstrap.m in Sources */,
+				49B2F453171B8985004E5FE0 /* ATLogViewController.m in Sources */,
+				49B2F45B171B89C4004E5FE0 /* ATLogger.m in Sources */,
+				493F8D901672E07D000B5151 /* ATURLConnection_Private.m in Sources */,
+				493F8D931672E15F000B5151 /* ATWebClient_Private.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -994,9 +1058,12 @@
 				493AEB3E15990A4D00DFD4C7 /* ATWebClient+SurveyAdditions.m in Sources */,
 				493AEB4115990A4D00DFD4C7 /* ATSurveyViewController.m in Sources */,
 				493AEB4515990A6B00DFD4C7 /* ApptentiveSurveysTests.m in Sources */,
-				498EFB6D15BA414A00A1043B /* ATSurveyGetSurveyTask.m in Sources */,
+				498EFB6D15BA414A00A1043B /* ATSurveyGetSurveysTask.m in Sources */,
 				498EFB7215BA48B300A1043B /* ATAppConfigurationUpdateTask.m in Sources */,
 				499B56CC15D305880063C23C /* PJSONKit.m in Sources */,
+				493F8D8E1672DEFD000B5151 /* ATStaticLibraryBootstrap.m in Sources */,
+				493F8D911672E07D000B5151 /* ATURLConnection_Private.m in Sources */,
+				49B2F45C171B89C4004E5FE0 /* ATLogger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1036,6 +1103,11 @@
 			children = (
 				49E891CE134FE2AB00DD098A /* English */,
 				49E891CF134FE2AB00DD098A /* es */,
+				4995EDC3175959EC00AF7268 /* de */,
+				4995EDC417595A0500AF7268 /* ja */,
+				4995EDC517595A0E00AF7268 /* pt */,
+				4995EDC617595A1800AF7268 /* ru */,
+				4995EDC717595A2200AF7268 /* zh-Hans */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1046,10 +1118,10 @@
 		496DC3A01333D35600743F65 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv6,
-					armv7,
-				);
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1062,8 +1134,9 @@
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1073,10 +1146,10 @@
 		496DC3A11333D35600743F65 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv6,
-					armv7,
-				);
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS = "JSONKIT_PREFIX=AT";
 				GCC_THUMB_SUPPORT = NO;
@@ -1084,8 +1157,9 @@
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1099,6 +1173,14 @@
 				DSTROOT = /tmp/ApptentiveConnect.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "source/ApptentiveConnect-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"JSONKIT_PREFIX=AT",
+					"APPTENTIVE_DEBUG=1",
+					"APPTENTIVE_DEBUG_LOG_VIEWER=1",
+					"AT_LOGGING_LEVEL_INFO=1",
+					"AT_LOGGING_LEVEL_DEBUG=1",
+					"AT_LOGGING_LEVEL_ERROR=1",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include;
@@ -1109,13 +1191,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					armv6,
-					armv7,
-				);
 				DSTROOT = /tmp/ApptentiveConnect.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "source/ApptentiveConnect-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"JSONKIT_PREFIX=AT",
+					"AT_LOGGING_LEVEL_INFO=1",
+					"AT_LOGGING_LEVEL_ERROR=1",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include;
@@ -1132,6 +1215,13 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "tests/ApptentiveConnectTests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"JSONKIT_PREFIX=AT",
+					"APPTENTIVE_DEBUG=1",
+					"AT_LOGGING_LEVEL_INFO=1",
+					"AT_LOGGING_LEVEL_DEBUG=1",
+					"AT_LOGGING_LEVEL_ERROR=1",
+				);
 				INFOPLIST_FILE = "tests/ApptentiveConnectTests-Info.plist";
 				OTHER_LDFLAGS = (
 					"-framework",

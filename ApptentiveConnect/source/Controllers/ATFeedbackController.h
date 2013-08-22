@@ -7,28 +7,28 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ATSimpleImageViewController.h"
 
 @class ATDefaultTextView;
 @class ATFeedback;
 @class ATToolbar;
 
-typedef enum {
-	ATFeedbackAllowPhotoAttachment = 1,
-	ATFeedbackAllowTakePhotoAttachment = 2,
-} ATFeedbackAttachmentOptions;
-
-@interface ATFeedbackController : UIViewController <UITextFieldDelegate> {
+@interface ATFeedbackController : UIViewController <ATSimpleImageViewControllerDelegate, UITextFieldDelegate> {
 	UIViewController *presentingViewController;
 	
 @private
 	UIStatusBarStyle startingStatusBarStyle;
 	UIImageView *paperclipView;
 	UIImageView *paperclipBackgroundView;
-	UIImageView *photoFrameView;
+	UIView *photoFrameContainerView;
 	UIControl *photoControl;
 	UIImage *currentImage;
 	BOOL showEmailAddressField;
 	BOOL deleteCurrentFeedbackOnCancel;
+	
+	UIPanGestureRecognizer *photoPanRecognizer;
+	CGPoint photoDragOffset;
+	CGAffineTransform photoFrameTransform;
 	
 	UIWindow *originalPresentingWindow;
 }
@@ -48,7 +48,7 @@ typedef enum {
 
 
 @property (nonatomic, retain) ATFeedback *feedback;
-@property (nonatomic, retain) NSString *customPlaceholderText;
+@property (nonatomic, copy) NSString *customPlaceholderText;
 @property (nonatomic, assign) ATFeedbackAttachmentOptions attachmentOptions;
 @property (nonatomic, assign) BOOL showEmailAddressField;
 @property (nonatomic, assign) BOOL deleteCurrentFeedbackOnCancel;
@@ -60,6 +60,7 @@ typedef enum {
 - (IBAction)showInfoView:(id)sender;
 
 - (void)presentFromViewController:(UIViewController *)presentingViewController animated:(BOOL)animated;
+- (void)dismissAnimated:(BOOL)animated completion:(void (^)(void))completion;
 - (void)dismiss:(BOOL)animated;
 - (void)unhide:(BOOL)animated;
 @end

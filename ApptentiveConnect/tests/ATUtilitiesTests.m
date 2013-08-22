@@ -50,6 +50,11 @@
 	date = [ATUtilities dateFromISO8601String:string];
 	STAssertNotNil(date, @"date shouldn't be nil");
 	STAssertEqualObjects(@"2012-09-07 23:01:07 +0000", [ATUtilities stringRepresentationOfDate:date timeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]], @"date doesn't match");
+	
+	string = @"2012-09-07T23:01:07.111+02:33";
+	date = [ATUtilities dateFromISO8601String:string];
+	STAssertNotNil(date, @"date shouldn't be nil");
+	STAssertEqualObjects(@"2012-09-07 20:28:07 +0000", [ATUtilities stringRepresentationOfDate:date timeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]], @"date doesn't match");
 }
 
 - (void)testVersionComparisons {
@@ -65,5 +70,14 @@
 	
 	STAssertTrue([ATUtilities versionString:@"5.0" isLessThanVersionString:@"5.1"], @"Should be less");
 	STAssertTrue([ATUtilities versionString:@"5.0" isLessThanVersionString:@"6.0.1"], @"Should be less");
+}
+
+- (void)testCacheControlParsing {
+	STAssertEquals(0., [ATUtilities maxAgeFromCacheControlHeader:nil], @"Should be same");
+	STAssertEquals(0., [ATUtilities maxAgeFromCacheControlHeader:@""], @"Should be same");
+	STAssertEquals(86400., [ATUtilities maxAgeFromCacheControlHeader:@"Cache-Control: max-age=86400, private"], @"Should be same");
+	STAssertEquals(86400., [ATUtilities maxAgeFromCacheControlHeader:@"max-age=86400, private"], @"Should be same");
+	STAssertEquals(47.47, [ATUtilities maxAgeFromCacheControlHeader:@"max-age=47.47, private"], @"Should be same");
+	STAssertEquals(0., [ATUtilities maxAgeFromCacheControlHeader:@"max-age=0, private"], @"Should be same");
 }
 @end

@@ -7,9 +7,7 @@
 
 #import "ATURLConnection.h"
 #import "ATURLConnection_Private.h"
-#if TARGET_OS_IPHONE_BOGUS
-#import "PSNetworkActivityIndicator.h"
-#endif
+#import "ATUtilities.h"
 
 @interface ATURLConnection ()
 - (void)cacheDataIfNeeded;
@@ -30,6 +28,7 @@
 @synthesize failedAuthentication;
 @synthesize connectionError;
 @synthesize percentComplete;
+@synthesize expiresMaxAge;
 
 - (id)initWithURL:(NSURL *)url {
 	return [self initWithURL:url delegate:nil];
@@ -68,8 +67,18 @@
 	return self.cancelled;
 }
 
+- (NSDictionary *)headers {
+	return headers;
+}
+
 - (void)setValue:(NSString *)value forHTTPHeaderField:(NSString *)field {
 	[headers setValue:value forKey:field];
+}
+
+- (void)removeHTTPHeaderField:(NSString *)field {
+	if ([headers objectForKey:field]) {
+		[headers removeObjectForKey:field];
+	}
 }
 
 - (void)setHTTPMethod:(NSString *)method {
@@ -86,6 +95,13 @@
 	}
 }
 
+- (void)setHTTPBodyStream:(NSInputStream *)stream {
+	if (HTTPBodyStream != stream) {
+		[HTTPBodyStream release];
+		HTTPBodyStream = [stream retain];
+	}
+}
+
 - (void)start {
 	@synchronized (self) {
 		NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
@@ -98,7 +114,10 @@
 			if ([self isFinished]) {
 				break;
 			}
-			NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:self.targetURL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:timeoutInterval];
+			if (request) {
+				[request release], request = nil;
+			}
+			request = [[NSMutableURLRequest alloc] initWithURL:self.targetURL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:timeoutInterval];
 			for (NSString *key in headers) {
 				[request setValue:[headers objectForKey:key] forHTTPHeaderField:key];
 			}
@@ -107,15 +126,13 @@
 			}
 			if (HTTPBody) {
 				[request setHTTPBody:HTTPBody];
+			} else if (HTTPBodyStream) {
+				[request setHTTPBodyStream:HTTPBodyStream];
 			}
 			self.connection = [[[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO] autorelease];
 			[self.connection scheduleInRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
 			[self.connection start];
 			self.executing = YES;
-			[request release];
-#if TARGET_OS_IPHONE_BOGUS
-			[[PSNetworkActivityIndicator sharedIndicator] increment];
-#endif
 		} while (NO);
 		[pool drain];
 	}
@@ -138,6 +155,14 @@
 			} else {
 				statusCode = 200;
 			}
+			
+			NSDictionary *responseHeaders = [response allHeaderFields];
+			NSString *cacheControlHeader = [responseHeaders valueForKey:@"Cache-Control"];
+			if (cacheControlHeader) {
+				expiresMaxAge = [ATUtilities maxAgeFromCacheControlHeader:cacheControlHeader];
+			} else {
+				expiresMaxAge = 0;
+			}
 		}
 	}
 }
@@ -149,13 +174,10 @@
 		if (error) {
 			self.connectionError = error;
 		}
-#if TARGET_OS_IPHONE_BOGUS
-		[[PSNetworkActivityIndicator sharedIndicator] decrement];
-#endif
 		if (delegate && [delegate respondsToSelector:@selector(connectionFailed:)]){
 			[delegate performSelectorOnMainThread:@selector(connectionFailed:) withObject:self waitUntilDone:YES];
 		} else {
-			NSLog(@"Orphaned connection. No delegate or nonresponsive delegate.");
+			ATLogError(@"Orphaned connection. No delegate or nonresponsive delegate.");
 		}
 	}
 }
@@ -175,7 +197,7 @@
 				if (delegate && [delegate respondsToSelector:@selector(connectionFinishedSuccessfully:)]){
 					[delegate performSelectorOnMainThread:@selector(connectionFinishedSuccessfully:) withObject:self waitUntilDone:YES];
 				} else {
-					NSLog(@"Orphaned connection. No delegate or nonresponsive delegate.");
+					ATLogError(@"Orphaned connection. No delegate or nonresponsive delegate.");
 				}
 			}
 			[data release];
@@ -184,12 +206,9 @@
 			if (delegate && [delegate respondsToSelector:@selector(connectionFailed:)]){
 				[delegate performSelectorOnMainThread:@selector(connectionFailed:) withObject:self waitUntilDone:YES];
 			} else {
-				NSLog(@"Orphaned connection. No delegate or nonresponsive delegate.");
+				ATLogError(@"Orphaned connection. No delegate or nonresponsive delegate.");
 			}
 		}
-#if TARGET_OS_IPHONE_BOGUS
-		[[PSNetworkActivityIndicator sharedIndicator] decrement];
-#endif
 		self.executing = NO;
 		self.finished = YES;
 	}
@@ -212,13 +231,10 @@
 		self.finished = YES;
 		self.executing = NO;
 		failedAuthentication = YES;
-#if TARGET_OS_IPHONE_BOGUS
-		[[PSNetworkActivityIndicator sharedIndicator] decrement];
-#endif
 		if (delegate && [delegate respondsToSelector:@selector(connectionFailed:)]){
 			[delegate performSelectorOnMainThread:@selector(connectionFailed:) withObject:self waitUntilDone:YES];
 		} else {
-			NSLog(@"Orphaned connection. No delegate or nonresponsive delegate.");
+			ATLogError(@"Orphaned connection. No delegate or nonresponsive delegate.");
 		}
 	}
 }
@@ -228,7 +244,42 @@
 		self.percentComplete = ((float)totalBytesWritten)/((float) totalBytesExpectedToWrite);
 		[delegate performSelectorOnMainThread:@selector(connectionDidProgress:) withObject:self waitUntilDone:YES];
 	} else {
-		NSLog(@"Orphaned connection. No delegate or nonresponsive delegate.");
+		ATLogError(@"Orphaned connection. No delegate or nonresponsive delegate.");
+	}
+}
+
+- (NSCachedURLResponse *)connection:(NSURLConnection *)aConnection willCacheResponse:(NSCachedURLResponse *)cachedResponse {
+	// See: http://blackpixel.com/blog/1659/caching-and-nsurlconnection/
+	NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)[cachedResponse response];
+	NSURLRequest *r = nil;
+#if TARGET_OS_IPHONE
+	if ([aConnection respondsToSelector:@selector(currentRequest)]) {
+		r = [aConnection currentRequest];
+	}
+#endif
+#if TARGET_OS_MAC
+	if (request) {
+		r = request;
+	}
+#endif
+	if (r != nil && [r cachePolicy] == NSURLRequestUseProtocolCachePolicy) {
+		NSDictionary *responseHeaders = [httpResponse allHeaderFields];
+		NSString *cacheControlHeader = [responseHeaders valueForKey:@"Cache-Control"];
+		NSString *expiresHeader = [responseHeaders valueForKey:@"Expires"];
+		if ((cacheControlHeader == nil) && (expiresHeader == nil)) {
+			return nil;
+		}
+	}
+	return cachedResponse;
+}
+
+- (NSURLRequest *)connection:(NSURLConnection *)inConnection willSendRequest:(NSURLRequest *)inRequest redirectResponse: (NSURLResponse *)inRedirectResponse {
+	if (inRedirectResponse) {
+		NSMutableURLRequest *r = [[request mutableCopy] autorelease];
+		[r setURL:[inRequest URL]];
+		return r;
+	} else {
+		return inRequest;
 	}
 }
 
@@ -251,6 +302,7 @@
 - (void)dealloc {
 	@synchronized (self) {
 		delegate = nil;
+		[request release], request = nil;
 		[targetURL release];
 		if (connection) {
 			[connection release];
@@ -267,7 +319,8 @@
 		
 		[headers release];
 		[HTTPMethod release];
-		[HTTPBody release];
+		[HTTPBody release], HTTPBody = nil;
+		[HTTPBodyStream release], HTTPBodyStream = nil;
 	}
 	[super dealloc];
 }
@@ -287,6 +340,8 @@
 		} else {
 			[result appendFormat:@"<Data of length:%ld>", (long)[HTTPBody length]];
 		}
+	} else if (HTTPBodyStream) {
+		[result appendString:@"<NSInputStream>"];
 	}
 	return result;
 }
@@ -301,9 +356,6 @@
 		delegate = nil;
 		if (connection) {
 			[connection cancel];
-#if TARGET_OS_IPHONE_BOGUS
-			[[PSNetworkActivityIndicator sharedIndicator] decrement];
-#endif
 		}
 		self.executing = NO;
 		cancelled = YES;

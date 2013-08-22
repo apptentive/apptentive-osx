@@ -11,6 +11,7 @@
 #import "ATHUDView.h"
 #import "ATRecordTask.h"
 #import "ATSurvey.h"
+#import "ATSurveys.h"
 #import "ATSurveysBackend.h"
 #import "ATSurveyMetrics.h"
 #import "ATSurveyQuestion.h"
@@ -126,16 +127,18 @@ enum {
 	[response release], response = nil;
 	[task release], task = nil;
 	
-	ATHUDView *hud = [[ATHUDView alloc] initWithWindow:self.view.window];
-	if (survey.successMessage) {
-		hud.label.text = survey.successMessage;
-	} else {
+	if (!survey.successMessage) {
+		ATHUDView *hud = [[ATHUDView alloc] initWithWindow:self.view.window];
 		hud.label.text = ATLocalizedString(@"Thanks!", @"Text in thank you display upon submitting survey.");
 		hud.fadeOutDuration = 5.0;
+		[hud show];
+		[hud autorelease];
+	} else {
+		UIAlertView *successAlert = [[[UIAlertView alloc] initWithTitle:ATLocalizedString(@"Thanks!", @"Text in thank you display upon submitting survey.") message:survey.successMessage delegate:nil cancelButtonTitle:ATLocalizedString(@"Okay", @"Okay button title") otherButtonTitles:nil] autorelease];
+		[successAlert show];
 	}
-	[hud show];
-	[hud autorelease];
 	
+	NSDictionary *notificationInfo = [[NSDictionary alloc] initWithObjectsAndKeys:survey.identifier, ATSurveyIDKey, nil];
 	NSDictionary *metricsInfo = [[NSDictionary alloc] initWithObjectsAndKeys:survey.identifier, ATSurveyMetricsSurveyIDKey, [NSNumber numberWithInt:ATSurveyWindowTypeSurvey], ATSurveyWindowTypeKey, [NSNumber numberWithInt:ATSurveyEventTappedSend], ATSurveyMetricsEventKey, nil];
 	[[NSNotificationCenter defaultCenter] postNotificationName:ATSurveyDidHideWindowNotification object:nil userInfo:metricsInfo];
 	[metricsInfo release], metricsInfo = nil;
@@ -144,6 +147,9 @@ enum {
 	[[ATSurveysBackend sharedBackend] setDidSendSurvey:survey];
 	[[ATSurveysBackend sharedBackend] resetSurvey];
 	[self.navigationController dismissModalViewControllerAnimated:YES];
+	
+	[[NSNotificationCenter defaultCenter] postNotificationName:ATSurveySentNotification object:nil userInfo:notificationInfo];
+	[notificationInfo release], notificationInfo = nil;
 }
 
 - (void)loadView {
@@ -231,7 +237,7 @@ enum {
 			textFrame.size.width = cell.frame.size.width - 38.0;
 			cell.textLabel.frame = textFrame;
 #if DEBUG_CELL_HEIGHT_PROBLEM
-			NSLog(@"%@", NSStringFromCGRect(cell.textLabel.frame));
+			ATLogDebug(@"%@", NSStringFromCGRect(cell.textLabel.frame));
 #endif
 		}
 		
@@ -242,9 +248,9 @@ enum {
 		f.size = s;
 #if DEBUG_CELL_HEIGHT_PROBLEM
 		if (s.height >= 50) {
-			NSLog(@"cell width is: %f", cell.frame.size.width);
-			NSLog(@"width is: %f", cellSize.width);
-			NSLog(@"Hi");
+			ATLogDebug(@"cell width is: %f", cell.frame.size.width);
+			ATLogDebug(@"width is: %f", cellSize.width);
+			ATLogDebug(@"Hi");
 		}
 #endif
 		
@@ -311,6 +317,9 @@ enum {
 			cell.backgroundColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1.0];
 			cell.selectionStyle = UITableViewCellSelectionStyleNone;
 			cell.textLabel.font = [UIFont systemFontOfSize:15];
+			cell.textLabel.numberOfLines = 0;
+			cell.textLabel.adjustsFontSizeToFitWidth = NO;
+			cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
 		}
 		NSString *text = nil;
 		if (question.instructionsText) {
@@ -334,9 +343,12 @@ enum {
 			cell = [tableView dequeueReusableCellWithIdentifier:ATSurveyCheckboxCellIdentifier];
 			if (cell == nil) {
 				cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ATSurveyCheckboxCellIdentifier] autorelease];
-				cell.textLabel.font = [UIFont systemFontOfSize:18];
 			}
+			cell.textLabel.font = [UIFont systemFontOfSize:18];
 			cell.textLabel.text = answer.value;
+			cell.textLabel.numberOfLines = 0;
+			cell.textLabel.adjustsFontSizeToFitWidth = NO;
+			cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
 			if ([[question selectedAnswerChoices] containsObject:answer]) {
 				cell.accessoryType = UITableViewCellAccessoryCheckmark;
 			} else {
@@ -431,7 +443,11 @@ enum {
 				ATSurveyQuestionAnswer *answer = [question.answerChoices objectAtIndex:answerIndex];
 				BOOL isChecked = cell.accessoryType == UITableViewCellAccessoryCheckmark;
 				
-				if (isChecked == NO && question.type == ATSurveyQuestionTypeMultipleSelect && [[question selectedAnswerChoices] count] == question.maxSelectionCount) {
+				NSUInteger maxSelections = question.maxSelectionCount;
+				if (maxSelections == 0) {
+					maxSelections = NSUIntegerMax;
+				}
+				if (isChecked == NO && question.type == ATSurveyQuestionTypeMultipleSelect && [[question selectedAnswerChoices] count] == maxSelections) {
 					// Do nothing if unchecked and have already selected the maximum number of answers.
 				} else if (isChecked == NO) {
 					cell.accessoryType = UITableViewCellAccessoryCheckmark;

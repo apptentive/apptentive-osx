@@ -86,6 +86,10 @@
 	return @"record";
 }
 
+- (void)cleanup {
+	[record cleanup];
+}
+
 #pragma mark ATAPIRequestDelegate
 - (void)at_APIRequestDidFinish:(ATAPIRequest *)sender result:(id)result {
 	@synchronized(self) {
@@ -106,7 +110,7 @@
 		self.failed = YES;
 		self.lastErrorTitle = sender.errorTitle;
 		self.lastErrorMessage = sender.errorMessage;
-		NSLog(@"ATAPIRequest failed: %@, %@", sender.errorTitle, sender.errorMessage);
+		ATLogInfo(@"ATAPIRequest failed: %@, %@", sender.errorTitle, sender.errorMessage);
 		[self stop];
 		[self release];
 	}

@@ -132,21 +132,18 @@ static NSDateFormatter *dateFormatter = nil;
 + (UIImage *)imageByScalingImage:(UIImage *)image toSize:(CGSize)size scale:(CGFloat)contentScale fromITouchCamera:(BOOL)isFromITouchCamera {
 	UIImage *result = nil;
 	CGImageRef imageRef = nil;
-	CGImageAlphaInfo alphaInfo = kCGImageAlphaNone;
-	size_t samplesPerPixel, bytesPerRow;
+	size_t samplesPerPixel, bytesPerRow, bitsPerComponent;
 	CGFloat newHeight, newWidth;
 	CGRect newRect;
 	CGContextRef bitmapContext = nil;
 	CGImageRef newRef = nil;
 	CGAffineTransform transform = CGAffineTransformIdentity;
+	CGImageAlphaInfo newAlphaInfo;
+	CGColorSpaceRef colorSpaceRef;
 	
 	imageRef = [image CGImage];
-	alphaInfo = CGImageGetAlphaInfo(imageRef);
 	
-	samplesPerPixel = CGImageGetBitsPerPixel(imageRef)/CGImageGetBitsPerComponent(imageRef);
-	if (alphaInfo == kCGImageAlphaNone) {
-		samplesPerPixel++;
-	}
+	samplesPerPixel = 4;
 	
 	size = CGSizeMake(floor(size.width), floor(size.height));
 	newWidth = size.width;
@@ -187,17 +184,13 @@ static NSDateFormatter *dateFormatter = nil;
 	}
 	newRect = CGRectIntegral(CGRectMake(0.0, 0.0, newWidth, newHeight));
 	
-	// 16-byte aligned, Quartz book p. 353
-	bytesPerRow = ((size_t)(samplesPerPixel * newWidth) + 15) & ~15;
+	bytesPerRow = samplesPerPixel * newWidth;
+	newAlphaInfo = kCGImageAlphaPremultipliedFirst;
+	bitsPerComponent = 8;
+	colorSpaceRef = CGColorSpaceCreateDeviceRGB();
 	
-	CGImageAlphaInfo newAlphaInfo;
-	if (alphaInfo == kCGImageAlphaNone) {
-		newAlphaInfo = kCGImageAlphaNoneSkipLast;
-	} else {
-		newAlphaInfo = kCGImageAlphaPremultipliedFirst;
-	}
-	
-	bitmapContext = CGBitmapContextCreate(NULL, newWidth, newHeight, CGImageGetBitsPerComponent(imageRef), bytesPerRow, CGImageGetColorSpace(imageRef), newAlphaInfo);
+	bitmapContext = CGBitmapContextCreate(NULL, newWidth, newHeight, bitsPerComponent, bytesPerRow, colorSpaceRef, newAlphaInfo);
+	CGColorSpaceRelease(colorSpaceRef), colorSpaceRef = NULL;
 	CGContextSetInterpolationQuality(bitmapContext, kCGInterpolationHigh);
 	
 	// The iPhone tries to be "smart" about image orientation, and messes it
@@ -255,32 +248,6 @@ static NSDateFormatter *dateFormatter = nil;
 	return result;
 }
 #elif TARGET_OS_MAC
-+ (NSString *)currentMachineName {
-	char modelBuffer[256];
-	size_t sz = sizeof(modelBuffer);
-	NSString *result = @"Unknown";
-	if (0 == sysctlbyname("hw.model", modelBuffer, &sz, NULL, 0)) {
-		modelBuffer[sizeof(modelBuffer) - 1] = 0;
-		result = [NSString stringWithUTF8String:modelBuffer];
-	}
-	return result;
-}
-
-+ (NSString *)currentSystemName {
-	NSProcessInfo *info = [NSProcessInfo processInfo];
-	NSString *osName = [info operatingSystemName];
-	
-	if ([osName isEqualToString:@"NSMACHOperatingSystem"]) {
-		osName = @"Mac OS X";
-	}
-	
-	return osName;
-}
-
-+ (NSString *)currentSystemVersion {
-	NSProcessInfo *info = [NSProcessInfo processInfo];
-	return [info operatingSystemVersionString];
-}
 
 + (NSData *)pngRepresentationOfImage:(NSImage *)image {
 	CGImageRef imageRef = [image CGImageForProposedRect:NULL context:NULL hints:nil];
@@ -291,6 +258,45 @@ static NSDateFormatter *dateFormatter = nil;
 }
 #endif
 
++ (NSString *)currentMachineName {
+#if TARGET_OS_IPHONE
+	return [[UIDevice currentDevice] model];
+#elif TARGET_OS_MAC
+	char modelBuffer[256];
+	size_t sz = sizeof(modelBuffer);
+	NSString *result = @"Unknown";
+	if (0 == sysctlbyname("hw.model", modelBuffer, &sz, NULL, 0)) {
+		modelBuffer[sizeof(modelBuffer) - 1] = 0;
+		result = [NSString stringWithUTF8String:modelBuffer];
+	}
+	return result;
+#endif
+}
++ (NSString *)currentSystemName {
+#if TARGET_OS_IPHONE
+	return [[UIDevice currentDevice] systemName];
+#elif TARGET_OS_MAC
+	NSProcessInfo *info = [NSProcessInfo processInfo];
+	NSString *osName = [info operatingSystemName];
+	
+	if ([osName isEqualToString:@"NSMACHOperatingSystem"]) {
+		osName = @"Mac OS X";
+	}
+	
+	return osName;
+#endif
+}
+
++ (NSString *)currentSystemVersion {
+#if TARGET_OS_PHONE
+	return [[UIDevice currentDevice] systemVersion];
+#elif TARGET_OS_MAC
+	NSProcessInfo *info = [NSProcessInfo processInfo];
+	return [info operatingSystemVersionString];
+#endif
+}
+
+
 + (NSString *)stringByEscapingForURLArguments:(NSString *)string {
 	CFStringRef result = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (CFStringRef)string, NULL, (CFStringRef)@"%:/?#[]@!$&'()*+,;=", kCFStringEncodingUTF8);
 	return [NSMakeCollectable(result) autorelease];
@@ -298,10 +304,9 @@ static NSDateFormatter *dateFormatter = nil;
 
 + (NSString *)randomStringOfLength:(NSUInteger)length {
 	static NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-	srandomdev();
 	NSMutableString *result = [NSMutableString stringWithString:@""];
 	for (NSUInteger i = 0; i < length; i++) {
-		[result appendFormat:@"%c", [letters characterAtIndex:random()%[letters length]]];
+		[result appendFormat:@"%c", [letters characterAtIndex:arc4random()%[letters length]]];
 	}
 	return result;
 }
@@ -438,12 +443,11 @@ static NSDateFormatter *dateFormatter = nil;
 			}
 			NSInteger hours = 0;
 			NSInteger minutes = 0;
-			NSInteger seconds = 0;
 			if (!([scanner scanInteger:&hours] && [scanner scanString:@":" intoString:NULL] && [scanner scanInteger:&minutes])) {
 				validDate = NO;
 				break;
 			}
-			NSInteger secondsFromGMT = hours*3600 + seconds*60;
+			NSInteger secondsFromGMT = hours*3600 + minutes*60;
 			if (!isPositiveOffset) {
 				secondsFromGMT = secondsFromGMT * -1;
 			}
@@ -541,6 +545,22 @@ static NSDateFormatter *dateFormatter = nil;
 		return buildNumberString;
 	}
 }
+
++ (NSTimeInterval)maxAgeFromCacheControlHeader:(NSString *)cacheControl {
+	if (cacheControl == nil || [cacheControl rangeOfString:@"max-age"].location == NSNotFound) {
+		return 0;
+	}
+	NSTimeInterval maxAge = 0;
+	NSScanner *scanner = [[NSScanner alloc] initWithString:[cacheControl lowercaseString]];
+	[scanner scanUpToString:@"max-age" intoString:NULL];
+	if ([scanner scanString:@"max-age" intoString:NULL] && [scanner scanString:@"=" intoString:NULL]) {
+		if (![scanner scanDouble:&maxAge]) {
+			maxAge = 0;
+		}
+	}
+	[scanner release], scanner = nil;
+	return maxAge;
+}
 @end
 
 
@@ -549,10 +569,15 @@ static NSDateFormatter *dateFormatter = nil;
 	@synchronized(self) {
 		if (dateFormatter == nil) {
 			dateFormatter = [[NSDateFormatter alloc] init];
+			NSLocale *enUSLocale = [[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"] autorelease];
+			NSCalendar *calendar = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
+			[dateFormatter setLocale:enUSLocale];
+			[dateFormatter setCalendar:calendar];
 			[dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
 		}
 	}
 }
+
 @end
 
 extern CGRect ATCGRectOfEvenSize(CGRect inRect) {
