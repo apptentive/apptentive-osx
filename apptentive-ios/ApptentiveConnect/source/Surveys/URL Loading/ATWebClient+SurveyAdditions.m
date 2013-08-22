@@ -13,11 +13,9 @@
 #import "ATURLConnection.h"
 #import "PJSONKit.h"
 
-#define kSurveysChannelName @"Apptentive-Surveys"
-
 @implementation ATWebClient (SurveyAdditions)
-- (ATAPIRequest *)requestForGettingSurvey {
-	NSString *urlString = [NSString stringWithFormat:@"%@/surveys/active", [self baseURLString]];
+- (ATAPIRequest *)requestForGettingSurveys {
+	NSString *urlString = [NSString stringWithFormat:@"%@/surveys?active=1", [self baseURLString]];
 	ATURLConnection *conn = [self connectionToGet:[NSURL URLWithString:urlString]];
 	conn.timeoutInterval = 20.0;
 	ATAPIRequest *request = [[ATAPIRequest alloc] initWithConnection:conn channelName:[self commonChannelName]];
@@ -30,7 +28,7 @@
 	NSError *error = nil;
 	NSString *postString = [[surveyResponse apiJSON] ATJSONStringWithOptions:ATJKSerializeOptionPretty error:&error];
 	if (!postString && error != nil) {
-		NSLog(@"ATWebClient+SurveyAdditions: Error while encoding JSON: %@", error);
+		ATLogError(@"ATWebClient+SurveyAdditions: Error while encoding JSON: %@", error);
 		return nil;
 	}
 	NSString *url = [self apiURLStringWithPath:@"records"];
@@ -39,8 +37,12 @@
 	conn = [self connectionToPost:[NSURL URLWithString:url] JSON:postString];
 	
 	conn.timeoutInterval = 240.0;
-	ATAPIRequest *request = [[ATAPIRequest alloc] initWithConnection:conn channelName:kSurveysChannelName];
+	ATAPIRequest *request = [[ATAPIRequest alloc] initWithConnection:conn channelName:ATWebClientDefaultChannelName];
 	request.returnType = ATAPIRequestReturnTypeJSON;
 	return [request autorelease];
 }
 @end
+
+void ATWebClient_SurveyAdditions_Bootstrap() {
+	NSLog(@"Loading ATWebClient_SurveyAdditions_Bootstrap");
+}

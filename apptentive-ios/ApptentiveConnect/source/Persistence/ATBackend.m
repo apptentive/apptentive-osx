@@ -14,15 +14,15 @@
 #import "ATFeedbackTask.h"
 #import "ApptentiveMetrics.h"
 #import "ATReachability.h"
+#import "ATStaticLibraryBootstrap.h"
 #import "ATTaskQueue.h"
 #import "ATUtilities.h"
 #import "ATWebClient.h"
-
+#import "ATLog.h"
 
 NSString *const ATBackendNewAPIKeyNotification = @"ATBackendNewAPIKeyNotification";
 NSString *const ATUUIDPreferenceKey = @"ATUUIDPreferenceKey";
-
-static ATBackend *sharedBackend = nil;
+NSString *const ATInfoDistributionKey = @"ATInfoDistributionKey";
 
 @interface ATBackend ()
 - (void)updateRatingConfigurationIfNeeded;
@@ -44,12 +44,12 @@ static ATBackend *sharedBackend = nil;
 @synthesize apiKey, working, currentFeedback;
 
 + (ATBackend *)sharedBackend {
-	@synchronized(self) {
-		if (sharedBackend == nil) {
-			sharedBackend = [[self alloc] init];
-			[ApptentiveMetrics sharedMetrics];
-		}
-	}
+	static ATBackend *sharedBackend = nil;
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		sharedBackend = [[self alloc] init];
+	});
+	[ApptentiveMetrics sharedMetrics];
 	return sharedBackend;
 }
 
@@ -78,9 +78,9 @@ static ATBackend *sharedBackend = nil;
 		result = [UIImage imageNamed:name];
 	}
 	if (!result) {
-		NSLog(@"Unable to find image named: %@", name);
-		NSLog(@"sought at: %@", imagePath);
-		NSLog(@"bundle is: %@", [ATConnect resourceBundle]);
+		ATLogError(@"Unable to find image named: %@", name);
+		ATLogError(@"sought at: %@", imagePath);
+		ATLogError(@"bundle is: %@", [ATConnect resourceBundle]);
 	}
 	return result;
 }
@@ -113,9 +113,9 @@ static ATBackend *sharedBackend = nil;
 		result = [NSImage imageNamed:name];
 	}
 	if (!result) {
-		NSLog(@"Unable to find image named: %@", name);
-		NSLog(@"sought at: %@", imagePath);
-		NSLog(@"bundle is: %@", [ATConnect resourceBundle]);
+		ATLogError(@"Unable to find image named: %@", name);
+		ATLogError(@"sought at: %@", imagePath);
+		ATLogError(@"bundle is: %@", [ATConnect resourceBundle]);
 	}
 	return result;
 }
@@ -193,8 +193,25 @@ static ATBackend *sharedBackend = nil;
 	NSError *error = nil;
 	BOOL result = [fm createDirectoryAtPath:newPath withIntermediateDirectories:YES attributes:nil error:&error];
 	if (!result) {
-		NSLog(@"Failed to create support directory: %@", newPath);
-		NSLog(@"Error was: %@", error);
+		ATLogError(@"Failed to create support directory: %@", newPath);
+		ATLogError(@"Error was: %@", error);
+		return nil;
+	}
+	return newPath;
+}
+
+- (NSString *)attachmentDirectoryPath {
+	NSString *supportPath = [self supportDirectoryPath];
+	if (!supportPath) {
+		return nil;
+	}
+	NSString *newPath = [supportPath stringByAppendingPathComponent:@"attachments"];
+	NSFileManager *fm = [NSFileManager defaultManager];
+	NSError *error = nil;
+	BOOL result = [fm createDirectoryAtPath:newPath withIntermediateDirectories:YES attributes:nil error:&error];
+	if (!result) {
+		ATLogError(@"Failed to create attachments directory: %@", newPath);
+		ATLogError(@"Error was: %@", error);
 		return nil;
 	}
 	return newPath;
@@ -257,10 +274,24 @@ static ATBackend *sharedBackend = nil;
 - (NSURL *)apptentiveHomepageURL {
 	return [NSURL URLWithString:@"http://www.apptentive.com/"];
 }
+
+- (NSURL *)apptentivePrivacyPolicyURL {
+	return [NSURL URLWithString:@"http://www.apptentive.com/privacy"];
+}
+
+- (NSString *)distributionName {
+	static NSString *cachedDistributionName = nil;
+    static dispatch_once_t onceToken = 0;
+    dispatch_once(&onceToken, ^{
+		cachedDistributionName = [(NSString *)[[ATConnect resourceBundle] objectForInfoDictionaryKey:ATInfoDistributionKey] retain];
+    });
+    return cachedDistributionName;
+}
 @end
 
 @implementation ATBackend (Private)
 - (void)setup {
+	[ATStaticLibraryBootstrap forceStaticLibrarySymbolUsage];
 #if TARGET_OS_IPHONE
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopWorking:) name:UIApplicationWillTerminateNotification object:nil];
 	

@@ -37,6 +37,7 @@ static NSString *ATMetricNameAppLaunch = @"app.launch";
 static NSString *ATMetricNameAppExit = @"app.exit";
 
 @interface ApptentiveMetrics (Private)
+- (void)addLaunchMetric;
 - (void)addMetricWithName:(NSString *)name info:(NSDictionary *)userInfo;
 - (ATFeedbackWindowType)windowTypeFromNotification:(NSNotification *)notification;
 - (void)feedbackDidShowWindow:(NSNotification *)notification;
@@ -68,11 +69,10 @@ static NSString *ATMetricNameAppExit = @"app.exit";
 
 + (ApptentiveMetrics *)sharedMetrics {
 	static ApptentiveMetrics *sharedSingleton = nil;
-	@synchronized(self) {
-		if (sharedSingleton == nil) {
-			sharedSingleton = [[ApptentiveMetrics alloc] init];
-		}
-	}
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		sharedSingleton = [[ApptentiveMetrics alloc] init];
+	});
 	return sharedSingleton;
 }
 
@@ -91,7 +91,6 @@ static NSString *ATMetricNameAppExit = @"app.exit";
 		metricsEnabled = NO;
 		[ApptentiveMetrics registerDefaults];
 		[self updateWithCurrentPreferences];
-		[self addMetricWithName:ATMetricNameAppLaunch info:nil];
 		
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(feedbackDidShowWindow:) name:ATFeedbackDidShowWindowNotification object:nil];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(feedbackDidHideWindow:) name:ATFeedbackDidHideWindowNotification object:nil];
@@ -116,6 +115,7 @@ static NSString *ATMetricNameAppExit = @"app.exit";
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillTerminate:) name:NSApplicationWillTerminateNotification object:nil];
 		
 #endif
+		[self performSelector:@selector(addLaunchMetric) withObject:nil afterDelay:0.1];
 	}
 	
 	return self;
@@ -130,6 +130,12 @@ static NSString *ATMetricNameAppExit = @"app.exit";
 
 
 @implementation ApptentiveMetrics (Private)
+- (void)addLaunchMetric {
+	@autoreleasepool {
+		[self addMetricWithName:ATMetricNameAppLaunch info:nil];
+	}
+}
+
 - (void)addMetricWithName:(NSString *)name info:(NSDictionary *)userInfo {
 	if (metricsEnabled == NO) {
 		return;
@@ -150,7 +156,7 @@ static NSString *ATMetricNameAppExit = @"app.exit";
 		windowType = [(NSNumber *)[[notification userInfo] objectForKey:ATFeedbackWindowTypeKey] intValue];
 	}
 	if (windowType != ATFeedbackWindowTypeFeedback && windowType != ATFeedbackWindowTypeInfo) {
-		NSLog(@"Unknown window type: %d", windowType);
+		ATLogError(@"Unknown window type: %d", windowType);
 	}
 	return windowType;
 }
@@ -194,7 +200,7 @@ static NSString *ATMetricNameAppExit = @"app.exit";
 		buttonType = [(NSNumber *)[[notification userInfo] objectForKey:ATAppRatingButtonTypeKey] intValue];
 	}
 	if (buttonType != ATAppRatingEnjoymentButtonTypeYes && buttonType != ATAppRatingEnjoymentButtonTypeNo) {
-		NSLog(@"Unknown button type: %d", buttonType);
+		ATLogError(@"Unknown button type: %d", buttonType);
 	}
 	return buttonType;
 }
@@ -218,7 +224,7 @@ static NSString *ATMetricNameAppExit = @"app.exit";
 		buttonType = [(NSNumber *)[[notification userInfo] objectForKey:ATAppRatingButtonTypeKey] intValue];
 	}
 	if (buttonType != ATAppRatingButtonTypeNo && buttonType != ATAppRatingButtonTypeRemind && buttonType != ATAppRatingButtonTypeRateApp) {
-		NSLog(@"Unknown button type: %d", buttonType);
+		ATLogError(@"Unknown button type: %d", buttonType);
 	}
 	return buttonType;
 }
@@ -249,7 +255,7 @@ static NSString *ATMetricNameAppExit = @"app.exit";
 	}
 	if (event != ATSurveyEventTappedSend && event != ATSurveyEventTappedCancel && event != ATSurveyEventAnsweredQuestion) {
 		event = ATSurveyEventUnknown;
-		NSLog(@"Unknown survey event type: %d", event);
+		ATLogError(@"Unknown survey event type: %d", event);
 	}
 	return event;
 }

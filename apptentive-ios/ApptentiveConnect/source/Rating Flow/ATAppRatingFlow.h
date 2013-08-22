@@ -8,15 +8,19 @@
 
 #if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
+#import <StoreKit/StoreKit.h>
 #elif TARGET_OS_MAC
 #import <Cocoa/Cocoa.h>
 #endif
 
+/*! Notification sent when the user has agreed to rate the application. */
+extern NSString *const ATAppRatingFlowUserAgreedToRateAppNotification;
+
 /*! A workflow for a user either giving feedback on or rating the current
  application. */
-@interface ATAppRatingFlow : NSObject 
+@interface ATAppRatingFlow : NSObject
 #if TARGET_OS_IPHONE
-<UIAlertViewDelegate>
+<SKStoreProductViewControllerDelegate, UIAlertViewDelegate>
 #endif
 {
 @private
@@ -32,7 +36,11 @@
 	NSUInteger daysBeforeRePrompting;
 	
 	NSDate *lastUseOfApp;
+	
+	NSString *appName;
 }
+/*! Set to a custom app name if you'd like to use something other than the bundle display name. */
+@property (nonatomic, copy) NSString *appName;
 
 /*! The default singleton constructor. Call with an iTunes Applicaiton ID as
  an NSString */
@@ -67,6 +75,7 @@
  will be shown.
  */
 - (void)userDidPerformSignificantEvent:(BOOL)canPromptForRating viewController:(UIViewController *)viewController;
+
 #elif TARGET_OS_MAC
 /*! 
  Call when the application is done launching. If we should be able to
@@ -84,7 +93,6 @@
  */
 - (void)userDidPerformSignificantEvent:(BOOL)canPromptForRating;
 #endif
-
 
 #if TARGET_OS_IPHONE
 /*!

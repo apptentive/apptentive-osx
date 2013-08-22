@@ -1,3 +1,84 @@
+2013-06-07 wooster v0.4.9
+-------------------------
+We've finally added support for surveys with tags.
+
+- To check for surveys, call `ATSurveys +(void)checkForAvailableSurveys` as usual.
+- Listen for the `ATSurveyNewSurveyAvailableNotification`.
+- Check to see if surveys with a given set of tags are available with `ATSurveys +(BOOL)hasSurveyAvailableWithTags:(NSSet *)tags`.
+- Display a survey with tags with: `ATSurveys +(void)presentSurveyControllerWithTags:(NSSet *)tags fromViewController:(UIViewController *)viewController`.
+
+Other fixes:
+
+* Fixes IOS-105 Add Russian Localization
+    * Thanks to Захаров Дмитрий for the translation!
+* Fixes IOS-120 Get localizations for iOS Client strings
+* Fixes IOS-63 Implement new client API for surveys (survey tags)
+* Fixes IOS-106 Limit connections to 2 at once
+    * This prevents a potential problem in situations where the number of connections is limited. See [the problem AFNetworking+TestFlight hit](https://github.com/AFNetworking/AFNetworking/issues/307).
+* Fixes IOS-92 Demo app should show a message when the API key is not set
+    * This will hopefully be a nice reminder, rather than an irritation.
+* Fixes IOS-85 Setting days before re-prompt to 0 doesn't work as expected
+    * If this value is 0, we will now only prompt once per update.
+* Fixes IOS-84 Re-prompt only once per version
+    * We will only prompt twice per update total (prompt and re-prompt).
+* Fixes IOS-62 Add support for repeat surveys
+* Fixes IOS-99 Add Callback after a user agrees to rate the app
+    * You can now listen for `ATAppRatingFlowUserAgreedToRateAppNotification` to know when a user agrees to rate the app.
+* apptentive/apptentive-ios#32 Showing the rating dialog from a modal
+* IOS-108 Fix for launches not being detected after IOS-76 changes
+* IOS-107 Fix warnings in PrefixedJSONKit
+* Fixes IOS-124 Surveys with tags shouldn't show up in bare surveys calls
+* Fixes IOS-126 Long survey answers are truncated
+* Also brings in pull requests #38 and #39.
+
+2013-05-31 wooster v0.4.8a
+--------------------------
+This is a localization minor bump. There are still a few edge cases in the UI.
+
+Thanks to Robert Lo Bue and Applingua (with help from SpaceInch) for the new localizations!
+
+2013-02-01 wooster v0.4.8
+-------------------------
+This is a bug fix release.
+
+* Fixes IOS-80 Use StoreKit to show product page when reviewing app
+    * Your users on iOS 6 and above will no longer be bounced out of the app to rate your app.
+    * To use this, you'll need to link against StoreKit and build with the iOS 6 SDK.
+* Fixes IOS-86 Always dismiss keyboard on feedback dialog going away
+* Fixes IOS-76 Update launch logic for iOS 4 API (better last use of app metrics for iOS 4+)
+* Fixes IOS-83 Distribution build script phase is buggy and runs even when not necessary
+* Fixes IOS-72 Find out more button doesn't work in iOS 6
+* Fixes IOS-28 Show success message on survey completion when configured
+* Fixes IOS-15 Privacy information on info screen
+* Fixes [Issue #30](https://github.com/apptentive/apptentive-ios/issues/30) JSONKit warnings in Xcode 4.6
+* Fixes IOS-96 Text cut off in screenshot view in landscape
+* Fixes IOS-94 Right side of feedback UI doesn't work on iPhone app running on iPad (in landscape)
+* Fixes IOS-97 Sending file attachments is writing files to disk a lot
+* Fixes IOS-88 Send CP suffix on client version for cocoa pod versions
+
+2012-09-27 wooster v0.4.7
+-------------------------
+Major change:
+* We're dropping armv6 support. This means no more iPhone 3G or iPod Touch 2 support. This is in line with what we're seeing from app developers and other vendors of 3rd party libraries. If you *really* need armv6 support, let us know.
+
+Other changes:
+
+* Fixes IOS-71 Add callback after survey completion
+  See the `ATSurveys.h` header for details.
+* Added `showTagline` property on `ATConnect`. This allows you to hide the "Powered by Apptentive" logo text.
+* Fixes IOS-78 Always send dates in english
+  
+  This bug was causing some dates to be sent localized to the server. Oops.
+* Fixes IOS-79 Allow dev to prompt user to re-rate after new version installed
+  
+  When the "Reset rating prompt counters when app version changes" settings is enabled, if a user has already rated the app, that will be reset when they upgrade the app. The upshot of this is, users will be prompted to rate the app again after upgrade. You may want to do this if you want users to re-rate the app on a version change, as the iOS App Store is heavily geared towards ratings and reviews for the current version. This change makes our behavior match what developers expect when checking that box on the Apptentive site.
+* URL Loading changes:
+  * Better cache policy handling, per http://blackpixel.com/blog/1659/caching-and-nsurlconnection/
+  * Better URL redirection handling.
+* Fixes IOS-39 No option to cancel a photo/screenshot attachment?
+  * To cancel a screenshot or photo attachment, just drag it away from the paperclip.
+
+
 2012-09-11 wooster v0.4.6
 -------------------------
 One major change in the API:
