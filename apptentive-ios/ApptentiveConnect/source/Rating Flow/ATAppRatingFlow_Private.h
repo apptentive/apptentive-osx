@@ -6,7 +6,11 @@
 //  Copyright (c) 2012 Apptentive, Inc. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#if TARGET_OS_IPHONE
+#import <UIKit/UIKit.h>
+#elif TARGET_OS_MAC
+#import <Cocoa/Cocoa.h>
+#endif
 
 NSString *const ATAppRatingClearCountsOnUpgradePreferenceKey;
 NSString *const ATAppRatingEnabledPreferenceKey;

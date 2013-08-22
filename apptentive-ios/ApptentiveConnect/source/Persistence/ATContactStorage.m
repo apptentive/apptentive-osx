@@ -41,8 +41,7 @@ static ATContactStorage *sharedContactStorage = nil;
 			if ([ATContactStorage serializedVersionExists]) {
 				@try {
 					sharedContactStorage = [[NSKeyedUnarchiver unarchiveObjectWithFile:[ATContactStorage contactStoragePath]] retain];
-				}
-				@catch (NSException *exception) {
+				} @catch (NSException *exception) {
 					ATLogError(@"Unable to unarchive cstorage: %@", exception);
 				}
 			}

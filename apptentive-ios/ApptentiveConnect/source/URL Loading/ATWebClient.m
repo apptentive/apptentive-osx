@@ -13,12 +13,11 @@
 
 #import "ATBackend.h"
 #import "ATConnect.h"
+#import "ATConversationUpdater.h"
 #import "ATFeedback.h"
 #import "ATURLConnection.h"
 #import "ATUtilities.h"
 #import "ATWebClient_Private.h"
-
-#import "PJSONKit.h"
 
 #import "NSData+ATBase64.h"
 
@@ -68,10 +67,14 @@ NSString *const ATWebClientDefaultChannelName = @"ATWebClient";
 }
 
 - (ATAPIRequest *)requestForGettingAppConfiguration {
-	NSString *uuid = [[ATBackend sharedBackend] deviceUUID];
-	NSString *urlString = [self apiURLStringWithPath:[NSString stringWithFormat:@"devices/%@/configuration", uuid]];
+	ATConversation *conversation = [ATConversationUpdater currentConversation];
+	if (!conversation) {
+		return nil;
+	}
+	NSString *urlString = [self apiURLStringWithPath:@"conversation/configuration"];
 	ATURLConnection *conn = [self connectionToGet:[NSURL URLWithString:urlString]];
 	conn.timeoutInterval = 20.0;
+	[self updateConnection:conn withOAuthToken:conversation.token];
 	ATAPIRequest *request = [[ATAPIRequest alloc] initWithConnection:conn channelName:[self commonChannelName]];
 	request.returnType = ATAPIRequestReturnTypeJSON;
 	return [request autorelease];
@@ -256,6 +259,7 @@ NSString *const ATWebClientDefaultChannelName = @"ATWebClient";
 	NSData *fileData = nil;
 	if (path && [fm fileExistsAtPath:path]) {
 		NSError *error = nil;
+		//TODO: Determine behavior on iOS 4. Seems to work, but unknown if mapped file is being used.
 		fileData = [NSData dataWithContentsOfFile:path options:NSDataReadingMappedIfSafe error:&error];
 		if (!fileData) {
 			ATLogError(@"Unable to get contents of file path for uploading: %@", error);
@@ -362,8 +366,9 @@ fail:
 - (void)addAPIHeaders:(ATURLConnection *)conn {
 	[conn setValue:[self userAgentString] forHTTPHeaderField:@"User-Agent"];
 	[conn setValue: @"gzip" forHTTPHeaderField: @"Accept-Encoding"];
-	[conn setValue: @"text/xml" forHTTPHeaderField: @"Accept"];
+//!!	[conn setValue: @"text/xml" forHTTPHeaderField: @"Accept"];
 	[conn setValue: @"utf-8" forHTTPHeaderField: @"Accept-Charset"];
+	[conn setValue:@"1" forHTTPHeaderField:@"X-API-Version"];
 	NSString *apiKey = [[ATBackend sharedBackend] apiKey];
 	if (apiKey) {
 		[self updateConnection:conn withOAuthToken:apiKey];

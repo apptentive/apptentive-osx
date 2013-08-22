@@ -28,7 +28,7 @@ NSString *const ATSurveyIDKey = @"ATSurveyIDKey";
 	return sharedSingleton;
 }
 
-+ (BOOL)hasSurveyAvailable {
++ (BOOL)hasSurveyAvailableWithNoTags {
 	return [[ATSurveysBackend sharedBackend] hasSurveyAvailableWithNoTags];
 }
 
@@ -41,7 +41,8 @@ NSString *const ATSurveyIDKey = @"ATSurveyIDKey";
 	[backend checkForAvailableSurveys];
 }
 
-+ (void)presentSurveyControllerFromViewController:(UIViewController *)viewController {
+#if TARGET_OS_IPHONE
++ (void)presentSurveyControllerWithNoTagsFromViewController:(UIViewController *)viewController {
 	ATSurveysBackend *backend = [ATSurveysBackend sharedBackend];
 	[backend presentSurveyControllerWithNoTagsFromViewController:viewController];
 }
@@ -50,4 +51,7 @@ NSString *const ATSurveyIDKey = @"ATSurveyIDKey";
 	ATSurveysBackend *backend = [ATSurveysBackend sharedBackend];
 	[backend presentSurveyControllerWithTags:tags fromViewController:viewController];
 }
+#elif TARGET_OS_MAC
+#	warning Unimplemented
+#endif
 @end

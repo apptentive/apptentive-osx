@@ -9,6 +9,7 @@
 #import "ATTaskQueue.h"
 #import "ATBackend.h"
 #import "ATTask.h"
+#import "ATLegacyRecord.h"
 
 #define kATTaskQueueCodingVersion 1
 // Retry period in seconds.
@@ -40,11 +41,19 @@ static ATTaskQueue *sharedTaskQueue = nil;
 	@synchronized(self) {
 		if (sharedTaskQueue == nil) {
 			if ([ATTaskQueue serializedQueueExists]) {
-				@try {
-					sharedTaskQueue = [[NSKeyedUnarchiver unarchiveObjectWithFile:[ATTaskQueue taskQueuePath]] retain];
-				} @catch (NSException *exception) {
-					ATLogError(@"Unable to unarchive tasks at: %@, exception: %@", [ATTaskQueue taskQueuePath], exception);
-					sharedTaskQueue = [[ATTaskQueue alloc] init];
+				NSError *error = nil;
+				NSData *data = [NSData dataWithContentsOfFile:[ATTaskQueue taskQueuePath] options:NSDataReadingMapped error:&error];
+				if (!data) {
+					ATLogError(@"Unable to unarchive task queue: %@", error);
+				} else {
+					@try {
+						NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
+						[unarchiver setClass:[ATLegacyRecord class] forClassName:@"ATRecord"];
+						sharedTaskQueue = [[unarchiver decodeObjectForKey:@"root"] retain];
+						[unarchiver release], unarchiver = nil;
+					} @catch (NSException *exception) {
+						ATLogError(@"Unable to unarchive task queue: %@", exception);
+					}
 				}
 			}
 			if (!sharedTaskQueue) {
@@ -113,6 +122,19 @@ static ATTaskQueue *sharedTaskQueue = nil;
 	[self start];
 }
 
+- (BOOL)hasTaskOfClass:(Class)c {
+	BOOL result = NO;
+	@synchronized(self) {
+		for (ATTask *task in tasks) {
+			if ([task isKindOfClass:c]) {
+				result = YES;
+				break;
+			}
+		}
+	}
+	return result;
+}
+
 - (NSUInteger)count {
 	NSUInteger count = 0;
 	@synchronized(self) {
@@ -155,8 +177,9 @@ static ATTaskQueue *sharedTaskQueue = nil;
 }
 
 - (void)start {
-	if ([[NSThread currentThread] isMainThread]) {
-		[self performSelectorInBackground:@selector(start) withObject:nil];
+	// We can no longer do this in the background because of CoreData objects.
+	if (![[NSThread currentThread] isMainThread]) {
+		[self performSelectorOnMainThread:@selector(start) withObject:nil waitUntilDone:NO];
 		return;
 	}
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];

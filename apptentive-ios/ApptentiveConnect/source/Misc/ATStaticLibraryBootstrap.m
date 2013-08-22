@@ -10,6 +10,7 @@
 
 #if TARGET_OS_IPHONE
 #import "ATToolbar.h"
+#import "ATWebClient+MessageCenter.h"
 #import "ATWebClient+SurveyAdditions.h"
 #endif
 #import "ATWebClient+Metrics.h"
@@ -22,6 +23,7 @@
 	ATURLConnection_Private_Bootstrap();
 	ATWebClient_Private_Bootstrap();
 #if TARGET_OS_IPHONE
+	ATWebClient_MessageCenter_Bootstrap();
 	ATToolbar_Bootstrap();
 	ATWebClient_SurveyAdditions_Bootstrap();
 #endif

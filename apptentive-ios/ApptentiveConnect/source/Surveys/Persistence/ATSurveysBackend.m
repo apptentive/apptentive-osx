@@ -13,9 +13,10 @@
 #import "ATSurveyMetrics.h"
 #import "ATSurveys.h"
 #import "ATSurveyParser.h"
+#if TARGET_OS_IPHONE
 #import "ATSurveyViewController.h"
+#endif
 #import "ATTaskQueue.h"
-#import "PJSONKit.h"
 
 NSString *const ATSurveySentSurveysPreferenceKey = @"ATSurveySentSurveysPreferenceKey";
 NSString *const ATSurveyCachedSurveysExpirationPreferenceKey = @"ATSurveyCachedSurveysExpirationPreferenceKey";
@@ -23,7 +24,9 @@ NSString *const ATSurveyCachedSurveysExpirationPreferenceKey = @"ATSurveyCachedS
 @interface ATSurveysBackend ()
 + (NSString *)cachedSurveysStoragePath;
 - (BOOL)shouldRetrieveNewSurveys;
+#if TARGET_OS_IPHONE
 - (void)presentSurveyControllerFromViewControllerWithCurrentSurvey:(UIViewController *)viewController;
+#endif
 - (ATSurvey *)surveyWithTags:(NSSet *)tags;
 @end
 
@@ -108,6 +111,7 @@ NSString *const ATSurveyCachedSurveysExpirationPreferenceKey = @"ATSurveyCachedS
 	}
 }
 
+#if TARGET_OS_IPHONE
 - (void)presentSurveyControllerFromViewControllerWithCurrentSurvey:(UIViewController *)viewController {
 	ATSurveyViewController *vc = [[ATSurveyViewController alloc] initWithSurvey:currentSurvey];
 	UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:vc];
@@ -147,6 +151,7 @@ NSString *const ATSurveyCachedSurveysExpirationPreferenceKey = @"ATSurveyCachedS
 	}
 	[self presentSurveyControllerFromViewControllerWithCurrentSurvey:viewController];
 }
+#endif
 
 - (void)setDidSendSurvey:(ATSurvey *)survey {
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
