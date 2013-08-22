@@ -561,6 +561,120 @@ static NSDateFormatter *dateFormatter = nil;
 	[scanner release], scanner = nil;
 	return maxAge;
 }
+
++ (BOOL)dictionary:(NSDictionary *)a isEqualToDictionary:(NSDictionary *)b {
+	BOOL isEqual = NO;
+	
+	do { // once
+		if (a == b) {
+			isEqual = YES;
+			break;
+		}
+		if ((a == nil && b != nil) || (a != nil && b == nil)) {
+			break;
+		}
+		if ([a count] != [b count]) {
+			break;
+		}
+		for (NSObject *keyA in a) {
+			NSObject *valueB = [b objectForKey:keyA];
+			if (valueB == nil) {
+				goto done;
+			}
+			NSObject *valueA = [a objectForKey:keyA];
+			if ([valueA isKindOfClass:[NSDictionary class]] && [valueB isKindOfClass:[NSDictionary class]]) {
+				BOOL deepEquals = [ATUtilities dictionary:(NSDictionary *)valueA isEqualToDictionary:(NSDictionary *)valueB];
+				if (!deepEquals) {
+					goto done;
+				}
+			} else if ([valueA isKindOfClass:[NSArray class]] && [valueB isKindOfClass:[NSArray class]])  {
+				BOOL deepEquals = [ATUtilities array:(NSArray *)valueA isEqualToArray:(NSArray *)valueB];
+				if (!deepEquals) {
+					goto done;
+				}
+			} else if (![valueA isEqual:valueB]) {
+				goto done;
+			}
+		}
+		isEqual = YES;
+	} while (NO);
+
+done:
+	return isEqual;
+}
+
++ (BOOL)array:(NSArray *)a isEqualToArray:(NSArray *)b {
+	BOOL isEqual = NO;
+	
+	do { // once
+		if (a == b) {
+			isEqual = YES;
+			break;
+		}
+		if ((a == nil && b != nil) || (a != nil && b == nil)) {
+			break;
+		}
+		if ([a count] != [b count]) {
+			break;
+		}
+		NSUInteger index = 0;
+		for (NSObject *valueA in a) {
+			NSObject *valueB = [b objectAtIndex:index];
+			if ([valueA isKindOfClass:[NSDictionary class]] && [valueB isKindOfClass:[NSDictionary class]]) {
+				BOOL deepEquals = [ATUtilities dictionary:(NSDictionary *)valueA isEqualToDictionary:(NSDictionary *)valueB];
+				if (!deepEquals) {
+					goto done;
+				}
+			} else if ([valueA isKindOfClass:[NSArray class]] && [valueB isKindOfClass:[NSArray class]])  {
+				BOOL deepEquals = [ATUtilities array:(NSArray *)valueA isEqualToArray:(NSArray *)valueB];
+				if (!deepEquals) {
+					goto done;
+				}
+			} else if (![valueA isEqual:valueB]) {
+				goto done;
+			}
+			index++;
+		}
+		isEqual = YES;
+	} while (NO);
+	
+done:
+	return isEqual;
+}
+
+
+#if TARGET_OS_IPHONE
++ (UIEdgeInsets)edgeInsetsOfView:(UIView *)view {
+	UIEdgeInsets insets = UIEdgeInsetsZero;
+	insets.left = view.frame.origin.x;
+	insets.top = view.frame.origin.y;
+	if (view.superview) {
+		UIView *superview = view.superview;
+		insets.bottom = superview.bounds.size.height - view.bounds.size.height - insets.top;
+		insets.right = superview.bounds.size.width - view.bounds.size.width - insets.left;
+	}
+	return insets;
+}
+
++ (BOOL)osVersionGreaterThanOrEqualTo:(NSString *)version {
+	return ([[[UIDevice currentDevice] systemVersion] compare:version options:NSNumericSearch] != NSOrderedAscending);
+}
+#endif
+
++ (BOOL)emailAddressIsValid:(NSString *)emailAddress {
+	NSError *error = nil;
+	NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"^\\s*[^\\s@]+@[^\\s@]+\\s*$" options:NSRegularExpressionCaseInsensitive error:&error];
+	if (!regex) {
+		NSLog(@"Unable to build email regular expression: %@", error);
+		return NO;
+	}
+	NSUInteger count = [regex numberOfMatchesInString:emailAddress options:NSMatchingAnchored range:NSMakeRange(0, [emailAddress length])];
+	if (count == 0) {
+		return NO;
+	} else {
+		return YES;
+	}
+}
 @end
 
 
@@ -591,4 +705,34 @@ extern CGRect ATCGRectOfEvenSize(CGRect inRect) {
 	}
 	
 	return result;
+}
+
+CGSize ATThumbnailSizeOfMaxSize(CGSize imageSize, CGSize maxSize) {
+    CGFloat ratio = MIN(maxSize.width/imageSize.width, maxSize.height/imageSize.height);
+	if (ratio < 1.0) {
+		return CGSizeMake(floor(ratio * imageSize.width), floor(ratio * imageSize.height));
+	} else {
+		return imageSize;
+	}
+}
+
+CGRect ATThumbnailCropRectForThumbnailSize(CGSize imageSize, CGSize thumbnailSize) {
+    CGFloat cropRatio = thumbnailSize.width/thumbnailSize.height;
+	CGFloat sizeRatio = imageSize.width/imageSize.height;
+	
+	if (cropRatio < sizeRatio) {
+		// Shrink width. eg. 100:100 < 1600:1200
+		CGFloat croppedWidth = imageSize.width * (1.0/sizeRatio);
+		CGFloat originX = floor((imageSize.width - croppedWidth)/2.0);
+		
+		return CGRectMake(originX, 0, croppedWidth, imageSize.height);
+	} else if (cropRatio > sizeRatio) {
+		// Shrink height. eg. 100:100 > 1200:1600
+		CGFloat croppedHeight = floor(imageSize.height * sizeRatio);
+		CGFloat originY = floor((imageSize.height - croppedHeight)/2.0);
+		
+		return CGRectMake(0, originY, imageSize.width, croppedHeight);
+	} else {
+		return CGRectMake(0, 0, imageSize.width, imageSize.height);
+	}
 }

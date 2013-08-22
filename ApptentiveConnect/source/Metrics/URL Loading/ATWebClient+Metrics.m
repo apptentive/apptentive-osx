@@ -11,7 +11,9 @@
 #import "ATAPIRequest.h"
 #import "ATBackend.h"
 #import "ATConnect.h"
+#import "ATEvent.h"
 #import "ATMetric.h"
+#import "ATJSONSerialization.h"
 #import "ATURLConnection.h"
 
 @implementation ATWebClient (Metrics)
@@ -22,6 +24,30 @@
 	
 	conn = [self connectionToPost:[NSURL URLWithString:url] parameters:postData];
 	conn.timeoutInterval = 240.0;
+	ATAPIRequest *request = [[ATAPIRequest alloc] initWithConnection:conn channelName:ATWebClientDefaultChannelName];
+	request.returnType = ATAPIRequestReturnTypeJSON;
+	return [request autorelease];
+}
+
+- (ATAPIRequest *)requestForSendingEvent:(ATEvent *)event {
+	NSDictionary *postJSON = [event apiJSON];
+	NSError *error = nil;
+	NSString *postString = [ATJSONSerialization stringWithJSONObject:postJSON options:ATJSONWritingPrettyPrinted error:&error];
+	if (!postString && error != nil) {
+		ATLogError(@"Error while encoding JSON: %@", error);
+		return nil;
+	}
+	ATConversation *conversation = [ATConversationUpdater currentConversation];
+	if (!conversation) {
+		ATLogError(@"No current conversation.");
+		return nil;
+	}
+	NSString *url = [self apiURLStringWithPath:@"events"];
+	ATURLConnection *conn = nil;
+	
+	conn = [self connectionToPost:[NSURL URLWithString:url] JSON:postString];
+	conn.timeoutInterval = 240.0;
+	[self updateConnection:conn withOAuthToken:conversation.token];
 	ATAPIRequest *request = [[ATAPIRequest alloc] initWithConnection:conn channelName:ATWebClientDefaultChannelName];
 	request.returnType = ATAPIRequestReturnTypeJSON;
 	return [request autorelease];

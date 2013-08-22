@@ -48,8 +48,21 @@
 + (NSString *)appVersionString;
 + (NSString *)buildNumberString;
 
++ (BOOL)dictionary:(NSDictionary *)a isEqualToDictionary:(NSDictionary *)b;
 + (NSTimeInterval)maxAgeFromCacheControlHeader:(NSString *)cacheControl;
++ (BOOL)array:(NSArray *)a isEqualToArray:(NSArray *)b;
+
+#if TARGET_OS_IPHONE
++ (UIEdgeInsets)edgeInsetsOfView:(UIView *)view;
+
++ (BOOL)osVersionGreaterThanOrEqualTo:(NSString *)version;
+#endif
+
++ (BOOL)emailAddressIsValid:(NSString *)emailAddress;
 @end
 
 CGRect ATCGRectOfEvenSize(CGRect inRect);
 
+CGSize ATThumbnailSizeOfMaxSize(CGSize imageSize, CGSize maxSize);
+
+CGRect ATThumbnailCropRectForThumbnailSize(CGSize imageSize, CGSize thumbnailSize);

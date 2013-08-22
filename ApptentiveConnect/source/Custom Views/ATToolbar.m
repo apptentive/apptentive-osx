@@ -10,6 +10,8 @@
 #import "ATCustomButton.h"
 
 @implementation ATToolbar
+@synthesize at_drawRectBlock;
+
 //!! Hack to adjust frame origin of left-most custom view and to force
 //!! custom views to resize on orientation changes.
 //!! Still has problems if the text is too big to fit and is rotated to portrait twice.
@@ -67,8 +69,12 @@
 				// Also don't adjust any custom buttons.
 				if (i != 0 && item.customView != nil && ![item isKindOfClass:[ATCustomButton class]]) {
 					CGRect customFrame = item.customView.frame;
-					customFrame.origin.x += 4.0;
 					customFrame.size.width = MIN(widthAvailable, customFrame.size.width);
+					CGFloat widthDiff = customFrame.origin.x - CGRectGetMaxX(firstItem.customView.frame);
+					if (widthDiff < 0) {
+						// Only adjust the x origin if the label is going to overlap the first button.
+						customFrame.origin.x -= (widthDiff - 3);
+					}
 					item.customView.frame = customFrame;
 				}
 				i++;
@@ -78,7 +84,14 @@
 }
 
 - (void)drawRect:(CGRect)rect {
-	//
+	if (at_drawRectBlock) {
+		at_drawRectBlock(self, rect);
+	}
+}
+
+- (void)dealloc {
+	[at_drawRectBlock release], at_drawRectBlock = nil;
+	[super dealloc];
 }
 @end
 

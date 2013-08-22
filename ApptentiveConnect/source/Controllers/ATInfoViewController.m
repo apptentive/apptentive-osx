@@ -10,13 +10,16 @@
 #import "ATAPIRequest.h"
 #import "ATBackend.h"
 #import "ATConnect.h"
+#import "ATConnect_Private.h"
+#import "ATData.h"
 #import "ATFeedback.h"
-#import "ATFeedbackController.h"
 #import "ATFeedbackMetrics.h"
 #import "ATFeedbackTask.h"
 #import "ATLogViewController.h"
+#import "ATMessageTask.h"
 #import "ATTask.h"
 #import "ATTaskQueue.h"
+#import "ATTextMessage.h"
 
 enum {
 	kSectionTasks,
@@ -45,16 +48,13 @@ enum {
 	return self;
 }
 
-- (id)initWithFeedbackController:(ATFeedbackController *)aController {
-	self = [self init];
-	controller = [aController retain];
-	return self;
-}
-
 - (void)dealloc {
 	[logicalSections release], logicalSections = nil;
-	[controller release], controller = nil;
 	[self teardown];
+	[_apptentiveDescriptionTextView release];
+	[_apptentivePrivacyTextView release];
+	[_findOutMoreButton release];
+	[_gotoPrivacyPolicyButton release];
 	[super dealloc];
 }
 
@@ -82,18 +82,17 @@ enum {
 }
 
 - (void)viewDidUnload {
+	[self setApptentiveDescriptionTextView:nil];
+	[self setApptentivePrivacyTextView:nil];
+	[self setFindOutMoreButton:nil];
+	[self setGotoPrivacyPolicyButton:nil];
 	[super viewDidUnload];
 	[headerView release], headerView = nil;
 	self.tableView = nil;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-	if (!showingDebugController) {
-		if (controller != nil) {
-			[controller unhide:animated];
-			[controller release], controller = nil;
-		}
-	}
+	[super viewWillDisappear:animated];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -135,7 +134,7 @@ enum {
 	
 	if (section == kSectionTasks) {
 		ATTaskQueue *queue = [ATTaskQueue sharedTaskQueue];
-		return [queue countOfTasksWithTaskNamesInSet:[NSSet setWithObjects:@"feedback", nil]];
+		return [queue countOfTasksWithTaskNamesInSet:[NSSet setWithObjects:@"feedback", @"message", nil]];
 	} else if (section == kSectionDebugLog) {
 		return 1;
 	} else {
@@ -153,7 +152,7 @@ enum {
 	
 	if (section == kSectionTasks) {
 		ATTaskQueue *queue = [ATTaskQueue sharedTaskQueue];
-		ATTask *task = [queue taskAtIndex:indexPath.row withTaskNameInSet:[NSSet setWithObjects:@"feedback", nil]];
+		ATTask *task = [queue taskAtIndex:indexPath.row withTaskNameInSet:[NSSet setWithObjects:@"feedback", @"message", nil]];
 		result = [aTableView dequeueReusableCellWithIdentifier:taskCellIdentifier];
 		if (!result) {
 			UINib *nib = [UINib nibWithNibName:@"ATTaskProgressCell" bundle:[ATConnect resourceBundle]];
@@ -170,6 +169,16 @@ enum {
 		if ([task isKindOfClass:[ATFeedbackTask class]]) {
 			ATFeedbackTask *feedbackTask = (ATFeedbackTask *)task;
 			label.text = feedbackTask.feedback.text;
+		} else if ([task isKindOfClass:[ATMessageTask class]]) {
+			ATMessageTask *messageTask = (ATMessageTask *)task;
+			NSString *messageID = [messageTask pendingMessageID];
+			ATMessage *message = [ATMessage findMessageWithPendingID:messageID];
+			if ([message isKindOfClass:[ATTextMessage class]]) {
+				ATTextMessage *textMessage = (ATTextMessage *)message;
+				label.text = textMessage.body;
+			} else {
+				label.text = [message description];
+			}
 		} else {
 			label.text = [task description];
 		}
@@ -256,6 +265,12 @@ enum {
 	CGRect f = logoView.frame;
 	f.size = logoImage.size;
 	logoView.frame = f;
+	
+	self.apptentiveDescriptionTextView.text = ATLocalizedString(@"Apptentive is a feedback and communication service which allows the people who make this app to quickly get your feedback and better listen to you.", @"Description of Apptentive service in information screen.");
+	[self.findOutMoreButton setTitle:ATLocalizedString(@"Find out more at apptentive.com", @"Title of button to open Apptentive.com") forState:UIControlStateNormal];
+	self.apptentivePrivacyTextView.text = ATLocalizedString(@"Your feedback is hosted by Apptentive and is subject to Apptentive's privacy policy and the privacy policy of the developer of this app.", @"Description of Apptentive privacy policy.");
+	[self.gotoPrivacyPolicyButton setTitle:ATLocalizedString(@"Go to Apptentive's Privacy Policy", @"Title for button to open Apptentive's privacy policy") forState:UIControlStateNormal];
+	
 	tableView.delegate = self;
 	tableView.dataSource = self;
 	tableView.tableHeaderView = self.headerView;

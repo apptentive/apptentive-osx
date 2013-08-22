@@ -12,7 +12,6 @@
 #import "ATSurveysBackend.h"
 #import "ATWebClient.h"
 #import "ATWebClient+SurveyAdditions.h"
-#import "PJSONKit.h"
 
 @interface ATSurveyGetSurveysTask (Private)
 - (void)setup;
@@ -36,6 +35,9 @@
 
 - (BOOL)canStart {
 	if ([[ATBackend sharedBackend] apiKey] == nil) {
+		return NO;
+	}
+	if (![ATConversationUpdater conversationExists]) {
 		return NO;
 	}
 	return YES;
