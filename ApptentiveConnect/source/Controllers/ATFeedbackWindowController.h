@@ -21,6 +21,7 @@
     IBOutlet NSComboBox *emailBox;
     IBOutlet NSComboBox *phoneNumberBox;
     IBOutlet NSButton *sendButton;
+	IBOutlet NSButton *cancelButton;
     IBOutlet NSImageView *logoImageView;
 @private
     ATAPIRequest *feedbackRequest;
