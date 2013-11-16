@@ -38,20 +38,20 @@ In your target's `Build Settings` section, add the following to your Other Linke
 Then, open your project in Xcode and drag the `ApptentiveConnect.xcodeproj` project file 
 to your project:
 
-![Step 1](etc/screenshots/integration_step1.png)
+![Step 1](https://raw.github.com/apptentive/apptentive-osx/master/etc/screenshots/integration_step1.png)
 
 In your apps' target settings, add `ApptentiveConnect` to the "Target Dependencies" build phase:
 
-![Step 2](etc/screenshots/integration_step2.png)
+![Step 2](https://raw.github.com/apptentive/apptentive-osx/master/etc/screenshots/integration_step2.png)
 
 Next, add `ApptentiveConnect.framework` to the "Link Binary With Libraries" build phase:
 
-![Step 3](etc/screenshots/integration_step3.png)
+![Step 3](https://raw.github.com/apptentive/apptentive-osx/master/etc/screenshots/integration_step3.png)
 
 Finally, drag the `ApptentiveConnect.framework` from the `ApptentiveConnect` project to the 
 "Copy Bundle Resources" build phase:
 
-![Step 4](etc/screenshots/integration_step4.png)
+![Step 4](https://raw.github.com/apptentive/apptentive-osx/master/etc/screenshots/integration_step4.png)
 
 Using the Library
 -----------------
@@ -123,13 +123,3 @@ In [iTunesConnect](https://itunesconnect.apple.com/), go to "Manage Your
 Applications" and click on your application. In the "App Information" 
 section of the page, look for the "Apple ID". It will be a number. This is
 your iTunes application ID.
-
-Contributing
-------------
-We love contributions!
-
-Any contributions to the master apptentive-osx project must sign the [Individual Contributor License Agreement (CLA)](https://docs.google.com/a/apptentive.com/spreadsheet/viewform?formkey=dDhMaXJKQnRoX0dRMzZNYnp5bk1Sbmc6MQ#gid=0). It's a doc that makes our lawyers happy and ensures we can provide a solid open source project.
-
-When you want to submit a change, send us a [pull request](https://github.com/apptentive/apptentive-osx/pulls). Before we merge, we'll check to make sure you're on the list of people who've signed our CLA.
-
-Thanks!
