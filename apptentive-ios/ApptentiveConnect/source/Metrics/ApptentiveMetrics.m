@@ -7,6 +7,7 @@
 //
 
 #import "ApptentiveMetrics.h"
+#import "ATLog.h"
 #import "ATAppConfigurationUpdater.h"
 #import "ATFeedbackMetrics.h"
 #import "ATAppRatingMetrics.h"

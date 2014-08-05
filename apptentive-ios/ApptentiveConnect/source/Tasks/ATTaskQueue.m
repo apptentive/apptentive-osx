@@ -7,6 +7,7 @@
 //
 
 #import "ATTaskQueue.h"
+#import "ATLog.h"
 #import "ATBackend.h"
 #import "ATTask.h"
 

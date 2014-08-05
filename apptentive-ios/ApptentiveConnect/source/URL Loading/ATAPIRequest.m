@@ -7,6 +7,7 @@
 //
 
 #import "ATAPIRequest.h"
+#import "ATLog.h"
 #import "ATConnect.h"
 #import "ATConnectionManager.h"
 #import "ATURLConnection.h"

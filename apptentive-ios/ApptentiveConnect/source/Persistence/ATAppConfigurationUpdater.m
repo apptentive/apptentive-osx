@@ -8,6 +8,7 @@
 
 #import "ATAppConfigurationUpdater.h"
 #import "ATAppRatingFlow_Private.h"
+#import "ATLog.h"
 #import "ATContactStorage.h"
 #import "ATUtilities.h"
 #import "ATWebClient.h"

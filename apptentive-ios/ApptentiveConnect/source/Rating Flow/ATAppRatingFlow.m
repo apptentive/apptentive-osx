@@ -7,6 +7,7 @@
 //
 
 #import "ATAppRatingFlow.h"
+#import "ATLog.h"
 #import "ATAPIRequest.h"
 #import "ATBackend.h"
 #import "ATConnect.h"

@@ -7,6 +7,7 @@
 
 #import "ATURLConnection.h"
 #import "ATURLConnection_Private.h"
+#import "ATLog.h"
 #import "ATUtilities.h"
 
 @interface ATURLConnection ()

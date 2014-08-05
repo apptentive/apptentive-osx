@@ -8,6 +8,7 @@
 
 #import "ATWebClient.h"
 #import "ATWebClient_Private.h"
+#import "ATLog.h"
 #import "ATAPIRequest.h"
 #import "ATURLConnection.h"
 

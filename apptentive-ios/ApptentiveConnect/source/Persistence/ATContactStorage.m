@@ -7,6 +7,7 @@
 //
 
 #import "ATContactStorage.h"
+#import "ATLog.h"
 #import "ATBackend.h"
 
 #define kATContactStorageVersion 1

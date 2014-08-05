@@ -7,6 +7,7 @@
 //
 
 #import "ATFeedbackTask.h"
+#import "ATLog.h"
 #import "ATBackend.h"
 #import "ATFeedback.h"
 #import "ATWebClient.h"

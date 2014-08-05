@@ -7,6 +7,7 @@
 //
 
 #import "ATFeedback.h"
+#import "ATLog.h"
 #import "ATConnect.h"
 #import "ATBackend.h"
 #import "ATUtilities.h"
