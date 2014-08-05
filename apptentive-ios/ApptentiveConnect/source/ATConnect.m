@@ -185,12 +185,11 @@
 #endif
 
 + (NSBundle *)resourceBundle {
-#if TARGET_OS_IPHONE
-	NSString *path = [[NSBundle mainBundle] bundlePath];
-	NSString *bundlePath = [path stringByAppendingPathComponent:@"ApptentiveResources.bundle"];
-	NSBundle *bundle = [[NSBundle alloc] initWithPath:bundlePath];
-	return [bundle autorelease];
-#elif TARGET_OS_MAC
+#ifdef AT_RESOURCE_BUNDLE
+    NSURL *bundleURL = [[NSBundle mainBundle] URLForResource:@"ApptentiveResources" withExtension:@"bundle"];
+    NSBundle *bundle = [NSBundle bundleWithURL:bundleURL];
+	return bundle;
+#else
 	NSBundle *bundle = [NSBundle bundleForClass:[ATConnect class]];
 	return bundle;
 #endif
