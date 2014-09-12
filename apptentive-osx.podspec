@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
   s.homepage     = "https://www.apptentive.com/"
   s.authors  = { "Andrew Wooster" => "andrew@apptentive.com",
                  "Peter Kamb" => "peter@apptentive.com" }
-  s.source       = { :git => "https://github.com/levigroker/apptentive-osx.git", :tag => s.version.to_s }
+  s.source       = { :git => "https://github.com/levigroker/apptentive-osx.git", :tag => "v#{s.version}" }
   s.platform     = :osx, '10.7'
   s.osx.deployment_target = '10.7'
   s.description  = <<-DESC
