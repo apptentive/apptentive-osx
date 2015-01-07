@@ -1,3 +1,9 @@
+2014-12-05 wooster v0.4.11
+--------------------------
+Fixes problem where prompting on launch would never work.
+
+This was a regression due to a bad merge.
+
 2012-10-08 wooster v0.4.8
 -------------------------
 
