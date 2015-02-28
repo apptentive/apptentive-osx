@@ -1,3 +1,9 @@
+2015-02-28 pkamb v0.4.12
+--------------------------
+This release removes a request to access the OS X Contacts list to pre-fill the Feedback Dialog form.
+
+The Contacts permission request was unexpected to some developers and users. This will be re-added as an option in the future.
+
 2014-12-05 wooster v0.4.11
 --------------------------
 Fixes problem where prompting on launch would never work.
