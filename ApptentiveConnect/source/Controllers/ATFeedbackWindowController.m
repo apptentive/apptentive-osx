@@ -251,7 +251,13 @@
 		[phoneNumbers addObject:self.feedback.phone];
 	}
 	
-	ABPerson *me = [[ABAddressBook sharedAddressBook] me];
+    ABPerson *me = nil;
+    
+    // Uncommenting the following line will cause OS X to prompt the user for Contacts access.
+    // "THIS_APP would like to access your contacts. [Don't Allow] [OK]"
+    // Disabling for now.
+    // me = [[ABAddressBook sharedAddressBook] me];
+    
 	if (me) {
 		NSString *firstName = [me valueForProperty:kABFirstNameProperty];
 		NSString *middleName = [me valueForProperty:kABMiddleNameProperty];
