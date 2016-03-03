@@ -1,3 +1,6 @@
+#### DISCLAIMER: This project no longer supported by Apptentive and remains in an as-is state. Please use at your discretion.
+-------------------
+
 Apptentive Mac SDK
 ==================
 
