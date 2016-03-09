@@ -1,3 +1,12 @@
+# Notice!
+
+**Hello**.  The Apptentive OS X SDK has been discontinued and is no longer supported.  We are still actively maintaining our [iOS](http://github.com/apptentive/apptentive-ios) and [Android](http://github.com/apptentive/apptentive-android) SDKs.  If you have any questions, please contact us at [support@apptentive.com](mailto:support@apptentive.com?subject=OSX%20Module).
+
+
+---
+---
+
+
 Apptentive Mac SDK
 ==================
 
@@ -35,7 +44,7 @@ In your target's `Build Settings` section, add the following to your Other Linke
 
 `-ObjC -all_load`
 
-Then, open your project in Xcode and drag the `ApptentiveConnect.xcodeproj` project file 
+Then, open your project in Xcode and drag the `ApptentiveConnect.xcodeproj` project file
 to your project:
 
 ![Step 1](https://raw.github.com/apptentive/apptentive-osx/master/etc/screenshots/integration_step1.png)
@@ -48,7 +57,7 @@ Next, add `ApptentiveConnect.framework` to the "Link Binary With Libraries" buil
 
 ![Step 3](https://raw.github.com/apptentive/apptentive-osx/master/etc/screenshots/integration_step3.png)
 
-Finally, drag the `ApptentiveConnect.framework` from the `ApptentiveConnect` project to the 
+Finally, drag the `ApptentiveConnect.framework` from the `ApptentiveConnect` project to the
 "Copy Bundle Resources" build phase:
 
 ![Step 4](https://raw.github.com/apptentive/apptentive-osx/master/etc/screenshots/integration_step4.png)
@@ -59,7 +68,7 @@ Using the Library
 `ApptentiveConnect` queues feedback and attempts to upload in the background. This
 is intended to provide as quick a mechanism for submitting feedback as possible.
 
-In order for queued/interrupted feedback uploads to continue uploading, we 
+In order for queued/interrupted feedback uploads to continue uploading, we
 recommending instantiating `ATConnect` and setting the API key at application
 startup, like:
 
@@ -95,7 +104,7 @@ App Rating Flow
 such as [appirator](https://github.com/arashpayan/appirater). To use it, add
 the `ATAppRatingFlow.h` header file to your project.
 
-Then, at startup, instantiate a shared `ATAppRatingFlow` object with your 
+Then, at startup, instantiate a shared `ATAppRatingFlow` object with your
 iTunes app ID (see "Finding Your iTunes App ID" below):
 
 ``` objective-c
@@ -115,11 +124,11 @@ ATAppRatingFlow *ratingFlow = [ATAppRatingFlow sharedRatingFlowWithAppID:kAppten
 [ratingFlow showEnjoymentDialog:sender];
 ```
 
-This is helpful if you want to implement custom triggers for the ratings 
+This is helpful if you want to implement custom triggers for the ratings
 flow.
 
 **Finding Your iTunes App ID**
-In [iTunesConnect](https://itunesconnect.apple.com/), go to "Manage Your 
-Applications" and click on your application. In the "App Information" 
+In [iTunesConnect](https://itunesconnect.apple.com/), go to "Manage Your
+Applications" and click on your application. In the "App Information"
 section of the page, look for the "Apple ID". It will be a number. This is
 your iTunes application ID.
