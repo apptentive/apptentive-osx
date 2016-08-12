@@ -1,4 +1,5 @@
 Pod::Spec.new do |s|
+  s.deprecated   = true
   s.name         = "apptentive-osx"
   s.version      = "0.4.12"
   s.license      = "BSD"
